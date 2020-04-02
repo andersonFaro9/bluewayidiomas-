@@ -1,14 +1,15 @@
-![week-11](https://user-images.githubusercontent.com/3237047/77461023-b5e4e400-6de0-11ea-9006-4a71383e906e.png)
+![50067427_552621058546809_245873077966077952_n](https://user-images.githubusercontent.com/3237047/78289837-27b3e080-74f9-11ea-8c45-24361ce78cda.png)
+
 
 
 
 <h4 align="center"> 
-	 🚀 Semana OmniStack 11.0 FINALIZADO.
+	 🚀 App em desenvolvimento.
 	
 </h4>
 <h4 align="center"> 
 
-	Mantenha sua fé em Deus, tira o "s" da "crise", crie e siga firme!!!
+	Mantenha sua foco, fé e força em Deus... tirando o "s" da "crise", crie e siga firme!!!
 </h4>
 
 <p align="center">
@@ -43,29 +44,16 @@ Projeto desenvolvido com:
 
 ## 💻 Projeto
 
-Um projeto que visa ajudar ongs que ajudam pessoas.
+Um app usado para facilitar o ensino à distância.
 
-### Prints mobile
+### Prints web
 
-![1](https://user-images.githubusercontent.com/3237047/77816268-35eca180-70a0-11ea-9f89-6355d5dfb7f2.png)
-![2](https://user-images.githubusercontent.com/3237047/77816272-3dac4600-70a0-11ea-88df-feb0685ae7ac.png)
-
-
-![foto1](https://user-images.githubusercontent.com/3237047/77816687-5b2edf00-70a3-11ea-9070-95cd7ea402b0.png)
-![foto2](https://user-images.githubusercontent.com/3237047/77816689-5d913900-70a3-11ea-9882-99ed8def92a6.png)
-
+Em breve
 
 
 ## 🔖 Layout
 
-	:construction: 🚀 FINALIZADO!!
-
-## 🤔 Como contribuir
-
-- Faça um fork;
-- Crie um branck com sua "feature": `git checkout -b my-feature`;
-- Comitar mudanças: `git commit -m 'feat: My new feature'`;
-- Para fazer push de seu branch: `git push origin my-feature`.
+	:construction: 🚀 CONSTRUÇÃO!!
 
 ## :memo: License
 
