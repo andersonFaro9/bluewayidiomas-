@@ -1,20 +1,17 @@
+
+
 ![50067427_552621058546809_245873077966077952_n](https://user-images.githubusercontent.com/3237047/78289837-27b3e080-74f9-11ea-8c45-24361ce78cda.png)
 
-
-
-
 <h4 align="center"> 
-	 🚀 App em desenvolvimento.
-	
+   🚀 App em desenvolvimento.
 </h4>
-<h4 align="center"> 
 
+<h4 align="center"> 
 	Mantenha sua foco, fé e força em Deus... tirando o "s" da "crise", crie e siga firme!!!
 </h4>
 
 <p align="center">
-  
-  
+    
   <img alt="License" src="https://img.shields.io/badge/license-MIT-brightgreen">
 </p>
 
