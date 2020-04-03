@@ -1,8 +1,0 @@
-POST http://0.0.0.0:3000/admin/users
-Content-Type: application/json
-
-{
-  "name": "Nome 1"
-}
-
-###
