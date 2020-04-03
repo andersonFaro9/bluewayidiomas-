@@ -41,12 +41,7 @@ export default class ProfileSchema extends Schema {
       .fieldFormWidth(50)
       .validationRequired()
 
-    this.addField('price')
-      .fieldIsCurrency()
-      .fieldFormWidth(20)
-
     this.addField('actions')
       .fieldIsSelectRemoteMultiple(ActionSchema.build().provideRemote())
-      .fieldFormWidth(80)
   }
 }

@@ -1,0 +1,4 @@
+DELETE {{host}}/api/v1/admin/action/{{action-uuid}}
+Authorization: Bearer {{authorization}}
+
+###

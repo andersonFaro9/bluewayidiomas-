@@ -1,12 +1,6 @@
-.DS_Store
-.thumbs.db
+.idea/
+/.bin/
+/docker-compose.yml
 
-# Editor directories and files
-.idea
-.vscode
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-.bin
-docker-compose.yml
+!*.gitkeep
+*.log

@@ -1,0 +1,17 @@
+POST {{host}}/api/v1/admin/action
+Authorization: Bearer {{authorization}}
+Content-Type: application/json
+
+{
+  "name": "Name {{ action.counter }}",
+  "namespace": "Namespace.{{ action.counter }}",
+  "path": "..."
+}
+
+> {%
+client.global.set('action-uuid', response.body.data)
+var counter = client.global.get('action.counter') || 1
+counter = parseInt(counter)
+client.global.set('action.counter', String(++counter))
+%}
+###

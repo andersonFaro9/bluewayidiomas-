@@ -38,11 +38,9 @@ export default {
     reference: {
       label: 'Referência',
       options: [
-        { value: 'admin', label: 'ADMINISTRADOR' },
-        { value: 'support_service', label: 'ATENDIMENTO' },
-        { value: 'support_admin', label: 'GESTÃO DE SERVIÇOS' },
-        { value: 'stock', label: 'GESTÃO DE ESTOQUE' },
-        { value: 'support_operator', label: 'SERVIÇO' }
+        { value: 'admin', label: 'ADMIN' },
+        { value: 'teacher', label: 'PROFESSOR' },
+        { value: 'student', label: 'ALUNO' }
       ]
     },
     price: 'Valor da Mensalidade',

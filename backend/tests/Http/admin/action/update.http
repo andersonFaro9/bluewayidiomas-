@@ -1,0 +1,8 @@
+PATCH {{host}}/api/v1/admin/action/{{action-uuid}}
+Content-Type: application/json
+Authorization: Bearer {{authorization}}
+
+{
+  "name": "Name 3.1"
+}
+###

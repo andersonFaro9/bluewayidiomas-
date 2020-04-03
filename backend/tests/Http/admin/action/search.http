@@ -1,0 +1,4 @@
+GET {{host}}/api/v1/admin/action
+Authorization: Bearer {{authorization}}
+
+###

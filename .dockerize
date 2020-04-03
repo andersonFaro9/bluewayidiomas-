@@ -1,0 +1,5 @@
+#!/bin/bash
+
+DOCKERIZE_YARN="blueway-quasar"
+DOCKERIZE_COMPOSER="blueway-nginx"
+DOCKERIZE_ARTISAN="blueway-nginx"

@@ -1,0 +1,6 @@
+GET {{host}}/integration/transaction/cb08fa2a-fc1a-11e9-8222-0242ac150004
+# CI-vDFhScdVUUl2G2dme0raxmJfdcfIlcX6:CS-syE74Z4iR2phPSjE10GHbAdUy7yIpD6a
+# Authorization: blueway Q0ktdkRGaFNjZFZVVWwyRzJkbWUwcmF4bUpmZGNmSWxjWDY6Q1Mtc3lFNzRaNGlSMnBoUFNqRTEwR0hiQWRVeTd5SXBENmE=
+Authorization: blueway Q0ktdkRGaFNjZFZVVWwyRzJkbWUwcmF4bUpmZGNmSWxjWDY6Q1Mtc3lFNzRaNGlSMnBoUFNqRTEwR0hiQWRVeTd5SXBE
+
+###

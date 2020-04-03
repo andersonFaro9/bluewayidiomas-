@@ -39,7 +39,6 @@ export default class UserSchema extends Schema {
       .fieldIsImage()
       .fieldFormWidth(40)
       .fieldFormHeight(4)
-      .fieldFormDefaultValue('https://res.cloudinary.com/dncyvvphv/image/upload/v1580948710/profile_kqyiox.jpg')
 
     this.addField('email')
       .fieldTableShow()
@@ -68,21 +67,6 @@ export default class UserSchema extends Schema {
       .fieldFormWidth(30)
       .fieldIsPassword()
       .validationSameAs(['password'])
-
-    this.addField('phone')
-      .fieldAsPhone()
-      .fieldFormWidth(30)
-
-    this.addField('integration')
-      .fieldTableWhere()
-      .fieldFormWidth(100)
-      .fieldFormDisabled()
-      .fieldConfigure(function (field) {
-        if (this.scope === SCOPES.SCOPE_ADD) {
-          field.$layout.formHidden = true
-        }
-        return field
-      })
 
     this.addField('active')
       .fieldTableShow()
