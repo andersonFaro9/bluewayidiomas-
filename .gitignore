@@ -1,0 +1,12 @@
+.DS_Store
+.thumbs.db
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+.bin
+docker-compose.yml
