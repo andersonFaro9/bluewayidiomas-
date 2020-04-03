@@ -27,7 +27,7 @@ services:
     working_dir: /var/www/app
     volumes:
       - blueway-mysql_data:/var/lib/mysql
-      - ./backend:/var/www/app
+      - ./laravel:/var/www/app
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=database
@@ -38,13 +38,13 @@ services:
 
   # api
   blueway-nginx:
-    image: webdevops/php-nginx-dev:7.3
+    image: webdevops/php-nginx:7.3
     container_name: ${DOCKER_SERVICE_API}
     networks:
       - internal
     working_dir: /var/www/app
     volumes:
-      - ./backend:/var/www/app
+      - ./laravel:/var/www/app
     #      - ./.docker/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
     depends_on:
       - blueway-mysql
@@ -88,7 +88,7 @@ services:
     networks:
       - internal
     volumes:
-      - ./backend:/var/www/app
+      - ./laravel:/var/www/app
       - .docker/blueway-queue/opt/docker/etc/supervisor.d/php-fpm.conf:/opt/docker/etc/supervisor.d/php-fpm.conf
     depends_on:
       - blueway-mysql
