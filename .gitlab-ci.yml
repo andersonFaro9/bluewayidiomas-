@@ -18,9 +18,9 @@ before_script:
   - git config --global user.name "CI"
   - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
 
-development:
+develop:
   only:
-    - development
+    - develop
   script:
     - echo "Add host ${DEVELOPMENT_DEPLOY_HOST}"
     - ssh-keyscan -H "${DEVELOPMENT_DEPLOY_HOST}" > ~/.ssh/known_hosts
