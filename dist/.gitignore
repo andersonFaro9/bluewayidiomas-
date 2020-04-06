@@ -1,0 +1,15 @@
+production/*
+!production/.tevun
+!production/.@overrides
+!production/.env
+!production/deploy.sh
+!production/docker-compose.yml
+!production/deploy.env.sh.sample
+
+stage/*
+!stage/.tevun
+!stage/.@overrides
+!stage/.env
+!stage/deploy.sh
+!stage/docker-compose.yml
+!stage/deploy.env.sh.sample

@@ -7,10 +7,12 @@ use App\Domains\Admin\ProfileAction;
 use App\Core\AbstractRepository;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Query\Builder;
+
 use function PhpBrasil\Collection\pack as pack;
 
 /**
  * Class ActionRepository
+ *
  * @package Domains\Admin\Action
  */
 class ActionRepository extends AbstractRepository
@@ -22,43 +24,76 @@ class ActionRepository extends AbstractRepository
 
     /**
      * @param string $profileId
+     *
      * @return array
      */
     public function actions(string $profileId): array
     {
         /** @noinspection PhpUndefinedMethodInspection */
         $actions = $this->model
-            ->whereIn('uuid', function (Builder $query) use ($profileId) {
-                /** @var Builder $query */
-                $query->select('actionId')
-                    ->from(with(new ProfileAction())->getTable())
-                    ->where('profileId', $profileId);
-            })
+            ->whereIn(
+                'uuid',
+                function (Builder $query) use ($profileId) {
+                    /** @var Builder $query */
+                    $query->select('actionId')
+                        ->from(with(new ProfileAction())->getTable())
+                        ->where('profileId', $profileId);
+                }
+            )
             ->orderBy('actionId')
             ->orderBy('assortment')
             ->get();
 
         /** @var Collection $actions */
-        return $actions->reduce(function ($accumulator, $action) {
-            $parent = $action->parent;
-            $id = $action->id;
-            if (isset($accumulator[$id])) {
+        $tree = $actions->reduce(
+            function ($accumulator, Action $action) {
+                $parent = $action->parent;
+                $id = $action->id;
+
+                if (!$parent) {
+                    $accumulator[$id] = $action->export();
+                    return $accumulator;
+                }
+
+                $this->appendToParent($accumulator, $parent->id, $action);
                 return $accumulator;
+            },
+            []
+        );
+
+        $callback = static function ($action) {
+            if (!isset($action['children'])) {
+                return $action;
             }
-            if (!$parent) {
-                $accumulator[$id] = $action;
-                return $accumulator;
+            if (!count($action['children'])) {
+                unset($action['children']);
+                return $action;
             }
-            $parentId = $parent->id;
-            if (!isset($accumulator[$parentId])) {
-                $accumulator[$parentId] = $parent;
+            $action['children'] = array_values($action['children']);
+            return $action;
+        };
+        return pack(array_values($tree))->map($callback)->records();
+    }
+
+    /**
+     * @param $accumulator
+     * @param string $parentId
+     * @param Action $kid
+     */
+    protected function appendToParent(array &$accumulator, string $parentId, Action $kid): void
+    {
+        /** @var Action $action */
+        foreach ($accumulator as &$action) {
+            $id = $action['id'];
+
+            if ($id !== $parentId) {
+                $this->appendToParent($action['children'], $parentId, $kid);
+                continue;
             }
-            if (!isset($accumulator[$parentId]->children)) {
-                $accumulator[$parentId]->children = [];
-            }
-            $accumulator[$parentId]->children[] = $action;
-            return $accumulator;
-        }, []);
+
+            $action['children'][$kid->id] = $kid->export();
+            return;
+        }
     }
 
     /**

@@ -30,7 +30,7 @@ class Session extends Login
      * @throws ErrorUserInative
      * @throws ErrorUserUnauthorized
      */
-    public function login(string $email, string $password, string $device = '')
+    public function login(string $email, string $password, string $device = ''): array
     {
         /** @var Eloquent $login */
         $login = static::where('email', $email)->first();
@@ -56,7 +56,7 @@ class Session extends Login
      * @return array
      * @throws ErrorUserUnauthorized
      */
-    public static function credentials(Eloquent $user, string $device)
+    public static function credentials(Eloquent $user, string $device): array
     {
         $session = uuid();
         $id = $user->getAttribute('id');
@@ -88,7 +88,7 @@ class Session extends Login
      * @param Eloquent $user
      * @return array
      */
-    public static function payload(Eloquent $user)
+    public static function payload(Eloquent $user): array
     {
         return [
             'id' => $user->getAttribute('id'),

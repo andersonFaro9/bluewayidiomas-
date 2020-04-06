@@ -2,12 +2,16 @@
 
 namespace App\Domains\Admin;
 
+use App\Core\AbstractModel;
 use App\Core\AbstractModel as Model;
+use App\Core\Model\Fill;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+
 use function PhpBrasil\Collection\pack;
 
 /**
  * Class Profile
+ *
  * @package App\Domains\Admin
  */
 class Profile extends Model
@@ -75,18 +79,22 @@ class Profile extends Model
      */
     protected static function configure(): void
     {
-        static::saved(function (Profile $model) {
-            $actions = $model->getFilled('actions');
-            if (!is_array($actions)) {
-                return;
-            }
+        static::saved(
+            static function (Profile $model) {
+                $actions = $model->getFilled('actions');
+                if (!is_array($actions)) {
+                    return;
+                }
 
-            $ids = pack($actions)
-                ->map(function ($action) use ($model) {
-                    return static::encodeUuid($action[$model->exposedKey()]);
-                })
-                ->records();
-            $model->actions()->sync($ids);
-        });
+                $ids = pack($actions)
+                    ->map(
+                        static function ($action) use ($model) {
+                            return static::encodeUuid($action[$model->exposedKey()]);
+                        }
+                    )
+                    ->records();
+                $model->actions()->sync($ids);
+            }
+        );
     }
 }

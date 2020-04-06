@@ -1,7 +1,7 @@
 <template>
   <q-expansion-item
-    :key="action.uuid"
     v-if="action.children && action.children.length"
+    :key="action.uuid"
     :icon="action.icon"
     :label="action.name"
     :value="expanded"
@@ -23,7 +23,10 @@
     :active="isActive"
     :class="{ 'resource-not-implemented': !action.path, 'resource-separated': action.separated }"
   >
-    <q-item-section avatar>
+    <q-item-section
+      v-if="action.icon"
+      avatar
+    >
       <q-icon :name="action.icon" />
     </q-item-section>
     <q-item-section>

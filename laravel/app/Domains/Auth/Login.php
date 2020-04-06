@@ -19,7 +19,7 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
  * @method Login firstOrFail()
  * @method Login first()
  */
-class Login extends Authenticatable implements JWTSubject, JsonSerializable
+class Login extends Authenticatable implements JWTSubject
 {
     /**
      * @see Notifiable
@@ -52,6 +52,13 @@ class Login extends Authenticatable implements JWTSubject, JsonSerializable
         'password',
         'remember_token',
     ];
+
+    /**
+     * The "type" of the primary key ID.
+     *
+     * @var string
+     */
+    protected $keyType = 'binary';
 
     /**
      * Get the identifier that will be stored in the subject claim of the JWT.

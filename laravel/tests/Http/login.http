@@ -3,7 +3,7 @@ Content-Type: application/json
 Device: test
 
 {
-  "login": "jorge@blueway.com",
+  "login": "teacher@blueway.com",
   "password": "aq1sw2de3"
 }
 > {% client.global.set('authorization', response.body.data.token) %}

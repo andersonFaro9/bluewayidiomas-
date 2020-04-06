@@ -2,6 +2,9 @@ version: '3'
 
 # networks
 networks:
+  reverse-proxy:
+    external:
+      name: reverse-proxy
   # internal network
   internal:
     driver: bridge
@@ -21,31 +24,30 @@ services:
   # database
   blueway-mysql:
     image: mysql:5.7
-    container_name: ${DOCKER_SERVICE_DATABASE}
+    container_name: blueway-mysql
+    restart: always
     networks:
       - internal
     working_dir: /var/www/app
     volumes:
       - blueway-mysql_data:/var/lib/mysql
-      - ./laravel:/var/www/app
     environment:
-      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_ROOT_PASSWORD=HNruLPbpe692mKxK
       - MYSQL_DATABASE=database
-      - MYSQL_USER=user
-      - MYSQL_PASSWORD=password
-    ports:
-      - ${DOCKER_SERVICE_DATABASE_PORT}:3306
+      - MYSQL_USER=Vnz6Ja
+      - MYSQL_PASSWORD=bwQGT45ChFeyhTcS
 
-  # api
+  # Symfony service to provide api
   blueway-nginx:
     image: webdevops/php-nginx:7.3
-    container_name: ${DOCKER_SERVICE_API}
+    container_name: blueway-nginx
+    restart: always
     networks:
       - internal
+      - reverse-proxy
     working_dir: /var/www/app
     volumes:
-      - ./laravel:/var/www/app
-    #      - ./.docker/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+      - .:/var/www/app
     depends_on:
       - blueway-mysql
       - blueway-redis
@@ -53,41 +55,32 @@ services:
       - blueway-mysql
       - blueway-redis
     environment:
-      - PHP_DEBUGGER="xdebug"
+      - VIRTUAL_HOST=blueway.co
+      - LETSENCRYPT_HOST=blueway.co
+      - LETSENCRYPT_EMAIL=it@disk.ninja
       - WEB_DOCUMENT_ROOT=/var/www/app/public
-      - XDEBUG_REMOTE_HOST=host.docker.internal
-      - XDEBUG_REMOTE_AUTOSTART=0
-      - XDEBUG_REMOTE_CONNECT_BACK=0
-      - XDEBUG_REMOTE_PORT=9000
-    #      - VIRTUAL_HOST=blueway
-    #      - LETSENCRYPT_EMAIL=certificate@blueway
-    #      - LETSENCRYPT_HOST=blueway
-    expose:
-      - 9000
-    ports:
-      - ${DOCKER_SERVICE_API_PORT}:80
+      - WEB_DOCUMENT_INDEX=index.php
+      - PHP_MAX_EXECUTION_TIME=86400
 
   # cache
   blueway-redis:
     image: redis:4.0
-    container_name: ${DOCKER_SERVICE_CACHE}
+    container_name: blueway-redis
     command: --appendonly yes
     networks:
       - internal
     volumes:
       - blueway-redis_data:/data
-    ports:
-      - ${DOCKER_SERVICE_CACHE_PORT}:6379
 
   # blueway-queue
   blueway-queue:
     image: webdevops/php-nginx:7.3
     container_name: blueway-queue
-    working_dir: /var/www/app
     networks:
       - internal
+    working_dir: /var/www/app
     volumes:
-      - ./laravel:/var/www/app
+      - .:/var/www/app
       - .docker/blueway-queue/opt/docker/etc/supervisor.d/php-fpm.conf:/opt/docker/etc/supervisor.d/php-fpm.conf
     depends_on:
       - blueway-mysql
@@ -95,16 +88,3 @@ services:
     links:
       - blueway-mysql
       - blueway-redis
-
-  # app
-  blueway-quasar:
-    container_name: ${DOCKER_SERVICE_APP}
-    user: node
-    image: tevun/quasar
-    working_dir: /var/www/app
-    command: bash /var/www/app/command.sh
-    volumes:
-      - ./quasar:/var/www/app
-      - ./.bin:/home/node/bin
-    ports:
-      - ${DOCKER_SERVICE_APP_PORT}:8000

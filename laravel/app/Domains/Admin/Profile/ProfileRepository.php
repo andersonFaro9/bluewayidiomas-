@@ -2,8 +2,11 @@
 
 namespace App\Domains\Admin\Profile;
 
+use App\Core\AbstractModel;
 use App\Core\AbstractRepository as Repository;
 use App\Domains\Admin\Profile;
+use Exception;
+use Ramsey\Uuid\Uuid;
 
 /**
  * Class ProfileRepository

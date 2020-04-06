@@ -4,6 +4,7 @@ namespace App\Domains\Admin;
 
 use App\Core\AbstractModel;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Ramsey\Uuid\Uuid;
 
 /**
  * Class Action
@@ -44,7 +45,6 @@ class Action extends AbstractModel
     protected $rules = [
         'name' => 'required',
         'namespace' => ['required'],
-        'path' => 'required',
     ];
 
     /**
@@ -69,5 +69,18 @@ class Action extends AbstractModel
     public function sorter(): array
     {
         return ['actionId' => 'ASC', 'assortment' => 'ASC', 'createdAt' => 'ASC'];
+    }
+
+    /**
+     * Convert the model instance to an array.
+     *
+     * @return mixed
+     */
+    public function export()
+    {
+        $data = $this->toArray();
+        $data['children'] = [];
+        unset($data['parent'], $data['updatedAt'], $data['createdAt'], $data['deletedAt']);
+        return $data;
     }
 }

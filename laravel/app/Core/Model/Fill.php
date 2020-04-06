@@ -27,8 +27,16 @@ trait Fill
             return $this;
         }
 
+        $data = [];
+        foreach ($this->getFillable() as $fillable) {
+            if (!isset($attributes[$fillable])) {
+                continue;
+            }
+            $data[$fillable] = $attributes[$fillable];
+        }
+
         /** @var AbstractModel $fill */
-        $fill = parent::fill($attributes);
+        $fill = parent::fill($data);
         $notFillable = array_diff(array_keys($attributes), $this->getFillable());
         foreach ($notFillable as $key) {
             if (!isset($attributes[$key])) {

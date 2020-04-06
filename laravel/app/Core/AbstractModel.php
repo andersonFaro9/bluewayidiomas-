@@ -8,6 +8,7 @@ use App\Core\Model\Hook;
 use App\Core\Model\Replaceable;
 use App\Core\Model\Validation;
 use App\Core\Model\Value;
+use App\Domains\Admin\Action;
 use Dyrynda\Database\Support\GeneratesUuid as HasBinaryUuid;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model as Eloquent;
@@ -24,6 +25,7 @@ use function App\Helper\is_binary;
  * Class AbstractModel
  *
  * @property string id
+ * @property Action parent
  * @package App\Core
  * @method AbstractModel create(array $attributes = [])
  * @method AbstractModel where(mixed $reference, mixed $operator = null, mixed $value = null)
