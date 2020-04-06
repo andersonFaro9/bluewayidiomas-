@@ -7,12 +7,12 @@
  */
 export default {
   '/': {
-    title: 'Entrar | Quasar Skeleton'
+    title: 'Entrar | Blue Way Idiomas'
   },
   '/dashboard': {
     crumb: 'Início'
   },
   '/dashboard/home': {
-    title: 'Bem vindo à Quasar Skeleton'
+    title: 'Bem vindo à Blue Way Idiomas'
   }
 }

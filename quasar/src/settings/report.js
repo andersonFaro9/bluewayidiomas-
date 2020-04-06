@@ -21,8 +21,8 @@ export const reportContext = (h) => {
  * @return {string}
  */
 export const reportLoading = (report) => {
-  // return `${baseURL}/report/loading`
-  return `${baseURL}/loading.html`
+  return `${baseURL}/report/loading`
+  // return `${baseURL}/loading.html`
 }
 
 /**
@@ -32,7 +32,8 @@ export const reportLoading = (report) => {
  * @return {string}
  */
 export const reportAction = (report, token, printing) => {
-  return `${baseURL}/process.html?report=${report}?c=${token}&p=${printing}`
+  return `${baseURL}/process/${report}?c=${token}&p=${printing}`
+  // return `${baseURL}/process.html?report=${report}?c=${token}&p=${printing}`
 }
 
 // noinspection JSUnusedLocalSymbols
