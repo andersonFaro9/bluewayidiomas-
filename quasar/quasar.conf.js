@@ -143,7 +143,7 @@ module.exports = function (ctx) {
 
         let environment = ''
         if (ctx.prod) {
-          environment = '.production'
+          environment = '.stage'
 
           cfg.plugins.push(new VersionFile({
             packageFile: Path.join(__dirname, 'package.json'),
@@ -152,9 +152,11 @@ module.exports = function (ctx) {
             outputFile: Path.join(__dirname, 'src', 'statics', 'version')
           }))
         }
+
         if (process.env.BUILD_ENV) {
           environment = '.' + process.env.BUILD_ENV
         }
+
         const path = `./.env${environment}`
         cfg.plugins.push(new DotEnv({ path }))
       }
@@ -181,8 +183,8 @@ module.exports = function (ctx) {
       workboxPluginMode: 'GenerateSW', // 'GenerateSW' or 'InjectManifest'
       workboxOptions: {}, // only for GenerateSW
       manifest: {
-        name: 'Quasar Framework Brazil - Skeleton',
-        short_name: 'Skeleton',
+        name: 'Blue Way Idiomas',
+        short_name: 'BlueWay',
         description: 'Rapid development with Vue and Quasar',
         display: 'standalone',
         orientation: 'portrait',
@@ -221,7 +223,7 @@ module.exports = function (ctx) {
     // Full list of options: https://quasar.dev/quasar-cli/developing-cordova-apps/configuring-cordova
     cordova: {
       // noIosLegacyBuildFlag: true, // uncomment only if you know what you are doing
-      id: 'br.com.connectronic.visual-on'
+      id: ''
     },
 
     // Full list of options: https://quasar.dev/quasar-cli/developing-capacitor-apps/configuring-capacitor
@@ -249,7 +251,7 @@ module.exports = function (ctx) {
       builder: {
         // https://www.electron.build/configuration/configuration
 
-        appId: 'visualon'
+        appId: ''
       },
 
       // More info: https://quasar.dev/quasar-cli/developing-electron-apps/node-integration

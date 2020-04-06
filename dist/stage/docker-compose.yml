@@ -56,6 +56,8 @@ services:
       - blueway-redis
     environment:
       - VIRTUAL_HOST=blueway.devi.tools
+      - LETSENCRYPT_HOST=blueway.devi.tools
+      - LETSENCRYPT_EMAIL=wilcorrea@gmail.com
       - WEB_DOCUMENT_ROOT=/var/www/app/public
       - WEB_DOCUMENT_INDEX=index.php
       - PHP_MAX_EXECUTION_TIME=86400
