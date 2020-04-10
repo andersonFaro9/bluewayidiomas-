@@ -15,8 +15,11 @@ trait Helper
      * @param $value
      * @return string
      */
-    public static function encodeUuid($value)
+    public static function encodeUuid($value): ?string
     {
+        if (!$value) {
+            return null;
+        }
         return encodeUuid($value);
     }
 
@@ -24,8 +27,11 @@ trait Helper
      * @param $value
      * @return string
      */
-    public static function decodeUuid($value)
+    public static function decodeUuid($value): ?string
     {
+        if (!$value) {
+            return null;
+        }
         return decodeUuid($value);
     }
 }

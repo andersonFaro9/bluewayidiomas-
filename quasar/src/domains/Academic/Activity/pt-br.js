@@ -31,7 +31,20 @@ export default {
     title: 'Impressão de Atividade'
   },
   fields: {
+    grade: 'Curso',
     name: 'Nome',
-    grade: 'Curso'
+    type: {
+      label: 'Tipo',
+      options: [
+        { value: 'generic', label: 'PDF / DOC' },
+        { value: 'video', label: 'Video' },
+        { value: 'audio', label: 'Audio' },
+        { value: 'link', label: 'Link' },
+        { value: 'open', label: 'Questionário Aberto' },
+        { value: 'closed', label: 'Questionário Fechado' }
+      ]
+    },
+    description: 'Enunciado',
+    document: 'Arquivo'
   }
 }

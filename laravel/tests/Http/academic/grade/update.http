@@ -1,6 +1,9 @@
-GET {{host}}/api/v1/auth/me
+PATCH {{host}}/api/v1/academic/grade/{{ticket}}
 Authorization: Bearer {{authorization}}
 Content-Type: application/json
 Cookie: XDEBUG_SESSION=docker
 
+{
+  "name": "Name Updated"
+}
 ###

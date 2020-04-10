@@ -46,16 +46,12 @@ trait Search
     public function filter(array $filters, $sorter = [], $offset = 0, $limit = 25, $trash = false)
     {
         /** @var AbstractModel $query */
-        $query = $this->where($filters);
+        $query = $this->where($filters, $trash);
 
         $manyToOne = $this->model->manyToOne();
         foreach (array_keys($manyToOne) as $related) {
             /** @var Builder $query */
             $query = $query->with($related);
-        }
-
-        if ($trash) {
-            $query = $query::onlyTrashed();
         }
 
         foreach ($sorter as $column => $direction) {

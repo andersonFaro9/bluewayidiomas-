@@ -265,4 +265,16 @@ abstract class AbstractModel extends Eloquent implements ModelInterface, Auditin
         }
         return $this->safeAttributes($data, ['user_id']);
     }
+
+    /**
+     * @param $property
+     *
+     * @return bool
+     */
+    protected function isEncoded($property): bool
+    {
+        $haystack = array_values($this->manyToOne());
+        $haystack[] = $this->primaryKey;
+        return in_array($property, $haystack, true);
+    }
 }

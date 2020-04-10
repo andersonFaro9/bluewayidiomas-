@@ -8,6 +8,8 @@ use Ramsey\Uuid\Uuid;
 
 /**
  * Class Action
+ *
+ * @property mixed parent
  * @package Domains\Admin
  */
 class Action extends AbstractModel

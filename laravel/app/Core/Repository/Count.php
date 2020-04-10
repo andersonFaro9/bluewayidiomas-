@@ -3,11 +3,13 @@
 namespace App\Core\Repository;
 
 use App\Core\AbstractModel;
+use Illuminate\Database\Eloquent\Builder;
 
 /**
  * Trait Count
  *
  * @package App\Core\Repository
+ * @property AbstractModel model
  */
 trait Count
 {
@@ -19,12 +21,8 @@ trait Count
      */
     public function count(array $filters, $trash = false): int
     {
-        /** @var AbstractModel $query */
-        $query = $this->where($filters);
-
-        if ($trash) {
-            $query = $query::onlyTrashed();
-        }
+        /** @var Builder $query */
+        $query = $this->where($filters, $trash);
 
         return $query->count();
     }

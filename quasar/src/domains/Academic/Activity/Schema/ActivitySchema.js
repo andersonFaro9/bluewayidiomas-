@@ -41,15 +41,8 @@ export default class ActivitySchema extends Schema {
     this.addField('type')
       .fieldTableShow()
       .fieldTableWhere()
-      .fieldIsRadio([
-        { value: 'a', label: 'PDF / DOC' },
-        { value: 'b', label: 'Video' },
-        { value: 'c', label: 'Audio' },
-        { value: 'd', label: 'Link' },
-        { value: 'e', label: 'Questionário Aberto' },
-        { value: 'f', label: 'Questionário Fechado' }
-      ])
-      .fieldFormDefaultValue('a')
+      .fieldIsRadio()
+      .fieldFormDefaultValue('generic')
       .validationRequired()
 
     this.addField('description')

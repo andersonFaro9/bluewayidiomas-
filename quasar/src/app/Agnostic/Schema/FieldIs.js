@@ -176,6 +176,9 @@ export default {
    * @returns {Schema}
    */
   fieldIsRadio (options = undefined, attrs = {}) {
+    if (!options) {
+      options = this.$lang(`domains.${this.constructor.domain}.fields.${this.__currentField}.options`, undefined)
+    }
     if (!Array.isArray(options)) {
       options = yesNo
     }

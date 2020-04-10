@@ -23,14 +23,24 @@ trait Delete
      */
     public function delete(Request $request, string $id): JsonResponse
     {
-        $details = ['id' => $id];
-        $deleted = $this->repository()->delete($id);
-        if ($deleted) {
-            return $this->answerSuccess(['ticket' => $deleted]);
+        $ids = [$id];
+        preg_match_all("/^\[(?<uuid>.*)]$/", $id, $matches);
+        if (isset($matches['uuid'][0])) {
+            $ids = explode(',', $matches['uuid'][0]);
         }
-        if (is_null($deleted)) {
-            throw new ErrorResourceIsGone($details);
+
+        $executed = [];
+        foreach ($ids as $detail) {
+            $deleted = $this->repository()->delete($detail);
+            if ($deleted === null) {
+                continue;
+            }
+            $executed[] = $detail;
         }
-        return $this->answerFail($details);
+
+        if (count($ids) !== count($executed)) {
+            throw new ErrorResourceIsGone(['id' => array_diff($ids, $executed)]);
+        }
+        return $this->answerSuccess(['ticket' => $ids]);
     }
 }

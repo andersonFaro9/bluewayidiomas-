@@ -26,7 +26,7 @@ trait Read
         $filters = $this->filterById($id);
 
         /** @var AbstractModel $query */
-        $query = $this->where($filters);
+        $query = $this->where($filters, $trash);
 
         $manyToOne = $this->model->manyToOne();
         foreach (array_keys($manyToOne) as $related) {
@@ -38,10 +38,6 @@ trait Read
         foreach (array_keys($manyToMany) as $related) {
             /** @var Builder $query */
             $query = $query->with($related);
-        }
-
-        if ($trash) {
-            $query = $query::onlyTrashed();
         }
 
         /** @var Collection $collection */

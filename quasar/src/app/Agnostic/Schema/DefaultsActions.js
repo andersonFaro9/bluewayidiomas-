@@ -401,6 +401,26 @@ export default {
         return schema.actionTrash.call(this, { $event, schema, ...context })
       })
 
+    this.addAction('restore')
+      .actionScopes([SCOPES.SCOPE_VIEW, SCOPES.SCOPE_TRASH])
+      .actionPositions([
+        POSITIONS.POSITION_TABLE_TOP,
+        POSITIONS.POSITION_TABLE_FLOAT,
+        POSITIONS.POSITION_TABLE_CELL,
+        POSITIONS.POSITION_FORM_FOOTER
+      ])
+      .actionConfigure(function (action, { context: { record }, position }) {
+        if ([POSITIONS.POSITION_TABLE_CELL, POSITIONS.POSITION_FORM_FOOTER].includes(position)) {
+          action.hidden = !record['deletedAt']
+        }
+        return action
+      })
+      .actionColor('primary')
+      .actionIcon('restore_from_trash')
+      .actionOn('click', function ({ context, $event }) {
+        return schema.actionRestore.call(this, { $event, schema, ...context })
+      })
+
     this.addAction('sort-clear')
       .actionScopes([SCOPES.SCOPE_INDEX, SCOPES.SCOPE_TRASH])
       .actionPositions([POSITIONS.POSITION_TABLE_TOP])

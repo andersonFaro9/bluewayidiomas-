@@ -21,10 +21,6 @@ Router::prefix('v1')->group(static function () {
 });
 
 if (env('APP_DEV')) {
-    Router::get('/info', static function () {
-        /** @noinspection ForgottenDebugOutputInspection */
-        echo phpinfo();
-    });
     Router::get('/unauthorized', static function () {
         return response('unauthorized', 401);
     });
