@@ -392,6 +392,15 @@ export default {
         return schema.actionDestroy.call(this, { $event, schema, ...context })
       })
 
+    this.addAction('trash')
+      .actionFloatRight()
+      .actionScopes([SCOPES.SCOPE_INDEX])
+      .actionPositions(readonly ? [] : [POSITIONS.POSITION_TABLE_TOP, POSITIONS.POSITION_TABLE_FLOAT])
+      .actionIcon('restore')
+      .actionOn('click', function ({ context, $event }) {
+        return schema.actionTrash.call(this, { $event, schema, ...context })
+      })
+
     this.addAction('sort-clear')
       .actionScopes([SCOPES.SCOPE_INDEX, SCOPES.SCOPE_TRASH])
       .actionPositions([POSITIONS.POSITION_TABLE_TOP])

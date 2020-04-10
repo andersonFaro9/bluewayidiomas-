@@ -1,8 +1,0 @@
-POST {{host}}/integration/transaction/cb08fa2a-fc1a-11e9-8222-0242ac150004/approve
-Authorization: blueway Q0ktdkRGaFNjZFZVVWwyRzJkbWUwcmF4bUpmZGNmSWxjWDY6Q1Mtc3lFNzRaNGlSMnBoUFNqRTEwR0hiQWRVeTd5SXBENmE=
-Content-Type: application/json
-
-{
-  "key": "value"
-}
-###
