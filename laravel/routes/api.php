@@ -14,23 +14,23 @@
 use App\Http\Response\Answer;
 use App\Http\Routing\Router;
 
-Router::prefix('v1')->group(function () {
+Router::prefix('v1')->group(static function () {
     Router::group([], __DIR__ . '/api/auth.php');
     Router::group([], __DIR__ . '/api/admin.php');
-    Router::group([], __DIR__ . '/api/gateway.php');
+    Router::group([], __DIR__ . '/api/academic.php');
 });
 
 if (env('APP_DEV')) {
-    Router::get('/info', function () {
+    Router::get('/info', static function () {
         /** @noinspection ForgottenDebugOutputInspection */
         echo phpinfo();
     });
-    Router::get('/unauthorized', function () {
+    Router::get('/unauthorized', static function () {
         return response('unauthorized', 401);
     });
 }
 
-$action = function () {
+$action = static function () {
     return Answer::error('Route not found', 404);
 };
 Router::match(['GET', 'POST', 'DELETE'], '{any}', $action)->where('any', '.*');
