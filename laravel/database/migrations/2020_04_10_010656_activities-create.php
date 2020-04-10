@@ -4,26 +4,31 @@ use App\Database\Migration\TableCreate;
 use App\Database\Table;
 
 /**
- * Class ProfileCreate
+ * Class ActivitiesCreate
  */
-class ProfileCreate extends TableCreate
+class ActivitiesCreate extends TableCreate
 {
     /**
      * @return string
      */
     protected function table(): string
     {
-        return 'profiles';
+        return 'activities';
     }
 
     /**
      * @param Table $table
+     *
      * @return void
      */
     protected function withStatements(Table $table): void
     {
         $table->string('name');
-        $table->string('reference');
+        $table->uuid('gradeId')->nullable();
+        $table->foreign('gradeId', 'activities_grade_id_foreign')
+            ->references('uuid')
+            ->on('grades')
+            ->onDelete('restrict');
     }
 }
 

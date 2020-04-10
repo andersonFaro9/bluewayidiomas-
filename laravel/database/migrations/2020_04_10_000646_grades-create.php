@@ -4,26 +4,27 @@ use App\Database\Migration\TableCreate;
 use App\Database\Table;
 
 /**
- * Class ProfileCreate
+ * Class GradesCreate
  */
-class ProfileCreate extends TableCreate
+class GradesCreate extends TableCreate
 {
     /**
      * @return string
      */
     protected function table(): string
     {
-        return 'profiles';
+        return 'grades';
     }
 
     /**
      * @param Table $table
+     *
      * @return void
      */
     protected function withStatements(Table $table): void
     {
         $table->string('name');
-        $table->string('reference');
+        $table->string('shift');
     }
 }
 
