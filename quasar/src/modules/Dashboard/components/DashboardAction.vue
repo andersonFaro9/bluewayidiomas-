@@ -1,5 +1,6 @@
 <template>
   <q-expansion-item
+    class="menu_texto"
     v-if="action.children && action.children.length"
     :key="action.uuid"
     :icon="action.icon"
@@ -8,6 +9,7 @@
   >
     <template v-for="(kid, key) in action.children">
       <DashboardAction
+
         :key="key"
         :action="kid"
         @active="expanded = true"
@@ -24,12 +26,14 @@
     :class="{ 'resource-not-implemented': !action.path, 'resource-separated': action.separated }"
   >
     <q-item-section
+
       v-if="action.icon"
       avatar
     >
       <q-icon :name="action.icon" />
     </q-item-section>
-    <q-item-section>
+    <!-- // inicio -->
+    <q-item-section class="menu_texto">
       {{ action.name }}
     </q-item-section>
     <q-item-section
@@ -115,6 +119,9 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="stylus">
+  .menu_texto
+
+    font-weight: 500
 
 </style>

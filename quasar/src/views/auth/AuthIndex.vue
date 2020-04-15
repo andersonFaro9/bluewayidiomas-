@@ -2,15 +2,17 @@
   <div
     class="AuthIndex flex row items-center justify-center"
     :class="{ started }"
+
   >
+
     <q-card class="AuthIndex__card">
       <q-card-section class="text-center bg-primary">
         <div>
-          <img
+            <img
             alt="logo"
             class="AuthIndex__logo"
-            :src="$static('/logo-horizontal.png')"
-          >
+            :src="$static('/logo-horizontal.png')" >
+
         </div>
       </q-card-section>
 
@@ -19,23 +21,27 @@
       <q-card-section>
         <form @submit.prevent="attempt">
           <div class="row">
-            <div class="col-12 q-pa-sm">
+            <div  class="col-12 q-pa-sm" >
+
               <q-input
                 :label="$lang('auth.login.login')"
                 type="email"
                 outlined
-                v-model="record.login"
-              >
+                v-model="record.login">
                 <template v-slot:prepend>
                   <q-icon name="mail" />
                 </template>
+
               </q-input>
+
             </div>
+
             <div class="col-12 q-pa-sm q-pb-md">
               <q-input
                 :label="$lang('auth.login.password')"
-                :type="isPassword ? 'password' : 'text'"
+                :type=" isPassword ? 'password' : 'text'"
                 outlined
+
                 v-model="record.password"
               >
                 <template v-slot:prepend>
@@ -52,7 +58,7 @@
             </div>
           </div>
           <hr>
-          <div class="q-pa-sm">
+          <div class="q-pa-sm" >
             <q-btn
               class="AuthIndex__button full-width"
               color="primary"
@@ -60,6 +66,8 @@
               type="submit"
               :loading="loading"
             />
+
+             <a class= "link_home" href="#">Voltar para home  </a>
           </div>
         </form>
       </q-card-section>
@@ -181,16 +189,28 @@ export default {
   overflow-x hidden
   opacity 0.3
   transition opacity 3s
-
   &.started
     opacity 1
+    background-color #35459E
 
   .AuthIndex__card
-    max-width 420px
+    max-width 100%
     box-shadow 0 4px 6px 1px rgba(0, 0, 0, 0.16), 0 2px 6px 1px rgba(0, 0, 0, 0.16), 0 5px 6px 1px rgba(0, 0, 0, 0.16)
 
   .AuthIndex__logo
-    height 48px
+    height 140px
+    width 175px
+
+  .link_home
+
+    font-size: 12px;
+    display:flex;
+    flex-direction: row-reverse;
+    padding-top: 8px;
+    text-decoration: none;
+    color: #35459E;
+    text-transform: uppercase;
+    font-family: Arial, Helvetica, sans-serif;
 
   .AuthIndex__button
     min-height 42px

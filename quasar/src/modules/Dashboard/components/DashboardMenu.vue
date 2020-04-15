@@ -2,10 +2,11 @@
   <q-btn-dropdown
     stretch
     flat
-    content-class="DashboardLayout__dropdown_menu"
-  >
+    content-class="DashboardLayout__dropdown_menu">
     <template v-slot:label>
-      <small class="DashboardLayout__user q-pl-sm q-pr-md">{{ name }}</small>
+      <small v-bind:style="{ fontSize: '15px'}"
+          class="DashboardLayout__user q-pl-sm q-pr-md">{{ name }}
+      </small>
       <q-avatar
         color="white"
         text-color="primary"
@@ -144,4 +145,7 @@ export default {
   &:hover
     & > .q-item__section.open-in-popup
       transform scale(1)
+
+.DashboardLayout__user
+      fontSize 15px
 </style>

@@ -4,12 +4,12 @@
     padding
   >
     <div class="q-pa-md">
-      <q-toolbar class="bg-primary text-white shadow-2 rounded-borders mono-font">
-        <div class="col-6 text-white q-pa-sm">
-          <small>{{ greetings }} <strong>{{ name }}</strong></small>
+      <q-toolbar class="bg-primary text-white shadow-2 rounded-borders ">
+        <div  class="col-6 text-white q-pa-sm">
+          <small class = "text-weight-medium mono-font text-subtitle1" > {{ greetings }},  {{saudar}}, <strong>  {{ name }}</strong></small>
         </div>
         <q-space />
-        <small class="float-right">Versão da aplicação: {{ version }}</small>
+        <small class="float-right text-weight-medium mono-font  text-subtitle1" >Versão da aplicação: {{ version }}</small>
       </q-toolbar>
     </div>
   </q-page>
@@ -54,6 +54,13 @@ export default {
     name () {
       return this.$util.get(this.$store.getters['auth/getUser'], 'name')
     },
+
+    /**
+     * @returns {string}
+     */
+    saudar () {
+      return this.$lang('Seja bem-vindo')
+    },
     /**
      * @returns {string}
      */
@@ -67,9 +74,9 @@ export default {
     /**
      * @returns {string}
      */
+
     greetings () {
       const hour = (new Date()).getHours()
-
       if (hour >= 0 && hour <= 12) {
         return this.$lang('app.greetings.morning')
       }
@@ -158,4 +165,5 @@ export default {
     top 10px
     left 10px
     font-size 10px
+
 </style>

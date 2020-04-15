@@ -4,5 +4,7 @@ export default {
     password: 'Senha',
     signIn: 'Entrar',
     error: 'Usuário ou senha incorretos'
+
   }
+
 }
