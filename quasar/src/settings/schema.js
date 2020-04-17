@@ -1,4 +1,4 @@
-import { unSerialize, serialize } from 'src/app/Util/general'
+import { unSerialize, serialize, get } from 'src/app/Util/general'
 
 /** @type {string} */
 export const primaryKey = 'id'
@@ -13,7 +13,7 @@ export const filterKey = 'filter'
 export const searchKey = 'where'
 
 /** @type {string} */
-export const SEPARATION_OPERATOR = '~'
+export const SEPARATION_OPERATOR = '~.~'
 
 /**
  * @param {Object} value
@@ -29,6 +29,22 @@ export const serializeSearch = (value) => {
  */
 export const unSerializeSearch = (value) => {
   return unSerialize(value, searchKey)
+}
+
+/**
+ * @param {Object} response
+ * @return {string}
+ */
+export const actionSuccessMessage = (response) => {
+  return String(get(response, 'message', ''))
+}
+
+/**
+ * @param {Object} error
+ * @return {string}
+ */
+export const actionFailMessage = (error) => {
+  return String(get(error, 'response.data.message', ''))
 }
 
 /**

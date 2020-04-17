@@ -24,7 +24,7 @@ export default (router) => {
   // init the store user
   router.beforeEach(bootstrap)
   // check user is logged in app
-  router.beforeThisRoute(otherwise, checkIsLogged)
+  router.beforeThis(otherwise, checkIsLogged)
   // check the permission to route
   // router.beforeEach(checkPermission)
 }
