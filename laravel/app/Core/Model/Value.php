@@ -3,10 +3,9 @@
 
 namespace App\Core\Model;
 
-use function App\Helper\is_binary;
-
 /**
  * Trait Value
+ *
  * @package App\Core\Model
  */
 trait Value
@@ -23,6 +22,7 @@ trait Value
 
     /**
      * @param array [$names]
+     *
      * @return array
      */
     public function getValues(?array $names = []): array
@@ -30,7 +30,7 @@ trait Value
         if (!count($names)) {
             $attributes = $this->getAttributes();
             foreach ($attributes as $key => $attribute) {
-                if (!is_binary($attribute)) {
+                if (!$this->isEncoded($key)) {
                     continue;
                 }
                 unset($attributes[$key]);
@@ -51,6 +51,7 @@ trait Value
 
     /**
      * @param string $name
+     *
      * @return mixed
      */
     public function getValue(string $name)
@@ -65,6 +66,7 @@ trait Value
     /**
      * @param string $name
      * @param mixed $value
+     *
      * @return mixed
      */
     public function setValue(string $name, $value)
@@ -78,6 +80,7 @@ trait Value
 
     /**
      * Specify data which should be serialized to JSON
+     *
      * @link https://php.net/manual/en/jsonserializable.jsonserialize.php
      * @return mixed data which can be serialized by <b>json_encode</b>,
      * which is a value of any type other than a resource.
@@ -96,18 +99,22 @@ trait Value
             if (!is_array($array[$related])) {
                 continue;
             }
-            $array[$related] = array_map(static function ($row) {
-                if (isset($row['pivot'])) {
-                    unset($row['pivot']);
-                }
-                return $row;
-            }, $array[$related]);
+            $array[$related] = array_map(
+                static function ($row) {
+                    if (isset($row['pivot'])) {
+                        unset($row['pivot']);
+                    }
+                    return $row;
+                },
+                $array[$related]
+            );
         }
         return $array;
     }
 
     /**
      * @param array $avoid
+     *
      * @return array
      */
     public function except(array $avoid): array
@@ -141,15 +148,16 @@ trait Value
     /**
      * @param array $attributes
      * @param array $except
+     *
      * @return array
      */
     private function safeAttributes(array $attributes, array $except = []): array
     {
-        foreach ($attributes as $key => &$value) {
-            if (in_array($key, $except, true)) {
+        foreach ($attributes as $index => &$value) {
+            if (in_array($index, $except, true)) {
                 continue;
             }
-            if (!is_binary($value)) {
+            if (!$this->isEncoded($index)) {
                 continue;
             }
             $value = static::decodeUuid($value);

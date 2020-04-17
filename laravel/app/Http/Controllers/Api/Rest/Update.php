@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 
 /**
  * Trait Update
+ *
  * @package App\Http\Controllers\Api\Rest
  * @method RepositoryInterface repository()
  */
@@ -17,6 +18,7 @@ trait Update
     /**
      * @param Request $request
      * @param string $id
+     *
      * @return JsonResponse
      * @throws ErrorResourceIsGone
      */
@@ -32,7 +34,7 @@ trait Update
         if ($updated) {
             return $this->answerSuccess(['ticket' => $updated]);
         }
-        if (is_null($updated)) {
+        if ($updated === null) {
             throw new ErrorResourceIsGone($details);
         }
         return $this->answerFail($details);

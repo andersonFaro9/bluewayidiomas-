@@ -1,38 +1,46 @@
 <?php
 
-
 namespace App\Http\Controllers\Api\Rest;
 
-
 use App\Core\RepositoryInterface;
-use App\Exceptions\ErrorInvalidArgument;
 use App\Exceptions\ErrorResourceIsGone;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 /**
  * Trait Restore
+ *
  * @package App\Http\Controllers\Api\Rest
  * @method RepositoryInterface repository()
  */
 trait Restore
 {
     /**
-     * @param Request $request
      * @param string $id
+     *
      * @return JsonResponse
      * @throws ErrorResourceIsGone
      */
     public function restore(Request $request, string $id): JsonResponse
     {
-        $details = ['id' => $id];
-        $deleted = $this->repository()->restore($id);
-        if ($deleted) {
-            return $this->answerSuccess(['ticket' => $deleted]);
+        $ids = [$id];
+        preg_match_all("/^\[(?<uuid>.*)]$/", $id, $matches);
+        if (isset($matches['uuid'][0])) {
+            $ids = explode(',', $matches['uuid'][0]);
         }
-        if (is_null($deleted)) {
-            throw new ErrorResourceIsGone($details);
+
+        $executed = [];
+        foreach ($ids as $detail) {
+            $restored = $this->repository()->restore($detail);
+            if ($restored === null) {
+                continue;
+            }
+            $executed[] = $detail;
         }
-        return $this->answerFail($details);
+
+        if (count($ids) !== count($executed)) {
+            throw new ErrorResourceIsGone(['id' => array_diff($ids, $executed)]);
+        }
+        return $this->answerSuccess(['ticket' => $ids]);
     }
 }

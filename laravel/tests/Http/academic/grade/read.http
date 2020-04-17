@@ -1,0 +1,6 @@
+GET {{host}}/api/v1/academic/grade/{{ticket}}
+Authorization: Bearer {{authorization}}
+Content-Type: application/json
+Cookie: XDEBUG_SESSION=docker
+
+###

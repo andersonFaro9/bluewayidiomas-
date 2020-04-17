@@ -20,7 +20,7 @@ class UsersCreateTable extends TableCreate
      * @param Table $table
      * @return void
      */
-    protected function withStatements(Table $table)
+    protected function withStatements(Table $table): void
     {
         $table->string('name');
         $table->string('email')->unique();

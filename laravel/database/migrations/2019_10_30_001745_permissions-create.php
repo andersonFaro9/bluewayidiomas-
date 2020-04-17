@@ -20,7 +20,7 @@ class PermissionsCreate extends TableCreate
      * @param Table $table
      * @return void
      */
-    protected function withStatements(Table $table)
+    protected function withStatements(Table $table): void
     {
         $table->uuid('actionId')->nullable();
         $table->string('name');

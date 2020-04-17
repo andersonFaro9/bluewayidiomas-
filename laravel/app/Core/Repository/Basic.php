@@ -28,14 +28,19 @@ trait Basic
 
     /**
      * @param array $filters
+     * @param bool $trash
      *
      * @return AbstractModel|Builder
      */
-    protected function where(array $filters)
+    protected function where(array $filters, bool $trash = false)
     {
         $model = clone $this->model;
-
         $encoded = $model->getEncoded();
+
+        if ($trash) {
+            $model = $model::onlyTrashed();
+        }
+
         $where = function (Builder $query) use ($filters, $encoded) {
             $model = $query;
             foreach ($filters as $column => $value) {

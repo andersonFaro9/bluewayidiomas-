@@ -27,7 +27,7 @@ abstract class TableCreate extends Migration
      * @param Table $table
      * @return void
      */
-    abstract protected function withStatements(Table $table);
+    abstract protected function withStatements(Table $table): void;
 
     /**
      * Run the migrations.

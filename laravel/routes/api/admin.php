@@ -9,7 +9,7 @@ use App\Http\Controllers\Api\Admin\UserController;
 use App\Http\Controllers\Api\Auth\Me;
 use App\Http\Routing\Router;
 
-Router::restricted()->group(function () {
+Router::restricted()->group(static function () {
     Router::post('/admin/user/management/password', Password::class);
     Router::post('/admin/user/management/destroy', Destroy::class);
     Router::get('/admin/user/me', Me::class);

@@ -9,9 +9,11 @@ use Ramsey\Uuid\Uuid;
  */
 function uuid()
 {
-    return sprintf('%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
+    return sprintf(
+        '%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
         // 32 bits for "time_low"
-        mt_rand(0, 0xffff), mt_rand(0, 0xffff),
+        mt_rand(0, 0xffff),
+        mt_rand(0, 0xffff),
 
         // 16 bits for "time_mid"
         mt_rand(0, 0xffff),
@@ -26,12 +28,15 @@ function uuid()
         mt_rand(0, 0x3fff) | 0x8000,
 
         // 48 bits for "node"
-        mt_rand(0, 0xffff), mt_rand(0, 0xffff), mt_rand(0, 0xffff)
+        mt_rand(0, 0xffff),
+        mt_rand(0, 0xffff),
+        mt_rand(0, 0xffff)
     );
 }
 
 /**
  * @param $value
+ *
  * @return string
  */
 function encodeUuid($value): string
@@ -41,6 +46,7 @@ function encodeUuid($value): string
 
 /**
  * @param $value
+ *
  * @return string
  */
 function decodeUuid($value): string
@@ -50,6 +56,7 @@ function decodeUuid($value): string
 
 /**
  * @param string $content
+ *
  * @return bool
  */
 function is_binary($content)
@@ -62,6 +69,7 @@ function is_binary($content)
 
 /**
  * @param string $withAccents
+ *
  * @return string
  */
 function stripAccents(string $withAccents): string
@@ -75,6 +83,7 @@ function stripAccents(string $withAccents): string
 
 /**
  * @param $path
+ *
  * @return string
  */
 function url($path)
@@ -88,6 +97,7 @@ function url($path)
  * @param $value
  * @param array $parameters
  * @param null $code
+ *
  * @return array
  */
 function error(string $property, string $message, $value, $parameters = [], $code = null)

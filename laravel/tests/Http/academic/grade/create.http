@@ -1,0 +1,17 @@
+POST {{host}}/api/v1/academic/grade
+Authorization: Bearer {{authorization}}
+Content-Type: application/json
+Cookie: XDEBUG_SESSION=docker
+
+{
+    "name": "INGLÊS BÁSICO",
+    "shift": "morning"
+}
+
+> {%
+client.global.set('ticket', response.body.data.ticket)
+var counter = client.global.get('grade.counter') || 1
+counter = parseInt(counter)
+client.global.set('grade.counter', String(++counter))
+%}
+###

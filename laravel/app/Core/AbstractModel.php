@@ -8,7 +8,6 @@ use App\Core\Model\Hook;
 use App\Core\Model\Replaceable;
 use App\Core\Model\Validation;
 use App\Core\Model\Value;
-use App\Domains\Admin\Action;
 use Dyrynda\Database\Support\GeneratesUuid as HasBinaryUuid;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model as Eloquent;
@@ -25,7 +24,6 @@ use function App\Helper\is_binary;
  * Class AbstractModel
  *
  * @property string id
- * @property Action parent
  * @package App\Core
  * @method AbstractModel create(array $attributes = [])
  * @method AbstractModel where(mixed $reference, mixed $operator = null, mixed $value = null)
@@ -266,5 +264,17 @@ abstract class AbstractModel extends Eloquent implements ModelInterface, Auditin
             $data['user_id'] = static::encodeUuid($data['user_id']);
         }
         return $this->safeAttributes($data, ['user_id']);
+    }
+
+    /**
+     * @param $property
+     *
+     * @return bool
+     */
+    protected function isEncoded($property): bool
+    {
+        $haystack = array_values($this->manyToOne());
+        $haystack[] = $this->primaryKey;
+        return in_array($property, $haystack, true);
     }
 }

@@ -24,6 +24,6 @@ Router::get('/auth/activate/{code}', Activate::class);
 Router::get('/auth/reset/{code}', Reset::class);
 Router::get('/auth/state/{token}', State::class);
 
-Router::restricted()->group(function () {
+Router::restricted()->group(static function () {
     Router::get('/auth/me', Me::class);
 });

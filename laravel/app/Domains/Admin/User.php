@@ -23,7 +23,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property string remember_token
  * @property bool active
  * @property string activation_link
- * @property Shop shop
  * @package App\Domains\Admin
  */
 class User extends AbstractModel

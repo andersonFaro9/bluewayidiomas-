@@ -67,7 +67,7 @@ class DatabaseSeeder extends Seeder
         $registration = ActionRepository::instance()->create(
             [
                 'actionId' => Uuid::fromString($academic)->getBytes(),
-                'name' => 'Cursos',
+                'name' => 'Matrículas',
                 'namespace' => 'academic.registration',
                 'path' => '/dashboard/academic/registration',
                 'separated' => true,

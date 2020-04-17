@@ -17,13 +17,12 @@ Router::get('/', function () {
     return file_get_contents(__DIR__ . '/../public/index.html');
 });
 
-Router::prefix('integration')->group(function () {
-    Router::group([], __DIR__ . '/api/integration.php');
-});
-
-Router::prefix('checkout')->group(function () {
-    Router::group([], __DIR__ . '/api/checkout.php');
-});
-
 Router::group(['prefix' => '/statics'], __DIR__ . '/web/statics.php');
 Router::group(['prefix' => '/report'], __DIR__ . '/web/report.php');
+
+if (env('APP_DEV')) {
+    Router::get('/info', static function () {
+        /** @noinspection ForgottenDebugOutputInspection */
+        echo phpinfo();
+    });
+}
