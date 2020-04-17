@@ -16,6 +16,8 @@ before_script:
   - ssh-add ~/.ssh/id_rsa
   - git config --global user.email "ci@disk.ninja"
   - git config --global user.name "CI"
+  - git submodule sync --recursive
+  - git submodule update --init --recursive
   - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
 
 develop:
