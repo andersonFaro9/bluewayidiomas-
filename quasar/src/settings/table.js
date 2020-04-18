@@ -11,7 +11,7 @@ export const tableMinRowsPerPage = 10
 /**
  * @type {string}
  */
-export const tableSelection = 'single'
+export const tableSelection = 'multiple'
 
 /**
  * @type {boolean}

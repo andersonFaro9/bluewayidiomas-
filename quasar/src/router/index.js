@@ -4,8 +4,8 @@ import AppRouter from 'src/app/Routing/AppRouter'
 import updateTitle from 'src/router/middleware/updateTitle'
 import updateDevice from 'src/router/middleware/updateDevice'
 
-import authRouteFile from 'src/modules/Auth/router/routeFile'
-import dashboardRouteFile from 'src/modules/Dashboard/router/routeFile'
+import authRouteFile from 'src/routes/auth'
+import dashboardRouteFile from 'src/routes/dashboard'
 
 Vue.use(AppRouter)
 

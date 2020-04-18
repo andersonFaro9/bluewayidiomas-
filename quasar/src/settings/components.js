@@ -166,7 +166,15 @@ export default {
     parseOutput: undefined
   },
   file: {
-    is: 'AppFile',
+    is: 'AppAwsFile',
+    parseOutput: undefined
+  },
+  fileSync: {
+    is: 'AppFileSync',
+    attrs: {
+      ...attrs,
+      counter: true
+    },
     parseOutput: undefined
   }
 }

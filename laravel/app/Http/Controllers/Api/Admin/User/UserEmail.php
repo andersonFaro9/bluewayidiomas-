@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Api\Admin\User;
 
-use App\Exceptions\ErrorInvalidArgument;
 use App\Exceptions\ErrorResourceIsGone;
 use App\Http\Controllers\Api\Admin\UserController;
 use Illuminate\Http\JsonResponse;
@@ -19,7 +18,6 @@ class UserEmail extends UserController
      * @param string $email
      * @return JsonResponse
      * @throws ErrorResourceIsGone
-     * @throws ErrorInvalidArgument
      */
     public function __invoke(Request $request, string $email): JsonResponse
     {

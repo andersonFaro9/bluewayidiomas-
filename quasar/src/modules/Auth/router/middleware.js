@@ -2,7 +2,7 @@ import { me } from 'src/domains/Auth/Service'
 import allowed from 'src/modules/Auth/helper/allowed'
 import bypass from 'src/modules/Auth/helper/bypass'
 import { otherwise } from 'src/router'
-import { dashboard } from 'src/modules/Dashboard/router/routeFile'
+import { dashboard } from 'src/routes/dashboard'
 import { $store } from 'src/store'
 
 /**

@@ -5,7 +5,7 @@ import { SCOPES } from 'src/app/Agnostic/enum'
 export default {
   routes: {
     group: {
-      crumb: 'Cursos'
+      crumb: 'Acadêmico / Cursos'
     },
     [SCOPES.SCOPE_INDEX]: {
       title: 'Cursos'

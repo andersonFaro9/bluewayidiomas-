@@ -5,7 +5,7 @@ import { SCOPES } from 'src/app/Agnostic/enum'
 export default {
   routes: {
     group: {
-      crumb: 'Atividades'
+      crumb: 'Acadêmico / Atividades'
     },
     [SCOPES.SCOPE_INDEX]: {
       title: 'Atividades'
@@ -36,12 +36,22 @@ export default {
     type: {
       label: 'Tipo',
       options: [
-        { value: 'generic', label: 'PDF / DOC' },
-        { value: 'video', label: 'Video' },
-        { value: 'audio', label: 'Audio' },
-        { value: 'link', label: 'Link' },
+        { value: 'document', label: 'Arquivo' },
+        { value: 'link', label: 'Link' }/*,
+        { value: 'link', label: 'Questionário' }/*,
         { value: 'open', label: 'Questionário Aberto' },
-        { value: 'closed', label: 'Questionário Fechado' }
+        { value: 'closed', label: 'Questionário Fechado' } */
+      ]
+    },
+    documentType: {
+      label: 'Tipo',
+      tooltip: '(Word, Excel, PowerPoint)',
+      options: [
+        { value: 'pdf', label: 'PDF' },
+        { value: 'office', label: 'Office' },
+        { value: 'image', label: 'Image' },
+        { value: 'video', label: 'Video' },
+        { value: 'audio', label: 'Audio' }
       ]
     },
     description: 'Enunciado',

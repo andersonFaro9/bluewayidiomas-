@@ -4,6 +4,7 @@ import Service from './ActivityService'
 import { domain, path } from '../settings'
 
 import GradeSchema from 'src/domains/Academic/Grade/Schema/GradeSchema'
+import { SCOPES } from 'src/app/Agnostic/enum'
 
 /**
  * @type {ActivitySchema}
@@ -33,16 +34,28 @@ export default class ActivitySchema extends Schema {
       .fieldIsSelectRemote(GradeSchema.build().provideRemote())
       .validationRequired()
 
-    this.addField('name')
-      .fieldTableShow()
-      .fieldTableWhere()
-      .validationRequired()
-
     this.addField('type')
       .fieldTableShow()
       .fieldTableWhere()
       .fieldIsRadio()
-      .fieldFormDefaultValue('generic')
+      .fieldFormDefaultValue('document')
+      .fieldFormWidth(30)
+      .validationRequired()
+
+    this.addField('documentType')
+      .fieldTableShow()
+      .fieldTableWhere()
+      .fieldIsRadio()
+      .fieldFormWidth(70)
+      .fieldFormHidden()
+      .fieldFormDefaultValue('pdf')
+      .validationRequiredWhen(function () {
+        return this.$getField('type').$getValue() === 'document'
+      })
+
+    this.addField('name')
+      .fieldTableShow()
+      .fieldTableWhere()
       .validationRequired()
 
     this.addField('description')
@@ -53,9 +66,23 @@ export default class ActivitySchema extends Schema {
       .validationRequired()
 
     this.addField('document')
-      .fieldTableShow()
-      .fieldTableWhere()
-      .fieldIsFile()
-      .validationRequired()
+      .fieldIsFileSync()
+      .validationRequiredWhen(function () {
+        return this.$getField('type').$getValue() === 'document'
+      })
+  }
+
+  /**
+   * @param schema
+   */
+  createdHook (schema = undefined) {
+    if ([SCOPES.SCOPE_INDEX, SCOPES.SCOPE_TRASH].includes(this.scope)) {
+      return
+    }
+
+    const handler = function (type) {
+      return this.$getField('documentType').$fieldFormHidden(type !== 'document')
+    }
+    this.$watch('record.type', handler, { immediate: true })
   }
 }

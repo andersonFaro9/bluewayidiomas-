@@ -11,6 +11,7 @@ use App\Http\Controllers\Api\Rest\Restore;
 use App\Http\Controllers\Api\Rest\Search;
 use App\Http\Controllers\Api\Rest\Update;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 
 /**
  * Class AbstractRestController
@@ -57,5 +58,37 @@ abstract class AbstractRestController extends AbstractAnswerController implement
     final protected function repository(): RepositoryInterface
     {
         return $this->repository;
+    }
+
+    /**
+     * @param string $id
+     * @param array $data
+     *
+     * @return array
+     */
+    protected function prepareRecord(string $id, array $data): array
+    {
+        foreach ($data as $field => &$value) {
+            if ($value instanceof UploadedFile) {
+                $value = $this->parseFile($id, $field, $value);
+            }
+        }
+        return $data;
+    }
+
+    /**
+     * @param string $id
+     * @param string $field
+     * @param UploadedFile $file
+     *
+     * @return string
+     */
+    protected function parseFile(string $id, string $field, UploadedFile $file): string
+    {
+        $domain = $this->repository()->prefix();
+        $path = "{$domain}/$id";
+        $extension = $file->getClientOriginalExtension();
+        $name = "{$field}.{$extension}";
+        return $file->storeAs($path, $name);
     }
 }

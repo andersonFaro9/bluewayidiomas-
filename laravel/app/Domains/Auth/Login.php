@@ -2,15 +2,14 @@
 
 namespace App\Domains\Auth;
 
-use DateTime;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use JsonSerializable;
 use Dyrynda\Database\Support\GeneratesUuid as HasBinaryUuid;
+use Illuminate\Foundation\Auth\User as Authenticator;
+use Illuminate\Notifications\Notifiable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
 /**
  * Class User
+ *
  * @package App\Domains\Admin
  * @property string password
  * @property boolean active
@@ -19,7 +18,7 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
  * @method Login firstOrFail()
  * @method Login first()
  */
-class Login extends Authenticatable implements JWTSubject
+class Login extends Authenticator implements JWTSubject
 {
     /**
      * @see Notifiable
@@ -88,17 +87,5 @@ class Login extends Authenticatable implements JWTSubject
     public function getKeyName()
     {
         return 'id';
-    }
-
-    /**
-     * Specify data which should be serialized to JSON
-     * @link https://php.net/manual/en/jsonserializable.jsonserialize.php
-     * @return mixed data which can be serialized by <b>json_encode</b>,
-     * which is a value of any type other than a resource.
-     * @since 5.4.0
-     */
-    public function jsonSerialize ()
-    {
-        return parent::jsonSerialize();
     }
 }

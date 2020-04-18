@@ -85,4 +85,12 @@ class Action extends AbstractModel
         unset($data['parent'], $data['updatedAt'], $data['createdAt'], $data['deletedAt']);
         return $data;
     }
+
+    /**
+     * @return string
+     */
+    public function prefix(): string
+    {
+        return 'admin.action';
+    }
 }

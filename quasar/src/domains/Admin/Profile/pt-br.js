@@ -7,7 +7,7 @@ import { SCOPES } from 'src/app/Agnostic/enum'
 export default {
   routes: {
     group: {
-      crumb: 'Perfis'
+      crumb: 'Administração / Perfis'
     },
     [SCOPES.SCOPE_INDEX]: {
       title: 'Perfis'

@@ -26,7 +26,7 @@ export default {
     array: {
       empty: 'Use o botão {button} para adicionar mais itens'
     },
-    appSelectRemote: {
+    remote: {
       noResults: 'A coleção está vazia',
       searching: 'Pesquisando...',
       confirm: 'Confirmar',

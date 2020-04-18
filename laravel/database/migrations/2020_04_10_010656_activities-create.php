@@ -23,9 +23,14 @@ class ActivitiesCreate extends TableCreate
      */
     protected function withStatements(Table $table): void
     {
-        $table->string('name');
         $table->uuid('gradeId')->nullable();
-        $table->foreign('gradeId', 'activities_grade_id_foreign')
+        $table->string('type');
+        $table->string('documentType');
+        $table->string('name');
+        $table->text('description');
+        $table->string('document');
+
+        $table->foreign('gradeId', 'actions_action_id_foreign')
             ->references('uuid')
             ->on('grades')
             ->onDelete('restrict');

@@ -35,4 +35,12 @@ class Grade extends AbstractModel
         'name' => 'required',
         'shift' => ['required'],
     ];
+
+    /**
+     * @return string
+     */
+    public function prefix(): string
+    {
+        return 'academic.grade';
+    }
 }

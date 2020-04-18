@@ -116,4 +116,12 @@ trait Basic
             $key => AbstractModel::encodeUuid($id)
         ];
     }
+
+    /**
+     * @return string
+     */
+    public function prefix(): string
+    {
+        return $this->model->prefix();
+    }
 }

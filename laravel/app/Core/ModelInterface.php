@@ -50,4 +50,9 @@ interface ModelInterface
      * @return array
      */
     public function manyToOne(): array;
+
+    /**
+     * @return string
+     */
+    public function prefix(): string;
 }

@@ -25,16 +25,22 @@ class Activity extends AbstractModel
      * @var array
      */
     protected $fillable = [
-        'name',
         'gradeId',
+        'type',
+        'documentType',
+        'name',
+        'description',
+        'document',
     ];
 
     /**
      * @var array
      */
     protected $rules = [
-        'name' => 'required',
         'gradeId' => 'required',
+        'type' => 'required',
+        'name' => 'required',
+        'description' => 'required',
     ];
 
     /**
@@ -48,8 +54,16 @@ class Activity extends AbstractModel
     /**
      * @return BelongsTo
      */
-    public function profile(): BelongsTo
+    public function grade(): BelongsTo
     {
-        return $this->belongsTo(Grade::class, 'gradeId', 'uuid', 'grade');
+        return $this->belongsTo(Grade::class, 'gradeId', 'uuid');
+    }
+
+    /**
+     * @return string
+     */
+    public function prefix(): string
+    {
+        return 'academic.activity';
     }
 }

@@ -13,7 +13,7 @@
 
 use App\Http\Routing\Router;
 
-Router::get('/', function () {
+Router::get('/', static function () {
     return file_get_contents(__DIR__ . '/../public/index.html');
 });
 

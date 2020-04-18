@@ -24,13 +24,13 @@ trait Update
      */
     public function update(Request $request, string $id): JsonResponse
     {
-        $data = $request->post();
+        $data = $request->all();
         if (!$data) {
             return $this->answerFail(['payload' => 'empty']);
         }
         $details = ['id' => $id];
 
-        $updated = $this->repository()->update($id, $data);
+        $updated = $this->repository()->update($id, $this->prepareRecord($id, $data));
         if ($updated) {
             return $this->answerSuccess(['ticket' => $updated]);
         }

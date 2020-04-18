@@ -7,7 +7,7 @@ import { SCOPES } from 'src/app/Agnostic/enum'
 export default {
   routes: {
     group: {
-      crumb: 'Ações'
+      crumb: 'Administração / Ações'
     },
     [SCOPES.SCOPE_INDEX]: {
       title: 'Ações'

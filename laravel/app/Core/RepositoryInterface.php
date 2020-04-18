@@ -63,4 +63,9 @@ interface RepositoryInterface
      * @return array
      */
     public function getManyToOne(): array;
+
+    /**
+     * @return string
+     */
+    public function prefix(): string;
 }

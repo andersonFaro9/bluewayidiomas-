@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Hash;
 use Tymon\JWTAuth\Facades\JWTAuth;
+
 use function App\Helper\uuid;
 
 /**
@@ -32,7 +33,6 @@ class Session extends Login
      */
     public function login(string $email, string $password, string $device = ''): array
     {
-        /** @var Eloquent $login */
         $login = static::where('email', $email)->first();
 
         if ($login === null) {

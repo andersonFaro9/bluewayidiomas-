@@ -97,4 +97,12 @@ class Profile extends Model
             }
         );
     }
+
+    /**
+     * @return string
+     */
+    public function prefix(): string
+    {
+        return 'admin.profile';
+    }
 }

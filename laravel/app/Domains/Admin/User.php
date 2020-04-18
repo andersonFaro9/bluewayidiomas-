@@ -116,4 +116,12 @@ class User extends AbstractModel
     {
         return $this->belongsTo(Profile::class, 'profileId', 'uuid', 'profile');
     }
+
+    /**
+     * @return string
+     */
+    public function prefix(): string
+    {
+        return 'admin.user';
+    }
 }
