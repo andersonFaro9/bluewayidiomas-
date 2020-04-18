@@ -16,6 +16,7 @@ use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 
 /**
  * Class Handler
+ *
  * @package App\Exceptions
  */
 class Handler extends ExceptionHandler
@@ -48,6 +49,7 @@ class Handler extends ExceptionHandler
      * Report or log an exception.
      *
      * @param Exception $exception
+     *
      * @return void
      * @throws Exception
      */
@@ -65,6 +67,7 @@ class Handler extends ExceptionHandler
      *
      * @param Request $request
      * @param Exception $exception
+     *
      * @return JsonResponse|IlluminateResponse|SymfonyResponse
      */
     public function render($request, Exception $exception)
@@ -108,9 +111,10 @@ class Handler extends ExceptionHandler
 
     /**
      * @param ErrorGeneral $exception
+     *
      * @return JsonResponse
      */
-    protected function answerWith(ErrorGeneral $exception)
+    protected function answerWith(ErrorGeneral $exception): JsonResponse
     {
         $code = $exception->getStatusCode();
         $meta = ['errors' => $exception->getDetails()];

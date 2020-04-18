@@ -14,6 +14,12 @@ volumes:
   # Redis data volume
   blueway-redis_data:
     driver: local
+  # blueway-minio-data
+  blueway-minio-data:
+    driver: local
+  # blueway-minio-data
+  blueway-minio-config:
+    driver: local
 
 # services
 services:
@@ -37,9 +43,9 @@ services:
       - ${DOCKER_SERVICE_DATABASE_PORT}:3306
 
   # api
-  blueway-nginx-x:
+  blueway-nginx:
     image: webdevops/php-nginx-dev:7.4
-    container_name: ${DOCKER_SERVICE_API}-x
+    container_name: ${DOCKER_SERVICE_API}
     networks:
       - internal
     working_dir: /var/www/app
@@ -53,7 +59,7 @@ services:
       - WEB_DOCUMENT_ROOT=/var/www/app/public
       - PHP_DEBUGGER="xdebug"
       - XDEBUG_REMOTE_AUTOSTART=On
-      - XDEBUG_REMOTE_CONNECT_BACK=On
+      - XDEBUG_REMOTE_CONNECT_BACK=Off
       - XDEBUG_REMOTE_HOST=host.docker.internal
       - XDEBUG_REMOTE_PORT=9090
       - XDEBUG_PROFILER_ENABLE=Off
@@ -87,9 +93,36 @@ services:
     depends_on:
       - blueway-mysql
       - blueway-redis
-    links:
-      - blueway-mysql
-      - blueway-redis
+
+  # blueway-minio
+  blueway-minio:
+    image: minio/minio:RELEASE.2019-02-14T00-21-45Z
+    container_name: blueway-minio
+    command: server /data
+    volumes:
+      - blueway-minio-data:/data
+      - blueway-minio-config:/root/.minio
+    ports:
+      - 8020:9000
+    environment:
+      - MINIO_ACCESS_KEY=s20B73VI0E0164ABPXZIH
+      - MINIO_SECRET_KEY=M5mTytfy7U4xsxUitNWVJjC0AvV3FwXvXZQmYXab
+
+  # blueway-minio-controller
+  blueway-minio-controller:
+    image: minio/mc
+    container_name: blueway-minio-controller
+    working_dir: /var/www/app
+    volumes:
+      - .:/var/www/app
+    depends_on:
+      - blueway-minio
+    entrypoint: >
+      /bin/sh -c "
+      /usr/bin/mc config host add server http://blueway-minio:9000 s20B73VI0E0164ABPXZIH M5mTytfy7U4xsxUitNWVJjC0AvV3FwXvXZQmYXab;
+      /usr/bin/mc mb -p server/blueway;
+      exit 0;
+      "
 
   # app
 #  blueway-quasar:

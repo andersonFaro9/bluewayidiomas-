@@ -9,7 +9,7 @@ export default ({ Vue }) => {
       return (path, external = false) => {
         const separator = String(path).charAt(0) !== '/' ? '/' : ''
         if (external) {
-          return process.env.VUE_APP_STATIC_URL + separator + path
+          return process.env.VUE_APP_BASE_URL_STATIC + separator + path
         }
         return process.env.VUE_APP_PUBLIC_PATH + 'statics' + separator + path
       }

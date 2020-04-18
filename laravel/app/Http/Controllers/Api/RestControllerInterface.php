@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Exceptions\ErrorExternalIntegration;
+use App\Exceptions\ErrorResourceIsGone;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -31,6 +33,7 @@ interface RestControllerInterface
      * @param string $id
      *
      * @return JsonResponse
+     * @throws ErrorResourceIsGone
      */
     public function read(Request $request, string $id): JsonResponse;
 
@@ -39,6 +42,7 @@ interface RestControllerInterface
      * @param string $id
      *
      * @return JsonResponse
+     * @throws ErrorResourceIsGone
      */
     public function update(Request $request, string $id): JsonResponse;
 
@@ -47,14 +51,25 @@ interface RestControllerInterface
      * @param string $id
      *
      * @return JsonResponse
+     * @throws ErrorResourceIsGone
      */
-    public function delete(Request $request, string $id): JsonResponse;
+    public function destroy(Request $request, string $id): JsonResponse;
 
     /**
      * @param Request $request
      * @param string $id
      *
      * @return JsonResponse
+     * @throws ErrorResourceIsGone
      */
     public function restore(Request $request, string $id): JsonResponse;
+
+    /**
+     * @param string $id
+     * @param array $data
+     *
+     * @return array
+     * @throws ErrorExternalIntegration
+     */
+    public function prepareRecord(string $id, array $data): array;
 }

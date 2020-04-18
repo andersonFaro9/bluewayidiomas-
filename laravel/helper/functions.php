@@ -6,6 +6,7 @@ use Ramsey\Uuid\Uuid;
 
 /**
  * @return string
+ * @noinspection RandomApiMigrationInspection
  */
 function uuid()
 {
@@ -74,6 +75,7 @@ function is_binary($content)
  */
 function stripAccents(string $withAccents): string
 {
+    /** @noinspection SpellCheckingInspection */
     return strtr(
         $withAccents,
         'àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ',

@@ -5,7 +5,7 @@ namespace App\Core;
 use App\Core\Repository\Basic;
 use App\Core\Repository\Count;
 use App\Core\Repository\Create;
-use App\Core\Repository\Delete;
+use App\Core\Repository\Destroy;
 use App\Core\Repository\Helper;
 use App\Core\Repository\Read;
 use App\Core\Repository\Restore;
@@ -32,7 +32,7 @@ abstract class AbstractRepository implements RepositoryInterface
     use Basic;
     use Count;
     use Create;
-    use Delete;
+    use Destroy;
     use Read;
     use Restore;
     use Search;

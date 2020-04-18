@@ -4,14 +4,17 @@ namespace App\Http\Controllers\Api;
 
 use App\Core\AbstractRepository;
 use App\Core\RepositoryInterface;
+use App\Exceptions\ErrorExternalIntegration;
 use App\Http\Controllers\Api\Rest\Create;
-use App\Http\Controllers\Api\Rest\Delete;
+use App\Http\Controllers\Api\Rest\Destroy;
 use App\Http\Controllers\Api\Rest\Read;
 use App\Http\Controllers\Api\Rest\Restore;
 use App\Http\Controllers\Api\Rest\Search;
 use App\Http\Controllers\Api\Rest\Update;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * Class AbstractRestController
@@ -24,7 +27,7 @@ abstract class AbstractRestController extends AbstractAnswerController implement
      * Basic operations
      */
     use Create;
-    use Delete;
+    use Destroy;
     use Read;
     use Restore;
     use Search;
@@ -65,8 +68,9 @@ abstract class AbstractRestController extends AbstractAnswerController implement
      * @param array $data
      *
      * @return array
+     * @throws ErrorExternalIntegration
      */
-    protected function prepareRecord(string $id, array $data): array
+    public function prepareRecord(string $id, array $data): array
     {
         foreach ($data as $field => &$value) {
             if ($value instanceof UploadedFile) {
@@ -82,13 +86,17 @@ abstract class AbstractRestController extends AbstractAnswerController implement
      * @param UploadedFile $file
      *
      * @return string
+     * @throws ErrorExternalIntegration
      */
     protected function parseFile(string $id, string $field, UploadedFile $file): string
     {
         $domain = $this->repository()->prefix();
-        $path = "{$domain}/$id";
         $extension = $file->getClientOriginalExtension();
         $name = "{$field}.{$extension}";
-        return $file->storeAs($path, $name);
+        $path = "{$domain}/$id/{$name}";
+        if (!Storage::disk('minio')->put($path, File::get($file->getRealPath()))) {
+            throw new ErrorExternalIntegration('Cloud storage not available');
+        }
+        return $path;
     }
 }

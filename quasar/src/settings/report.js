@@ -1,7 +1,7 @@
 /**
  * @type {string}
  */
-const baseURL = process.env.VUE_APP_REPORT_BASE_URL
+const baseURL = process.env.VUE_APP_BASE_URL_REPORT
 
 /**
  * @param {Function} h

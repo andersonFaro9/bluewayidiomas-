@@ -6,11 +6,11 @@ use App\Core\AbstractModel;
 use Exception;
 
 /**
- * Trait Delete
+ * Trait Destroy
  *
  * @package App\Core\Repository
  */
-trait Delete
+trait Destroy
 {
     /**
      * @param string $id
@@ -18,7 +18,7 @@ trait Delete
      * @return string
      * @throws Exception
      */
-    public function delete(string $id): ?string
+    public function destroy(string $id): ?string
     {
         /** @var AbstractModel $instance */
         $instance = $this->pull($id);

@@ -1,4 +1,5 @@
 import { getLocale } from 'src/lang'
+import { downloadFile } from 'src/settings/storage'
 
 /**
  * @param {boolean} native
@@ -173,7 +174,8 @@ export default {
     is: 'AppFileSync',
     attrs: {
       ...attrs,
-      counter: true
+      counter: true,
+      downloadFile: downloadFile
     },
     parseOutput: undefined
   }

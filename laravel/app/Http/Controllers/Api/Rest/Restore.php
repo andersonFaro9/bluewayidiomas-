@@ -16,6 +16,7 @@ use Illuminate\Http\Request;
 trait Restore
 {
     /**
+     * @param Request $request
      * @param string $id
      *
      * @return JsonResponse

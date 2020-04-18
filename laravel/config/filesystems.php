@@ -67,10 +67,10 @@ return [
         'minio' => [
             'driver' => 'minio',
             'region' => 'us-east-1',
-            'key' => env('MINIO_KEY'),
-            'secret' => env('MINIO_SECRET'),
-            'bucket' => env('MINIO_BUCKET'),
-            'endpoint' => env('MINIO_ENDPOINT')
+            'key' => env('CLOUD_STORAGE_KEY'),
+            'secret' => env('CLOUD_STORAGE_SECRET'),
+            'bucket' => env('CLOUD_STORAGE_BUCKET'),
+            'endpoint' => env('CLOUD_STORAGE_ENDPOINT')
         ],
     ],
 

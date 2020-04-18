@@ -3,17 +3,16 @@
 namespace App\Http\Controllers\Api\Rest;
 
 use App\Core\RepositoryInterface;
-use App\Exceptions\ErrorInvalidArgument;
 use App\Exceptions\ErrorResourceIsGone;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 /**
- * Trait Delete
+ * Trait Destroy
  * @package App\Http\Controllers\Api\Rest
  * @method RepositoryInterface repository()
  */
-trait Delete
+trait Destroy
 {
     /**
      * @param Request $request
@@ -21,7 +20,7 @@ trait Delete
      * @return JsonResponse
      * @throws ErrorResourceIsGone
      */
-    public function delete(Request $request, string $id): JsonResponse
+    public function destroy(Request $request, string $id): JsonResponse
     {
         $ids = [$id];
         preg_match_all("/^\[(?<uuid>.*)]$/", $id, $matches);
@@ -31,7 +30,7 @@ trait Delete
 
         $executed = [];
         foreach ($ids as $detail) {
-            $deleted = $this->repository()->delete($detail);
+            $deleted = $this->repository()->destroy($detail);
             if ($deleted === null) {
                 continue;
             }

@@ -32,7 +32,7 @@ interface RepositoryInterface
      * @param string $id
      * @return string
      */
-    public function delete(string $id): ?string;
+    public function destroy(string $id): ?string;
 
     /**
      * @param string $id

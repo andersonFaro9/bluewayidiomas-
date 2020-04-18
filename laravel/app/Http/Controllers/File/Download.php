@@ -4,12 +4,17 @@ namespace App\Http\Controllers\File;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Storage;
+
+use Illuminate\View\View;
+
 use function request;
 
 /**
  * Class Download
+ *
  * @package App\Http\Controllers\File
  */
 class Download extends Controller
@@ -17,7 +22,7 @@ class Download extends Controller
     /**
      * @var array
      */
-    const HEADERS = [
+    public const HEADERS = [
         'pdf' => [
             'Content-Type' => 'application/pdf'
         ],
@@ -42,12 +47,13 @@ class Download extends Controller
      * The __invoke method is called when a script tries to call an object as a function.
      *
      * @param string $any
-     * @return false|\Illuminate\Contracts\View\Factory|\Illuminate\View\View|string
+     *
+     * @return false|Factory|View|string
      * @link https://php.net/manual/en/language.oop5.magic.php#language.oop5.magic.invoke
      */
     public function __invoke($any)
     {
-        $path = "statics/{$any}";
+        $path = addslashes($any);
         try {
             $content = Storage::disk('minio')->get($path);
         } catch (FileNotFoundException $fileNotFoundException) {
@@ -55,22 +61,19 @@ class Download extends Controller
         }
 
         $info = pathinfo($path);
-
-        $static = static::HEADERS;
-
         $extension = $info['extension'] ?? '';
-        $headers = $static[$extension] ?? ['Content-Type' => 'text/html'];
+        $headers = static::HEADERS[$extension] ?? ['Content-Type' => 'text/html'];
 
         if (request()->get('download')) {
             $name = request()->get('name');
             if (!$name) {
                 $name = 'document' . '.' . $extension;
             }
-            $filename = storage_path() . '/temp/';
+            $filename = storage_path() . '/temp/' . uniqid('static', true);
+            file_put_contents($filename, $content);
             return response()->download($filename, $name, $headers)->deleteFileAfterSend();
         }
 
-        /** @noinspection PhpUndefinedMethodInspection */
         return Response::make($content, 200, $headers);
     }
 }

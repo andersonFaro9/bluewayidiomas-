@@ -4,11 +4,11 @@ namespace App\Http\Controllers\File;
 
 use App\Exceptions\ErrorValidation;
 use App\Http\Controllers\Api\AbstractAnswerController;
-use App\Http\Status;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+
 use function App\Helper\uuid;
 
 /**
@@ -34,15 +34,14 @@ class Upload extends AbstractAnswerController
         $reference = uuid();
         if ($request->get('reference')) {
             preg_match_all('/.*\/(.*)\..*/', $request->get('reference'), $matches, PREG_SET_ORDER, 0);
-            if (isset($matches[0]) && isset($matches[0][1])) {
+            if (isset($matches[0][1])) {
                 $reference = $matches[0][1];
             }
         }
-        $resource = "{$any}/{$reference}.{$extension}";
-        $path = "statics/{$resource}";
+        $path = "{$any}/{$reference}.{$extension}";
 
         if (Storage::disk('minio')->put($path, File::get($document->getRealPath()))) {
-            return $this->answerSuccess(['resource' => $resource]);
+            return $this->answerSuccess(['resource' => $path]);
         }
         return $this->answerError("Can't save the path: '{$path}'");
     }
