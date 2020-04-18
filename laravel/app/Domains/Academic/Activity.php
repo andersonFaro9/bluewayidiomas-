@@ -28,9 +28,11 @@ class Activity extends AbstractModel
         'gradeId',
         'type',
         'documentType',
+        'linkType',
         'name',
         'description',
         'document',
+        'link',
     ];
 
     /**

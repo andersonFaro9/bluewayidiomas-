@@ -92,11 +92,10 @@ abstract class AbstractRestController extends AbstractAnswerController implement
     {
         $domain = $this->repository()->prefix();
         $extension = $file->getClientOriginalExtension();
-        $name = "{$field}.{$extension}";
-        $path = "{$domain}/$id/{$name}";
+        $path = "{$domain}/$id/{$field}";
         if (!Storage::disk('minio')->put($path, File::get($file->getRealPath()))) {
             throw new ErrorExternalIntegration('Cloud storage not available');
         }
-        return $path;
+        return "{$domain}/$id/{$field}.{$extension}";
     }
 }

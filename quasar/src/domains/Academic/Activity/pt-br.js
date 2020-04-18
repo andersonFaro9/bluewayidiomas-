@@ -32,7 +32,8 @@ export default {
   },
   fields: {
     grade: 'Curso',
-    name: 'Nome',
+    name: 'Nome da Atividade',
+    description: 'Enunciado',
     type: {
       label: 'Tipo',
       options: [
@@ -44,7 +45,7 @@ export default {
       ]
     },
     documentType: {
-      label: 'Tipo',
+      label: 'Tipo de Arquivo',
       tooltip: '(Word, Excel, PowerPoint)',
       options: [
         { value: 'pdf', label: 'PDF' },
@@ -54,7 +55,15 @@ export default {
         { value: 'audio', label: 'Audio' }
       ]
     },
-    description: 'Enunciado',
-    document: 'Arquivo'
+    linkType: {
+      label: 'Tipo de Link',
+      tooltip: '',
+      options: [
+        { value: 'site', label: 'Site Comum' },
+        { value: 'youtube', label: 'Vídeo do Youtube' }
+      ]
+    },
+    document: 'Arquivo',
+    link: 'Link'
   }
 }

@@ -53,21 +53,22 @@ class Download extends Controller
      */
     public function __invoke($any)
     {
-        $path = addslashes($any);
+        $resource = addslashes($any);
         try {
+            $path = preg_replace('/\\.[^.\\s]{3,4}$/', '', $resource);
             $content = Storage::disk('minio')->get($path);
         } catch (FileNotFoundException $fileNotFoundException) {
             return response(null, 404);
         }
 
-        $info = pathinfo($path);
+        $info = pathinfo($resource);
         $extension = $info['extension'] ?? '';
         $headers = static::HEADERS[$extension] ?? ['Content-Type' => 'text/html'];
 
         if (request()->get('download')) {
             $name = request()->get('name');
             if (!$name) {
-                $name = 'document' . '.' . $extension;
+                $name = 'download' . '.' . $extension;
             }
             $filename = storage_path() . '/temp/' . uniqid('static', true);
             file_put_contents($filename, $content);

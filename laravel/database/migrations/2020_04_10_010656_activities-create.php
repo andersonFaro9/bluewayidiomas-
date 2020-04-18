@@ -23,14 +23,17 @@ class ActivitiesCreate extends TableCreate
      */
     protected function withStatements(Table $table): void
     {
-        $table->uuid('gradeId')->nullable();
+        $table->uuid('gradeId');
         $table->string('type');
-        $table->string('documentType');
         $table->string('name');
         $table->text('description');
-        $table->string('document');
 
-        $table->foreign('gradeId', 'actions_action_id_foreign')
+        $table->string('documentType')->nullable();
+        $table->string('linkType')->nullable();
+        $table->string('document')->nullable();
+        $table->string('link')->nullable();
+
+        $table->foreign('gradeId', 'activitiesGradeId')
             ->references('uuid')
             ->on('grades')
             ->onDelete('restrict');

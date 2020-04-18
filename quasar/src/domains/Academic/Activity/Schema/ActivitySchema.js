@@ -32,6 +32,18 @@ export default class ActivitySchema extends Schema {
       .fieldTableShow()
       .fieldTableWhere()
       .fieldIsSelectRemote(GradeSchema.build().provideRemote())
+      .fieldFormWidth(50)
+      .validationRequired()
+
+    this.addField('name')
+      .fieldTableShow()
+      .fieldTableWhere()
+      .fieldFormWidth(50)
+      .validationRequired()
+
+    this.addField('description')
+      // .fieldIsWysiwyg()
+      .fieldIsText()
       .validationRequired()
 
     this.addField('type')
@@ -43,8 +55,6 @@ export default class ActivitySchema extends Schema {
       .validationRequired()
 
     this.addField('documentType')
-      .fieldTableShow()
-      .fieldTableWhere()
       .fieldIsRadio()
       .fieldFormWidth(70)
       .fieldFormHidden()
@@ -53,22 +63,25 @@ export default class ActivitySchema extends Schema {
         return this.$getField('type').$getValue() === 'document'
       })
 
-    this.addField('name')
-      .fieldTableShow()
-      .fieldTableWhere()
-      .validationRequired()
-
-    this.addField('description')
-      .fieldTableShow()
-      .fieldTableWhere()
-      // .fieldIsWysiwyg()
-      .fieldIsText()
-      .validationRequired()
+    this.addField('linkType')
+      .fieldIsRadio()
+      .fieldFormWidth(70)
+      .fieldFormHidden()
+      .fieldFormDefaultValue('site')
+      .validationRequiredWhen(function () {
+        return this.$getField('type').$getValue() === 'link'
+      })
 
     this.addField('document')
       .fieldIsFileSync()
       .validationRequiredWhen(function () {
         return this.$getField('type').$getValue() === 'document'
+      })
+
+    this.addField('link')
+      .fieldIsUrl()
+      .validationRequiredWhen(function () {
+        return this.$getField('type').$getValue() === 'link'
       })
   }
 
@@ -81,7 +94,10 @@ export default class ActivitySchema extends Schema {
     }
 
     const handler = function (type) {
-      return this.$getField('documentType').$fieldFormHidden(type !== 'document')
+      this.$getField('documentType').$fieldFormHidden(type !== 'document')
+      this.$getField('document').$fieldFormHidden(type !== 'document')
+      this.$getField('linkType').$fieldFormHidden(type !== 'link')
+      this.$getField('link').$fieldFormHidden(type !== 'link')
     }
     this.$watch('record.type', handler, { immediate: true })
   }

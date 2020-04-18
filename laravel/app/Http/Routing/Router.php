@@ -25,7 +25,7 @@ class Router extends Facade
         static::get("{$uri}/{id}", "{$controller}@read");
         // update
         static::patch("{$uri}/{id}", "{$controller}@update");
-        static::post("{$uri}/{id}/update", "{$controller}@update");
+        static::post("{$uri}/{id}", "{$controller}@update");
         // destroy
         static::delete("{$uri}/{id}", "{$controller}@destroy");
         // destroy
