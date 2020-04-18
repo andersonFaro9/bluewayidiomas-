@@ -1,6 +1,7 @@
 // domains/Academic
 import grade from 'src/domains/Academic/Grade/pt-br'
 import activity from 'src/domains/Academic/Activity/pt-br'
+import registration from 'src/domains/Academic/Registration/pt-br'
 
 // domains/Admin
 import action from 'src/domains/Admin/Action/pt-br'
@@ -18,7 +19,7 @@ import report from 'src/domains/Report/pt-br'
 export default {
   home,
   academic: {
-    grade, activity
+    activity, grade, registration
   },
   admin: {
     action, profile, user

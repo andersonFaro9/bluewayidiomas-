@@ -46,5 +46,9 @@ export default function (/* { store, ssrContext } */) {
   // inject router on dashboard module
   dashboardRouteFile($router)
 
+  if (process.env.MODE !== 'ssr') {
+    $router.addRoute('*', () => import('src/views/Error404.vue'))
+  }
+
   return $router
 }
