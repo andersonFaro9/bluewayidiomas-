@@ -82,6 +82,7 @@ master:
     # build quasar app
     - cd "${BUILD_DIR}/quasar"
     - npm install
+    - export BUILD_ENV="production"
     - quasar build -m pwa
     - cp -r "${BUILD_DIR}"/quasar/dist/pwa/* "${BUILD_DIR}/dist/public"
 
