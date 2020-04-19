@@ -1,6 +1,7 @@
 // import { primaryKey } from 'src/settings/schema'
 
 import { SCOPES } from 'src/app/Agnostic/enum'
+import { REFERENCE } from 'src/settings/profile'
 
 /**
  */
@@ -38,9 +39,9 @@ export default {
     reference: {
       label: 'Referência',
       options: [
-        { value: 'admin', label: 'ADMIN' },
-        { value: 'teacher', label: 'PROFESSOR' },
-        { value: 'student', label: 'ALUNO' }
+        { value: REFERENCE.REFERENCE_ADMIN, label: 'ADMIN' },
+        { value: REFERENCE.REFERENCE_TEACHER, label: 'PROFESSOR' },
+        { value: REFERENCE.REFERENCE_STUDENT, label: 'ALUNO' }
       ]
     },
     price: 'Valor da Mensalidade',
