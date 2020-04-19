@@ -20,12 +20,12 @@ before_script:
   - git submodule update --init --recursive
   - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
 
-development:
+develop:
   only:
-    - development
+    - develop
   script:
-    # force development branch
-    - git checkout development
+    # force develop branch
+    - git checkout develop
     - git branch -vv
     # remove previous git information
     - rm -rf .git
