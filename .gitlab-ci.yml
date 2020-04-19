@@ -14,7 +14,7 @@ before_script:
   - echo "${DEPLOY_SERVER_PRIVATE_KEY}" | tr -d '\r' > ~/.ssh/id_rsa
   - chmod 600 ~/.ssh/id_rsa
   - ssh-add ~/.ssh/id_rsa
-  - git config --global user.email "ci@disk.ninja"
+  - git config --global user.email "ci@bluewaycursos.com.br"
   - git config --global user.name "CI"
   - git submodule sync --recursive
   - git submodule update --init --recursive
@@ -82,6 +82,7 @@ master:
     # build quasar app
     - cd "${BUILD_DIR}/quasar"
     - npm install
+    - export BUILD_ENV="production"
     - quasar build -m pwa
     - cp -r "${BUILD_DIR}"/quasar/dist/pwa/* "${BUILD_DIR}/dist/public"
 

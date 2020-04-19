@@ -66,9 +66,9 @@ services:
       - .:/var/www/app
     environment:
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-      - MYSQL_DATABASE=${MYSQL_DATABASE}
-      - MYSQL_USER=${MYSQL_USER}
-      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_DATABASE=${DB_DATABASE}
+      - MYSQL_USER=${DB_USERNAME}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
 
   # cache
   blueway-redis:
@@ -108,14 +108,13 @@ services:
       - blueway-minio-data:/data
       - blueway-minio-config:/root/.minio
     environment:
-      - MINIO_ACCESS_KEY=${MINIO_ACCESS_KEY}
-      - MINIO_SECRET_KEY=${MINIO_SECRET_KEY}
+      - MINIO_ACCESS_KEY=${CLOUD_STORAGE_KEY}
+      - MINIO_SECRET_KEY=${CLOUD_STORAGE_SECRET}
 
   # storage setup
   blueway-minio-controller:
     image: minio/mc
     container_name: blueway-minio-controller
-    restart: always
     networks:
       - internal
     working_dir: /var/www/app
@@ -125,7 +124,7 @@ services:
       - blueway-minio
     entrypoint: >
       /bin/sh -c "
-      /usr/bin/mc config host add server http://blueway-minio:9000 ${MINIO_ACCESS_KEY} ${MINIO_SECRET_KEY};
+      /usr/bin/mc config host add server http://blueway-minio:9000 ${CLOUD_STORAGE_KEY} ${CLOUD_STORAGE_SECRET};
       /usr/bin/mc mb -p server/blueway;
       exit 0;
       "
