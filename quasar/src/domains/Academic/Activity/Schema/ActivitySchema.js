@@ -5,6 +5,8 @@ import { domain, path } from '../settings'
 
 import GradeSchema from 'src/domains/Academic/Grade/Schema/GradeSchema'
 import { SCOPES } from 'src/app/Agnostic/enum'
+import { $store } from 'src/store'
+import { REFERENCE } from 'src/settings/profile'
 
 /**
  * @type {ActivitySchema}
@@ -83,6 +85,11 @@ export default class ActivitySchema extends Schema {
       .validationRequiredWhen(function () {
         return this.$getField('type').$getValue() === 'link'
       })
+
+    if ($store.getters['auth/getUserProfileReference'] !== REFERENCE.REFERENCE_STUDENT) {
+      return
+    }
+    this.removeActions(['add', 'create', 'edit', 'update', 'destroy'])
   }
 
   /**
