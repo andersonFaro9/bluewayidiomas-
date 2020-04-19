@@ -34,7 +34,7 @@ development:
     # create dist project based on laravel
     - mv "${BUILD_DIR}/laravel" "${BUILD_DIR}/dist"
     - cat "${DEVELOPMENT_DEPLOY_ENV}" > "${BUILD_DIR}/dist/.env"
-    - cp ".environment/falcon.hospic.io/docker-compose.yml" "${BUILD_DIR}/dist/docker-compose.yml"
+    - cp ".environment/blueway.devi.tools/docker-compose.yml" "${BUILD_DIR}/dist/docker-compose.yml"
 
     # build quasar app
     - cd "${BUILD_DIR}/quasar"
