@@ -1,6 +1,7 @@
 import { get, is } from 'src/app/Util/general'
 import { primaryKey } from 'src/settings/schema'
 import actions from 'src/settings/actions'
+import { REFERENCE } from 'src/settings/profile'
 
 /**
  * @param state
@@ -20,6 +21,22 @@ export const getUser = (state) => state.user
  */
 export const getUserId = (state) => {
   return get(state.user, primaryKey)
+}
+
+/**
+ * @param state
+ * @returns {string}
+ */
+export const getUserProfileReference = (state) => {
+  return get(state.user, 'profile', '')
+}
+
+/**
+ * @param state
+ * @returns {Object|undefined}
+ */
+export const isUserAdmin = (state) => {
+  return get(state.user, 'profile') === REFERENCE.REFERENCE_ADMIN
 }
 
 /**

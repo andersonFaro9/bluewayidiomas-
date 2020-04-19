@@ -6,6 +6,7 @@ import { domain, path } from '../settings'
 import GradeSchema from 'src/domains/Academic/Grade/Schema/GradeSchema'
 import UserSchema from 'src/domains/Admin/User/Schema/UserSchema'
 import { today } from 'src/app/Util/date'
+import { $store } from 'src/store'
 
 /**
  * @type {RegistrationSchema}
@@ -50,5 +51,10 @@ export default class RegistrationSchema extends Schema {
       .fieldFormWidth(30)
       .fieldFormDefaultValue(today())
       .validationRequired()
+
+    if ($store.getters['auth/isUserAdmin']) {
+      return
+    }
+    this.removeActions(['add', 'create', 'edit', 'update', 'destroy'])
   }
 }
