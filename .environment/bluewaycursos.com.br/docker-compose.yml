@@ -42,9 +42,9 @@ services:
       - blueway-mysql
       - blueway-redis
     environment:
-      - VIRTUAL_HOST=blueway.devi.tools
-      - LETSENCRYPT_HOST=blueway.devi.tools
-      - LETSENCRYPT_EMAIL=wilcorrea@gmail.com
+      - VIRTUAL_HOST=${VIRTUAL_HOST}
+      - LETSENCRYPT_HOST=${LETSENCRYPT_HOST}
+      - LETSENCRYPT_EMAIL=${LETSENCRYPT_EMAIL}
       - WEB_DOCUMENT_ROOT=/var/www/app/public
       - XDEBUG_PROFILER_ENABLE=Off
       - PHP_DISPLAY_ERRORS=0
@@ -65,10 +65,10 @@ services:
       - blueway-mysql_data:/var/lib/mysql
       - .:/var/www/app
     environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=database
-      - MYSQL_USER=user
-      - MYSQL_PASSWORD=password
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
 
   # cache
   blueway-redis:
@@ -108,8 +108,8 @@ services:
       - blueway-minio-data:/data
       - blueway-minio-config:/root/.minio
     environment:
-      - MINIO_ACCESS_KEY=s20B73VI0E0164ABPXZIH
-      - MINIO_SECRET_KEY=M5mTytfy7U4xsxUitNWVJjC0AvV3FwXvXZQmYXab
+      - MINIO_ACCESS_KEY=${MINIO_ACCESS_KEY}
+      - MINIO_SECRET_KEY=${MINIO_SECRET_KEY}
 
   # storage setup
   blueway-minio-controller:
@@ -125,7 +125,7 @@ services:
       - blueway-minio
     entrypoint: >
       /bin/sh -c "
-      /usr/bin/mc config host add server http://blueway-minio:9000 s20B73VI0E0164ABPXZIH M5mTytfy7U4xsxUitNWVJjC0AvV3FwXvXZQmYXab;
+      /usr/bin/mc config host add server http://blueway-minio:9000 ${MINIO_ACCESS_KEY} ${MINIO_SECRET_KEY};
       /usr/bin/mc mb -p server/blueway;
       exit 0;
       "
