@@ -35,6 +35,7 @@ class DatabaseSeeder extends Seeder
             [
                 'actionId' => null,
                 'name' => 'Início',
+                'icon' => 'home',
                 'namespace' => 'home',
                 'path' => '/dashboard/home',
                 'separated' => false,
@@ -46,6 +47,7 @@ class DatabaseSeeder extends Seeder
             [
                 'actionId' => null,
                 'name' => 'Acadêmico',
+                'icon' => 'school',
                 'namespace' => 'academic',
                 'path' => '',
                 'separated' => false,
@@ -57,6 +59,7 @@ class DatabaseSeeder extends Seeder
             [
                 'actionId' => Uuid::fromString($academic)->getBytes(),
                 'name' => 'Cursos',
+                'icon' => 'folder',
                 'namespace' => 'academic.grade',
                 'path' => '/dashboard/academic/grade',
                 'separated' => true,
@@ -68,6 +71,7 @@ class DatabaseSeeder extends Seeder
             [
                 'actionId' => Uuid::fromString($academic)->getBytes(),
                 'name' => 'Matrículas',
+                'icon' => 'folder_shared',
                 'namespace' => 'academic.registration',
                 'path' => '/dashboard/academic/registration',
                 'separated' => true,
@@ -79,6 +83,7 @@ class DatabaseSeeder extends Seeder
             [
                 'actionId' => Uuid::fromString($academic)->getBytes(),
                 'name' => 'Atividades',
+                'icon' => 'description',
                 'namespace' => 'academic.activity',
                 'path' => '/dashboard/academic/activity',
                 'separated' => false,
@@ -90,6 +95,7 @@ class DatabaseSeeder extends Seeder
             [
                 'actionId' => null,
                 'name' => 'Administração',
+                'icon' => 'settings',
                 'namespace' => 'admin',
                 'path' => '',
                 'separated' => false,
@@ -101,6 +107,7 @@ class DatabaseSeeder extends Seeder
             [
                 'actionId' => Uuid::fromString($admin)->getBytes(),
                 'name' => 'Usuários',
+                'icon' => 'people',
                 'namespace' => 'admin.user',
                 'path' => '/dashboard/admin/user',
                 'separated' => true,
@@ -112,6 +119,7 @@ class DatabaseSeeder extends Seeder
             [
                 'actionId' => Uuid::fromString($admin)->getBytes(),
                 'name' => 'Perfis',
+                'icon' => 'widgets',
                 'namespace' => 'admin.profile',
                 'path' => '/dashboard/admin/profile',
                 'separated' => false,
@@ -123,6 +131,7 @@ class DatabaseSeeder extends Seeder
             [
                 'actionId' => Uuid::fromString($admin)->getBytes(),
                 'name' => 'Ações',
+                'icon' => 'account_tree',
                 'namespace' => 'admin.action',
                 'path' => '/dashboard/admin/action',
                 'separated' => false,
@@ -151,7 +160,7 @@ class DatabaseSeeder extends Seeder
         UserRepository::instance()->create(
             [
                 'profileId' => Uuid::fromString($adminProfileId)->getBytes(),
-                'name' => 'Blue Way',
+                'name' => 'ADMINISTRADOR',
                 'email' => 'admin@blueway.com',
                 'password' => 'aq1sw2de3',
                 'active' => true,
@@ -174,9 +183,30 @@ class DatabaseSeeder extends Seeder
         UserRepository::instance()->create(
             [
                 'profileId' => Uuid::fromString($teacherProfileId)->getBytes(),
-                // 'id' => '15d2a4f0-762a-11ea-b897-0242ac120005',
-                'name' => 'Teacher Blue Way',
+                'name' => 'PROFESSOR',
                 'email' => 'teacher@blueway.com',
+                'password' => 'aq1sw2de3',
+                'active' => true,
+            ]
+        );
+
+        $studentProfileId = ProfileRepository::instance()->create(
+            [
+                'name' => 'ALUNO',
+                'reference' => Profile::REFERENCE_STUDENT,
+                'actions' => [
+                    ['id' => $home],
+                    ['id' => $academic],
+                    ['id' => $activity],
+                ]
+            ]
+        );
+
+        UserRepository::instance()->create(
+            [
+                'profileId' => Uuid::fromString($studentProfileId)->getBytes(),
+                'name' => 'ALUNO',
+                'email' => 'student@blueway.com',
                 'password' => 'aq1sw2de3',
                 'active' => true,
             ]

@@ -1,9 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Domains\Auth;
 
+use App\Domains\Admin\Profile;
 use Dyrynda\Database\Support\GeneratesUuid as HasBinaryUuid;
-use Illuminate\Foundation\Auth\User as Authenticator;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
@@ -11,14 +15,17 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
  * Class User
  *
  * @package App\Domains\Admin
+ * @property string uuid
  * @property string password
  * @property boolean active
  * @property string birthday
+ * @property Profile profile
  * @method static Login where(string $column, mixed $value)
+ * @method static Login whereRaw(string $column, mixed $value)
  * @method Login firstOrFail()
  * @method Login first()
  */
-class Login extends Authenticator implements JWTSubject
+class Login extends Authenticatable implements JWTSubject
 {
     /**
      * @see Notifiable
@@ -49,6 +56,7 @@ class Login extends Authenticator implements JWTSubject
         'id',
         'uuid',
         'password',
+        'profileId',
         'remember_token',
     ];
 
@@ -58,6 +66,14 @@ class Login extends Authenticator implements JWTSubject
      * @var string
      */
     protected $keyType = 'binary';
+
+    /**
+     * @return BelongsTo
+     */
+    public function profile(): BelongsTo
+    {
+        return $this->belongsTo(Profile::class, 'profileId', 'uuid');
+    }
 
     /**
      * Get the identifier that will be stored in the subject claim of the JWT.

@@ -1,9 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Domains\Admin\User;
 
 use App\Domains\Admin\User;
-use App\Exceptions\ErrorValidation;
 use App\Units\Mail\Sender;
 use Illuminate\Support\Facades\Lang;
 

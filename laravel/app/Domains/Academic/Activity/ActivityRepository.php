@@ -17,5 +17,5 @@ class ActivityRepository extends AbstractRepository
      *
      * @var string
      */
-    protected $prototype = Activity::class;
+    protected string $prototype = Activity::class;
 }

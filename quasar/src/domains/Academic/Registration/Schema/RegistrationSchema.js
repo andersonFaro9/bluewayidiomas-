@@ -29,17 +29,17 @@ export default class RegistrationSchema extends Schema {
   /**
    */
   construct () {
-    this.addField('user')
-      .fieldTableShow()
-      .fieldTableWhere()
-      .fieldIsSelectRemote(UserSchema.build().provideRemote())
-      .fieldFormWidth(50)
-      .validationRequired()
-
     this.addField('grade')
       .fieldTableShow()
       .fieldTableWhere()
       .fieldIsSelectRemote(GradeSchema.build().provideRemote())
+      .fieldFormWidth(50)
+      .validationRequired()
+
+    this.addField('student')
+      .fieldTableShow()
+      .fieldTableWhere()
+      .fieldIsSelectRemote(UserSchema.build().provideRemote())
       .fieldFormWidth(50)
       .validationRequired()
 

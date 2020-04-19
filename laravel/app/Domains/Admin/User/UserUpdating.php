@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Domains\Admin\User;
+declare(strict_types=1);
 
-use App\Domains\Admin\User;
+namespace App\Domains\Admin\User;
 
 /**
  * Class UserUpdating
@@ -10,12 +10,4 @@ use App\Domains\Admin\User;
  */
 class UserUpdating extends UserBefore
 {
-    /**
-     * UserBefore constructor.
-     * @param User $user
-     */
-    public function __construct(User $user)
-    {
-        parent::__construct($user);
-    }
 }

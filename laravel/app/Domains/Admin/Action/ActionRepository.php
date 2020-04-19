@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Domains\Admin\Action;
 
+use App\Core\AbstractRepository;
 use App\Domains\Admin\Action;
 use App\Domains\Admin\ProfileAction;
-use App\Core\AbstractRepository;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Query\Builder;
 
@@ -20,7 +22,7 @@ class ActionRepository extends AbstractRepository
     /**
      * @var string
      */
-    protected $prototype = Action::class;
+    protected string $prototype = Action::class;
 
     /**
      * @param string $profileId
@@ -29,12 +31,10 @@ class ActionRepository extends AbstractRepository
      */
     public function actions(string $profileId): array
     {
-        /** @noinspection PhpUndefinedMethodInspection */
         $actions = $this->model
             ->whereIn(
                 'uuid',
                 function (Builder $query) use ($profileId) {
-                    /** @var Builder $query */
                     $query->select('actionId')
                         ->from(with(new ProfileAction())->getTable())
                         ->where('profileId', $profileId);

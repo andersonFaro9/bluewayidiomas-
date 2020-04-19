@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Domains\Admin\User;
 
-use App\Domains\Admin\Profile;
 use App\Domains\Admin\User;
 use Illuminate\Support\Facades\Hash;
 
@@ -28,13 +29,15 @@ class UserBefore
      */
     private function configurePassword(User $user): void
     {
-        if (!$user->password) {
-            return;
+        $password = $user->getValue('password');
+        if (!$password) {
+            $password = uniqid('Ab1#', true);
         }
-        $info = Hash::info($user->password);
+
+        $info = Hash::info($password);
         if (prop($info, 'algoName') !== 'unknown') {
             return;
         }
-        $user->password = Hash::make($user->password);
+        $user->setValue('password', Hash::make($password));
     }
 }

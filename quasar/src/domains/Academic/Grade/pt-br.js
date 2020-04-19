@@ -32,6 +32,7 @@ export default {
   },
   fields: {
     name: 'Nome',
+    teacher: 'Professor',
     shift: {
       label: 'Turno',
       options: [

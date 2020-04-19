@@ -1,10 +1,8 @@
 <?php
 
-namespace App\Domains\Admin\User;
+declare(strict_types=1);
 
-use App\Domains\Admin\User;
-use Exception;
-use Ramsey\Uuid\Uuid;
+namespace App\Domains\Admin\User;
 
 /**
  * Class UserCreating
@@ -12,15 +10,4 @@ use Ramsey\Uuid\Uuid;
  */
 class UserCreating extends UserBefore
 {
-    /**
-     * UserBefore constructor.
-     *
-     * @param User $user
-     *
-     * @throws Exception
-     */
-    public function __construct(User $user)
-    {
-        parent::__construct($user);
-    }
 }

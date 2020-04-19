@@ -1,18 +1,20 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Domains\Admin;
 
-use App\Core\AbstractModel;
 use App\Core\AbstractModel as Model;
-use App\Core\Model\Fill;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
+use function is_array;
 use function PhpBrasil\Collection\pack;
 
 /**
  * Class Profile
  *
  * @package App\Domains\Admin
+ * @property string reference
  */
 class Profile extends Model
 {

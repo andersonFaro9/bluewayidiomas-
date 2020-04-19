@@ -20,22 +20,45 @@ before_script:
   - git submodule update --init --recursive
   - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
 
-develop:
+development:
   only:
-    - develop
+    - development
   script:
-    - echo "Add host ${DEVELOPMENT_DEPLOY_HOST}"
-    - ssh-keyscan -H "${DEVELOPMENT_DEPLOY_HOST}" > ~/.ssh/known_hosts
-    - chmod 644 ~/.ssh/known_hosts
-    - echo "Deploy to ${DEVELOPMENT_DEPLOY_REMOTE}"
-    - bash "${PWD}/dist/stage/deploy.sh" "stage" "${DEVELOPMENT_DEPLOY_REMOTE}"
+    # force development branch
+    - git checkout development
+    - git branch -vv
+    # remove previous git information
+    - rm -rf .git
+    - BUILD_DIR="$(pwd)"
 
-master:
-  only:
-    - master
-  script:
-    - echo "Add host ${MASTER_DEPLOY_HOST}"
-    - ssh-keyscan -H "${MASTER_DEPLOY_HOST}" > ~/.ssh/known_hosts
+    # create dist project based on laravel
+    - mv "${BUILD_DIR}/laravel" "${BUILD_DIR}/dist"
+    - cat "${DEVELOPMENT_DEPLOY_ENV}" > "${BUILD_DIR}/dist/.env"
+    - cp ".environment/falcon.hospic.io/docker-compose.yml" "${BUILD_DIR}/dist/docker-compose.yml"
+
+    # build quasar app
+    - cd "${BUILD_DIR}/quasar"
+    - npm install
+    - quasar build -m pwa
+    - cp -r "${BUILD_DIR}"/quasar/dist/pwa/* "${BUILD_DIR}/dist/public"
+
+    # get infra stuffs
+    - cp -r "${BUILD_DIR}/.docker" "${BUILD_DIR}/dist/.docker"
+    - cp -r "${BUILD_DIR}/.tevun" "${BUILD_DIR}/dist/.tevun"
+
+    # go to dist project, create a new git repository and add all files
+    - cd ${BUILD_DIR}/dist
+    - git init
+    - git add -f docker-compose.yml # force add special files
+    - git add -f .env # force add special files
+    - git add .
+    - git commit --quiet -m "[deploy] $(date)"
+
+    # setup and execute deploy
+    - echo "Add host ${DEVELOPMENT_DEPLOY_HOST}"
+    - echo "${DEVELOPMENT_DEPLOY_HOST}" > ~/.ssh/known_hosts
+    - echo "chmod on ~/.ssh/known_hosts"
     - chmod 644 ~/.ssh/known_hosts
-    - echo "Deploy to ${MASTER_DEPLOY_REMOTE}"
-    - bash "${PWD}/dist/production/deploy.sh" "production" "${MASTER_DEPLOY_REMOTE}"
+    - echo "Deploy 'development' (${DEVELOPMENT_DEPLOY_REMOTE})"
+    - git remote add stage ${DEVELOPMENT_DEPLOY_REMOTE}
+    - git push stage master --force

@@ -1,12 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Domains\Admin\Profile;
 
-use App\Core\AbstractModel;
 use App\Core\AbstractRepository as Repository;
 use App\Domains\Admin\Profile;
-use Exception;
-use Ramsey\Uuid\Uuid;
 
 /**
  * Class ProfileRepository
@@ -19,7 +18,7 @@ class ProfileRepository extends Repository
      *
      * @var string
      */
-    protected $prototype = Profile::class;
+    protected string $prototype = Profile::class;
 
     /**
      * @return array
@@ -27,5 +26,15 @@ class ProfileRepository extends Repository
     public function getFilterable(): array
     {
         return ['name', 'reference'];
+    }
+
+    /**
+     * @param string $reference
+     *
+     * @return mixed
+     */
+    public function getProfileByReference(string $reference)
+    {
+        return $this->model->where('reference', $reference)->first();
     }
 }

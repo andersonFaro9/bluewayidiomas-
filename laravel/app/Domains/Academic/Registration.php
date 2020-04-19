@@ -1,10 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Domains\Academic;
 
-use App\Core\AbstractModel;
+use App\Core\AbstractModel as Model;
 use App\Domains\Academic\Shared\TeacherGrade;
 use App\Domains\Admin\Profile;
+use App\Domains\Admin\User;
 use App\Exceptions\ErrorUserForbidden;
 use App\Units\Common\UserSession;
 use Illuminate\Database\Eloquent\Builder;
@@ -12,11 +15,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Ramsey\Uuid\Uuid;
 
 /**
- * Class Activity
+ * Class Registration
  *
  * @package App\Domains\Academic
  */
-class Activity extends AbstractModel
+class Registration extends Model
 {
     /**
      * @trait
@@ -29,7 +32,7 @@ class Activity extends AbstractModel
      *
      * @var string
      */
-    protected $table = 'activities';
+    protected $table = 'registrations';
 
     /**
      * The attributes that are mass assignable.
@@ -38,31 +41,33 @@ class Activity extends AbstractModel
      */
     protected $fillable = [
         'gradeId',
-        'type',
-        'documentType',
-        'linkType',
-        'name',
-        'description',
-        'document',
-        'link',
+        'userId',
+        'date',
     ];
 
     /**
      * @var array
      */
     protected $rules = [
-        'gradeId' => 'required',
-        'type' => 'required',
-        'name' => 'required',
-        'description' => 'required',
+        'gradeId' => ['required'],
+        'userId' => ['required'],
+        'date' => ['required'],
     ];
+
+    /**
+     * @return string
+     */
+    public function prefix(): string
+    {
+        return 'academic.registration';
+    }
 
     /**
      * @return array
      */
     public function manyToOne(): array
     {
-        return ['grade' => 'gradeId'];
+        return ['grade' => 'gradeId', 'student' => 'userId'];
     }
 
     /**
@@ -74,11 +79,11 @@ class Activity extends AbstractModel
     }
 
     /**
-     * @return string
+     * @return BelongsTo
      */
-    public function prefix(): string
+    public function student(): BelongsTo
     {
-        return 'academic.activity';
+        return $this->belongsTo(User::class, 'userId', 'uuid');
     }
 
     /**
@@ -102,14 +107,6 @@ class Activity extends AbstractModel
 
         if ($user->profile->reference === Profile::REFERENCE_TEACHER) {
             return $this->queryTeacherGrade($query, $userId);
-        }
-
-        if ($user->profile->reference === Profile::REFERENCE_STUDENT) {
-            return $query->whereIn('gradeId', static function ($query) use ($userId) {
-                $query->select('gradeId')
-                    ->from('registrations')
-                    ->where('userId', $userId);
-            });
         }
 
         throw new ErrorUserForbidden(['user' => 'unknown']);

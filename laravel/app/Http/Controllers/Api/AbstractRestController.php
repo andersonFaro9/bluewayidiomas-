@@ -41,7 +41,7 @@ abstract class AbstractRestController extends AbstractAnswerController implement
     /**
      * @var Request
      */
-    protected $request;
+    protected ?Request $request;
 
     /**
      * AbstractRestController constructor.

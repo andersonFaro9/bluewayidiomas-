@@ -41,7 +41,7 @@ trait Search
      * @param int $limit
      * @param bool $trash
      *
-     * @return AbstractModel[]|Builder[]|Collection|Builder[]|Collection
+     * @return AbstractModel[]|Builder[]|Collection
      */
     public function filter(array $filters, $sorter = [], $offset = 0, $limit = 25, $trash = false)
     {

@@ -1,15 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Domains\Admin;
 
 use App\Core\AbstractModel;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Ramsey\Uuid\Uuid;
 
 /**
  * Class Action
  *
- * @property mixed parent
  * @package Domains\Admin
  */
 class Action extends AbstractModel

@@ -1,12 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Domains\Admin;
 
 use App\Core\AbstractModel;
 use App\Domains\Admin\User\UserCreated;
 use App\Domains\Admin\User\UserCreating;
 use App\Domains\Admin\User\UserUpdating;
-use App\Domains\Gateway\Shop;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
@@ -14,7 +15,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  *
  * @property mixed uuid
  * @property string name
- * @property string email
+ * @property string username
  * @property string firstName
  * @property string lastName
  * @property string birthday

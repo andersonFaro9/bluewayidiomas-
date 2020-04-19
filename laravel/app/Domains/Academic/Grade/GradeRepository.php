@@ -15,6 +15,6 @@ class GradeRepository extends AbstractRepository
     /**
      * @var string
      */
-    protected $prototype = Grade::class;
+    protected string $prototype = Grade::class;
 
 }

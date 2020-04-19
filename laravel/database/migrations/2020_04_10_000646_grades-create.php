@@ -23,8 +23,15 @@ class GradesCreate extends TableCreate
      */
     protected function withStatements(Table $table): void
     {
+        $table->uuid('userId')->nullable();
+
         $table->string('name');
         $table->string('shift');
+
+        $table->foreign('userId', 'gradesUserId')
+            ->references('uuid')
+            ->on('users')
+            ->onDelete('set null');
     }
 }
 

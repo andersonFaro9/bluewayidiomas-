@@ -31,11 +31,11 @@ export default {
     title: 'Impressão de Matrícula'
   },
   fields: {
-    user: {
-      label: 'Aluno'
-    },
     grade: {
       label: 'Curso'
+    },
+    student: {
+      label: 'Aluno'
     },
     date: {
       label: 'Data'

@@ -2,6 +2,7 @@ import Schema from 'src/app/Agnostic/Schema'
 
 import Service from './GradeService'
 import { domain, path } from '../settings'
+import UserSchema from 'src/domains/Admin/User/Schema/UserSchema'
 
 /**
  * @type {GradeSchema}
@@ -35,6 +36,13 @@ export default class GradeSchema extends Schema {
       .fieldTableShow()
       .fieldTableWhere()
       .fieldIsSelect()
+      .fieldFormWidth(50)
       .validationRequired()
+
+    this.addField('teacher')
+      .fieldTableShow()
+      .fieldTableWhere()
+      .fieldIsSelectRemote(UserSchema.build().provideRemote())
+      .fieldFormWidth(50)
   }
 }

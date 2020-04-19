@@ -22,6 +22,7 @@
     "dayjs": "^1.8.14",
     "fingerprintjs2": "^2.1.0",
     "localforage": "^1.7.3",
+    "named-regexp-groups": "^1.0.5",
     "quasar": "^1.0.0",
     "uuid": "^3.3.2",
     "vue-class-component": "^7.1.0",

@@ -46,7 +46,7 @@ abstract class AbstractRepository implements RepositoryInterface
     /**
      * @var string
      */
-    protected $prototype;
+    protected string $prototype;
 
     /**
      * PHP 5 allows developers to declare constructor methods for classes.
