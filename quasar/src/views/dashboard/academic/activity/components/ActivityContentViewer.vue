@@ -53,6 +53,7 @@
 <script>
 import { QSpinner, openURL } from 'quasar'
 import { downloadFile } from 'src/settings/storage'
+import { DOCUMENT_TYPE, LINK_TYPE, TYPE } from 'src/domains/Academic/Activity/enum'
 
 export default {
   /**
@@ -91,10 +92,10 @@ export default {
       if (!this.visible) {
         return false
       }
-      if (String(this.type) === 'link') {
+      if (String(this.type) === TYPE.TYPE_LINK) {
         return false
       }
-      return String(this.documentType) === 'video'
+      return String(this.documentType) === DOCUMENT_TYPE.DOCUMENT_TYPE_VIDEO
     },
     /**
      * @return {boolean}
@@ -103,10 +104,10 @@ export default {
       if (!this.visible) {
         return false
       }
-      if (String(this.type) === 'link') {
+      if (String(this.type) === TYPE.TYPE_LINK) {
         return false
       }
-      return String(this.documentType) !== 'video'
+      return String(this.documentType) !== DOCUMENT_TYPE.DOCUMENT_TYPE_VIDEO
     },
     /**
      * @param {Object} record
@@ -116,10 +117,10 @@ export default {
       if (!this.visible) {
         return false
       }
-      if (String(this.type) === 'document') {
+      if (String(this.type) === TYPE.TYPE_DOCUMENT) {
         return false
       }
-      return String(this.linkType) === 'youtube'
+      return String(this.linkType) === LINK_TYPE.LINK_TYPE_YOUTUBE
     },
     /**
      * @return {boolean}
@@ -128,10 +129,10 @@ export default {
       if (!this.visible) {
         return false
       }
-      if (String(this.type) === 'document') {
+      if (String(this.type) === TYPE.TYPE_DOCUMENT) {
         return false
       }
-      return String(this.linkType) !== 'youtube'
+      return String(this.linkType) !== LINK_TYPE.LINK_TYPE_YOUTUBE
     },
     /**
      */
