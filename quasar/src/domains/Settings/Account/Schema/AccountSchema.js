@@ -43,9 +43,11 @@ export default class AccountSchema extends UserSchema {
 
     // hooks
 
-    this.hook('after:update.click', function () {
+    this.addHook('after:update.click', function () {
       // noinspection JSIgnoredPromiseFromCall
+      debugger
       this.$store.dispatch('auth/setNameUser', this.$getField('name').$getValue())
+      this.$store.dispatch('auth/setUserEmail', this.$getField('email').$getValue())
     })
   }
 
@@ -54,8 +56,7 @@ export default class AccountSchema extends UserSchema {
    */
   createdHook () {
     const user = this.$store.getters['auth/getUser']
-
-    const fields = [this.primaryKey, 'name', 'email', 'profile', 'integration']
+    const fields = [this.primaryKey, 'name', 'email']
     fields.forEach((field) => this.$getField(field).$setValue(user[field]))
   }
 }

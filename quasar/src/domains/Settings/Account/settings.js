@@ -8,7 +8,7 @@ export const path = '/dashboard/settings/account'
 /**
  * @type {function}
  */
-export const component = () => import('src/views/dashboard/home/AccountForm.vue')
+export const component = () => import('src/views/dashboard/settings/AccountForm.vue')
 
 /**
  * @type {string}

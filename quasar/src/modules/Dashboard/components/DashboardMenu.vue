@@ -66,7 +66,7 @@
 
 <script>
 import { otherwise } from 'src/router'
-import { accountPath } from '../../../domains/Home/Account/routes.js'
+import { path } from '../../../domains/Settings/Account/settings'
 
 export default {
   /**
@@ -84,7 +84,7 @@ export default {
      * @return {string}
      */
     accountPath () {
-      return accountPath
+      return path
     },
     /**
      * @returns {Object}
