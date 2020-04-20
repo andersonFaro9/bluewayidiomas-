@@ -32,19 +32,14 @@ export default class UserSchema extends Schema {
       .fieldTableShow()
       .fieldTableWhere()
       .fieldFormAutofocus()
-      .fieldFormWidth(60)
+      .fieldFormWidth(50)
       .validationRequired()
-
-    this.addField('photo')
-      .fieldIsImage()
-      .fieldFormWidth(40)
-      .fieldFormHeight(4)
 
     this.addField('email')
       .fieldTableShow()
       .fieldTableWhere()
       .fieldIsEmail()
-      .fieldFormWidth(60)
+      .fieldFormWidth(50)
       .validationRequired()
       .validationEmail()
 
@@ -52,11 +47,11 @@ export default class UserSchema extends Schema {
       .fieldTableShow()
       .fieldTableWhere()
       .fieldIsSelectRemote(ProfileSchema.build().provideRemote())
-      .fieldFormWidth(60)
+      .fieldFormWidth(100)
       .validationRequired()
 
     this.addField('password')
-      .fieldFormWidth(30)
+      .fieldFormWidth(50)
       .fieldIsPassword()
       .validationPassword()
       .validationRequiredWhen(function () {
@@ -64,8 +59,8 @@ export default class UserSchema extends Schema {
       })
 
     this.addField('confirmPassword')
-      .fieldFormWidth(30)
-      .fieldIsPassword()
+      .fieldFormWidth(50)
+      .fieldIsPassword({ generator: false })
       .validationSameAs(['password'])
 
     this.addField('active')

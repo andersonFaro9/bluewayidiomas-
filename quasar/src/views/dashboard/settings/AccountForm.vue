@@ -4,7 +4,7 @@
 
 <script type="text/javascript">
 import View from 'src/app/Agnostic/Adapters/View'
-import Schema from 'src/domains/Home/Account/Schema/AccountSchema.js'
+import Schema from 'src/domains/Settings/Account/Schema/AccountSchema.js'
 
 /**
  */
@@ -14,7 +14,7 @@ export default {
   extends: View,
   /**
    */
-  name: 'HomePassword',
+  name: 'AccountForm',
   /**
    */
   schema: Schema

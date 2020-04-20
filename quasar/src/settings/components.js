@@ -85,7 +85,7 @@ export default {
     parseOutput: undefined
   },
   password: {
-    is: 'q-input',
+    is: 'AppPassword',
     attrs: { type: 'password', maxlength: 255, ...attrs },
     parseOutput: undefined
   },
