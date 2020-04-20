@@ -97,7 +97,7 @@ export default {
   text: {
     is: 'q-input',
     attrs: { type: 'textarea', rows: 4, maxlength: 4000, ...attrs },
-    parseOutput: parseOutputUpperCase
+    parseOutput: undefined
   },
   checkbox: {
     is: 'q-checkbox',
