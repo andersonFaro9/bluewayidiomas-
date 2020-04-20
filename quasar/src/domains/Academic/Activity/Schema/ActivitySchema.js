@@ -7,6 +7,7 @@ import GradeSchema from 'src/domains/Academic/Grade/Schema/GradeSchema'
 import { SCOPES } from 'src/app/Agnostic/enum'
 import { $store } from 'src/store'
 import { REFERENCE } from 'src/settings/profile'
+import { DOCUMENT_ACCEPT, DOCUMENT_TYPE, LINK_TYPE, TYPE } from 'src/domains/Academic/Activity/enum'
 
 /**
  * @type {ActivitySchema}
@@ -52,7 +53,7 @@ export default class ActivitySchema extends Schema {
       .fieldTableShow()
       .fieldTableWhere()
       .fieldIsRadio()
-      .fieldFormDefaultValue('document')
+      .fieldFormDefaultValue(TYPE.TYPE_DOCUMENT)
       .fieldFormWidth(30)
       .validationRequired()
 
@@ -60,30 +61,37 @@ export default class ActivitySchema extends Schema {
       .fieldIsRadio()
       .fieldFormWidth(70)
       .fieldFormHidden()
-      .fieldFormDefaultValue('pdf')
+      .fieldFormDefaultValue(DOCUMENT_TYPE.DOCUMENT_TYPE_PDF)
+      .fieldWatch(function (documentType) {
+        return this.$getField('document').$setAttr('accept', DOCUMENT_ACCEPT[documentType])
+      })
       .validationRequiredWhen(function () {
-        return this.$getField('type').$getValue() === 'document'
+        return this.$getField('type').$getValue() === TYPE.TYPE_DOCUMENT
       })
 
     this.addField('linkType')
       .fieldIsRadio()
       .fieldFormWidth(70)
       .fieldFormHidden()
-      .fieldFormDefaultValue('site')
+      .fieldFormDefaultValue(LINK_TYPE.LINK_TYPE_SITE)
       .validationRequiredWhen(function () {
-        return this.$getField('type').$getValue() === 'link'
+        return this.$getField('type').$getValue() === TYPE.TYPE_LINK
       })
 
     this.addField('document')
       .fieldIsFileSync()
+      .fieldAppendAttrs({
+        accept: DOCUMENT_ACCEPT[DOCUMENT_TYPE.DOCUMENT_TYPE_PDF]
+      })
+      .validationMaxFileSize(500 * 1024)
       .validationRequiredWhen(function () {
-        return this.$getField('type').$getValue() === 'document'
+        return this.$getField('type').$getValue() === TYPE.TYPE_DOCUMENT
       })
 
     this.addField('link')
       .fieldIsUrl()
       .validationRequiredWhen(function () {
-        return this.$getField('type').$getValue() === 'link'
+        return this.$getField('type').$getValue() === TYPE.TYPE_LINK
       })
 
     if ($store.getters['auth/getUserProfileReference'] !== REFERENCE.REFERENCE_STUDENT) {
@@ -101,10 +109,10 @@ export default class ActivitySchema extends Schema {
     }
 
     const handler = function (type) {
-      this.$getField('documentType').$fieldFormHidden(type !== 'document')
-      this.$getField('document').$fieldFormHidden(type !== 'document')
-      this.$getField('linkType').$fieldFormHidden(type !== 'link')
-      this.$getField('link').$fieldFormHidden(type !== 'link')
+      this.$getField('documentType').$fieldFormHidden(type !== TYPE.TYPE_DOCUMENT)
+      this.$getField('document').$fieldFormHidden(type !== TYPE.TYPE_DOCUMENT)
+      this.$getField('linkType').$fieldFormHidden(type !== TYPE.TYPE_LINK)
+      this.$getField('link').$fieldFormHidden(type !== TYPE.TYPE_LINK)
     }
     this.$watch('record.type', handler, { immediate: true })
   }

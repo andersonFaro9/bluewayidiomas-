@@ -52,6 +52,7 @@ services:
     volumes:
       - ./laravel:/var/www/app
     #      - .docker/blueway-nginx/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+      - ./.docker/blueway-nginx/opt/docker/etc/nginx/vhost.common.d/10-general.conf:/opt/docker/etc/nginx/vhost.common.d/10-general.conf
     depends_on:
       - blueway-mysql
       - blueway-redis
