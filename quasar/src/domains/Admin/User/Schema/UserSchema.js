@@ -60,7 +60,7 @@ export default class UserSchema extends Schema {
 
     this.addField('confirmPassword')
       .fieldFormWidth(50)
-      .fieldIsPassword()
+      .fieldIsPassword({ generator: false })
       .validationSameAs(['password'])
 
     this.addField('active')

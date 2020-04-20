@@ -45,9 +45,10 @@ export default class AccountSchema extends UserSchema {
 
     this.addHook('after:update.click', function () {
       // noinspection JSIgnoredPromiseFromCall
-      debugger
       this.$store.dispatch('auth/setNameUser', this.$getField('name').$getValue())
       this.$store.dispatch('auth/setUserEmail', this.$getField('email').$getValue())
+      const fields = ['password', 'confirmPassword']
+      fields.forEach((field) => this.$getField(field).$setValue(''))
     })
   }
 
