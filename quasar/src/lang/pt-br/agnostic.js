@@ -36,6 +36,14 @@ export default {
     },
     image: {
       button: 'Selecione uma imagem'
+    },
+    password: {
+      generator: {
+        tooltip: 'Cria uma nova senha com {length} caracteres'
+      },
+      visible: {
+        tooltip: 'Torna a senha temporariamente visível'
+      }
     }
   },
   dialog: {
