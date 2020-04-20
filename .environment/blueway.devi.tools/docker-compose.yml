@@ -38,6 +38,7 @@ services:
     working_dir: /var/www/app
     volumes:
       - .:/var/www/app
+      - ./.docker/blueway-nginx/opt/docker/etc/nginx/vhost.common.d/10-general.conf:/opt/docker/etc/nginx/vhost.common.d/10-general.conf
     depends_on:
       - blueway-mysql
       - blueway-redis

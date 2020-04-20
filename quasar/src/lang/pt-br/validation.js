@@ -23,5 +23,6 @@ export default {
   and: 'and',
   not: 'not',
   withParams: 'withParams',
-  notFound: 'Registro não encontrado'
+  notFound: 'Registro não encontrado',
+  maxFileSize: 'O arquivo não deve ser maior que {size}kb'
 }
