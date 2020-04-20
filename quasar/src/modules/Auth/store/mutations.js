@@ -34,3 +34,12 @@ export const mutateNameUser = (state, name) => {
   state.user.name = name
   mutateUser(state, state.user)
 }
+
+/**
+ * @param {Object} state
+ * @param {string} email
+ */
+export const mutateEmailUser = (state, email) => {
+  state.user.email = email
+  mutateUser(state, state.user)
+}

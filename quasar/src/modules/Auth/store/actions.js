@@ -32,3 +32,12 @@ export const updateUser = (context, user) => {
 export const setNameUser = (context, name) => {
   context.commit('mutateNameUser', name)
 }
+
+/**
+ * @ref auth/setUserName
+ * @param {Object} context
+ * @param {string} name
+ */
+export const setUserEmail = (context, name) => {
+  context.commit('mutateEmailUser', name)
+}

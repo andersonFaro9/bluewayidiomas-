@@ -31,7 +31,7 @@ class UserBefore
     {
         $password = $user->getValue('password');
         if (!$password) {
-            $password = uniqid('Ab1#', true);
+            return;
         }
 
         $info = Hash::info($password);
