@@ -101,7 +101,15 @@ export default {
   },
   checkbox: {
     is: 'q-checkbox',
-    attrs: { ...attrs, useReadonly: false, 'indeterminate-value': 'maybe' },
+    attrs: {
+      ...attrs,
+      useReadonly: false,
+      'toggle-indeterminate': false,
+      'indeterminate-value': -1,
+      'true-value': 1,
+      'false-value': 0,
+      value: 0
+    },
     parseOutput: undefined
   },
   radio: {
@@ -116,7 +124,15 @@ export default {
   },
   toggle: {
     is: 'q-toggle',
-    attrs: { ...attrs, useReadonly: false },
+    attrs: {
+      ...attrs,
+      useReadonly: false,
+      'toggle-indeterminate': false,
+      'indeterminate-value': -1,
+      'true-value': 1,
+      'false-value': 0,
+      value: 0
+    },
     parseOutput: undefined
   },
   remote: {
