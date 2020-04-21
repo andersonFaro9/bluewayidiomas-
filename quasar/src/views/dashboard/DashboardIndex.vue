@@ -3,15 +3,17 @@
     class="DashboardIndex"
     padding
   >
-    <div class="q-pa-md">
-      <q-toolbar class="bg-primary text-white shadow-2 rounded-borders ">
-        <div  class="col-6 text-white q-pa-sm">
-          <small class = "text-weight-medium mono-font text-subtitle1" > {{ greetings }},  {{saudar}}, <strong>  {{ name }}</strong></small>
+    <div class="flex row bg-primary text-white shadow-2 rounded-borders q-pa-md">
+        <div class="col-6-sm q-pa-sm">
+          <small class="text-weight-medium mono-font text-subtitle1">
+            {{ greetings }}, {{saudar}}, <strong>{{ name }}</strong>
+          </small>
         </div>
         <q-space />
-        <small class="float-right text-weight-medium mono-font  text-subtitle1" >Versão da aplicação: {{ version }}</small>
-      </q-toolbar>
-    </div>
+        <div class="col-6-sm q-pa-sm text-right">
+          <small class="text-weight-thin mono-font">Versão da aplicação: {{ version }}</small>
+        </div>
+      </div>
   </q-page>
 </template>
 
@@ -153,8 +155,10 @@ export default {
       display flex
       align-items center
       justify-content center
+
       > a > svg
         fill #fff
+
     > .DashboardIndex__source__shield
       grid-column auto / span 70
       text-align right
