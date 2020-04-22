@@ -105,7 +105,6 @@ export default {
       ...attrs,
       useReadonly: false,
       'toggle-indeterminate': false,
-      'indeterminate-value': -1,
       'true-value': 1,
       'false-value': 0,
       value: 0
@@ -128,10 +127,9 @@ export default {
       ...attrs,
       useReadonly: false,
       'toggle-indeterminate': false,
-      'indeterminate-value': -1,
-      'true-value': 1,
-      'false-value': 0,
-      value: 0
+      'true-value': true,
+      'false-value': false,
+      value: false
     },
     parseOutput: undefined
   },

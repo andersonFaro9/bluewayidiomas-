@@ -38,6 +38,7 @@ export default {
       button: 'Selecione uma imagem'
     },
     password: {
+      copied: 'Uma nova senha foi gerada e copiada para a área de trabalho',
       generator: {
         tooltip: 'Cria uma nova senha com {length} caracteres'
       },

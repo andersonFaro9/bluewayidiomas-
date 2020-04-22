@@ -1,22 +1,37 @@
 <template>
-  <q-layout class="DashboardLayout" :class="{ 'DashboardLayout--modal': modal }" view="hHh LpR fff">
-    <q-header v-if="!modal" elevated class="DashboardLayout__header bg-primary text-white">
+  <q-layout
+    class="DashboardLayout"
+    :class="{ 'DashboardLayout--modal': modal }"
+    view="hHh LpR fff"
+  >
+    <q-header
+      v-if="!modal"
+      elevated
+      class="DashboardLayout__header bg-primary text-white"
+    >
       <q-toolbar>
-        <q-btn dense flat round icon="menu" @click="leftDrawer = !leftDrawer" />
+        <q-btn
+          dense
+          flat
+          round
+          icon="menu"
+          @click="leftDrawer = !leftDrawer"
+        />
         <img
           class="DashboardLayout__header_logo hide-in-1024"
           src="statics/dashboard/header-logo.png"
         />
         <q-space />
-        <div class="DashboardLayout__header_details row no-wrap items-center">
-          <app-breadcrumb />
-        </div>
-        <q-space />
         <DashboardMenu />
       </q-toolbar>
     </q-header>
 
-    <q-drawer v-model="leftDrawer" side="left" elevated content-class="bg-white">
+    <q-drawer
+      v-model="leftDrawer"
+      side="left"
+      elevated
+      content-class="bg-white"
+    >
       <q-scroll-area class="fit">
         <div class="DashboardLayout__drawer_header">
           <img src="statics/dashboard/header-logo.png" />
@@ -26,15 +41,18 @@
     </q-drawer>
 
     <q-page-container>
-      <transition
-        :name="transitionName"
-        mode="out-in"
-        @beforeLeave="beforeLeave"
-        @enter="enter"
-        @afterEnter="afterEnter"
-      >
-        <router-view :key="key" />
-      </transition>
+      <q-page padding>
+        <app-breadcrumb />
+        <transition
+          :name="transitionName"
+          mode="out-in"
+          @beforeLeave="beforeLeave"
+          @enter="enter"
+          @afterEnter="afterEnter"
+        >
+          <router-view :key="key" />
+        </transition>
+      </q-page>
     </q-page-container>
   </q-layout>
 </template>
@@ -145,28 +163,6 @@ export default {
       height: 80px;
       width: 80px;
       margin: 0 15px;
-    }
-
-    .DashboardLayout__header_details {
-      background: #fff;
-      color: #696969;
-      border-radius: 7px;
-      padding: 10px 20px 10px 20px;
-      margin: 0 8px;
-      text-transform: uppercase;
-      text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.45);
-      position: relative;
-      width: calc(100vw - 500px);
-      box-shadow: 0 1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 4px 0 rgba(0, 0, 0, 0.24);
-      overflow-x: auto;
-      overflow-y: hidden;
-
-      .q-toggle__label {
-        color: #d9534f;
-        font-weight: bold;
-        text-transform: uppercase;
-        font-size: 0.8rem;
-      }
     }
   }
 
