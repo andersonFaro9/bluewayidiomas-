@@ -14,7 +14,7 @@ final class Operators
     /**
      * @var string
      */
-    public const SEPARATION_OPERATOR = '.~.';
+    public const SEPARATION_OPERATOR = '~.~';
 
     /**
      * @var string

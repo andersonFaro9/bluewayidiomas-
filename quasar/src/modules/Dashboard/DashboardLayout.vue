@@ -290,8 +290,6 @@ export default {
   @media (max-width: 425px) {
     .DashboardLayout__header {
       > .q-toolbar {
-        padding: 0;
-
         > .q-btn.q-btn-dropdown {
           padding: 0;
         }

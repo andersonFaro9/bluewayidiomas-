@@ -54,8 +54,6 @@ export default class GradeSchema extends Schema {
       .validationRequired()
 
     this.addField('shift')
-      .fieldTableShow()
-      .fieldTableWhere()
       .fieldIsInputPlan()
       .validationRequired()
   }
