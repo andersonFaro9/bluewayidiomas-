@@ -1,11 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Core\Report\Where;
 
 /**
  * Trait WhereBetween
- * @package App\Core\Report\Where
  *
+ * @package App\Core\Report\Where
  * @property array $where
  */
 trait WhereBetween
@@ -15,9 +17,15 @@ trait WhereBetween
      * @param string $column
      * @param string $begin
      * @param string $end
+     *
      * @return $this
      */
-    protected function addWhereBetween(array $filters, string $column, string $begin = 'begin', string $end = 'end') {
+    protected function addWhereBetween(
+        array $filters,
+        string $column,
+        string $begin = 'begin',
+        string $end = 'end'
+    ): self {
         $start = $filters[$begin] ?? null;
         $finish = $filters[$end] ?? null;
 

@@ -1,23 +1,27 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Api\Auth;
 
 use App\Domains\Admin\User\UserRepository;
 use App\Exceptions\ErrorValidation;
-use App\Http\Controllers\Api\AbstractAnswerController;
+use App\Http\Controllers\Api\AbstractController;
 use Exception;
 use Illuminate\Http\JsonResponse;
 
 /**
  * Class Reset
+ *
  * @package App\Http\Controllers\Api\Auth
  */
-class Reset extends AbstractAnswerController
+class Reset extends AbstractController
 {
     /**
      * Refresh a token.
      *
      * @param string $code
+     *
      * @return JsonResponse
      * @throws ErrorValidation
      * @throws Exception

@@ -32,7 +32,7 @@ export default {
   },
   fields: {
     grade: {
-      label: 'Curso'
+      label: 'Módulo'
     },
     student: {
       label: 'Aluno'

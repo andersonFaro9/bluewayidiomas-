@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Api\Rest;
 
 use App\Core\RepositoryInterface;
@@ -10,6 +12,7 @@ use Ramsey\Uuid\Uuid;
 
 /**
  * Trait Create
+ *
  * @package App\Http\Controllers\Api\Rest
  * @method RepositoryInterface repository()
  */

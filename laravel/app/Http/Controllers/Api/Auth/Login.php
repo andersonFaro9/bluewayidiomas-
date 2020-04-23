@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Api\Auth;
 
 use App\Domains\Auth\Session;
 use App\Exceptions\ErrorUserInative;
 use App\Exceptions\ErrorUserLocked;
 use App\Exceptions\ErrorUserUnauthorized;
-use App\Http\Controllers\Api\AbstractAnswerController;
+use App\Http\Controllers\Api\AbstractController;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -16,7 +18,7 @@ use Illuminate\Http\Request;
  *
  * @package App\Http\Controllers\Api\Auth
  */
-class Login extends AbstractAnswerController
+class Login extends AbstractController
 {
     /**
      * @see ThrottlesLogins
@@ -62,6 +64,6 @@ class Login extends AbstractAnswerController
      */
     public function username()
     {
-        return 'email';
+        return 'username';
     }
 }

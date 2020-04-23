@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Core;
 
 use App\Core\Repository\Basic;
@@ -12,6 +14,7 @@ use App\Core\Repository\Restore;
 use App\Core\Repository\Search;
 use App\Core\Repository\Update;
 use App\Domains\Util\Instance;
+use Illuminate\Database\Eloquent\Builder;
 
 /**
  * Class AbstractRepository
@@ -83,5 +86,13 @@ abstract class AbstractRepository implements RepositoryInterface
     public function getManyToOne(): array
     {
         return $this->model->manyToOne();
+    }
+
+    /**
+     * @return Builder
+     */
+    public function query(): Builder
+    {
+        return $this->model->newQuery();
     }
 }

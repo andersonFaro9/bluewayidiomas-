@@ -1,20 +1,24 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Api\Auth;
 
 use App\Exceptions\ErrorValidation;
-use App\Http\Controllers\Api\AbstractAnswerController;
+use App\Http\Controllers\Api\AbstractController;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 /**
  * Class Logout
+ *
  * @package App\Http\Controllers\Api\Auth
  */
-class Logout extends AbstractAnswerController
+class Logout extends AbstractController
 {
     /**
      * @param Request $request
+     *
      * @return JsonResponse
      * @throws ErrorValidation
      */
@@ -27,10 +31,9 @@ class Logout extends AbstractAnswerController
 
         // $user = $auth->user();
         // $auth->logout();
-        /** @noinspection PhpUndefinedMethodInspection */
+        /** @noinspection PhpPossiblePolymorphicInvocationInspection */
         $payload = $auth->payload();
 
-        /** @noinspection PhpUndefinedMethodInspection */
         return $this->answerSuccess([
             'session' => $payload->get('session'),
         ]);

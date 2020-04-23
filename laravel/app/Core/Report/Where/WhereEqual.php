@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\Core\Report\Where;
 
 /**
  * Trait WhereEqual
+ *
  * @package App\Core\Report\Where
  */
 trait WhereEqual
@@ -13,9 +15,10 @@ trait WhereEqual
      * @param array $filters
      * @param string $column
      * @param string $property
+     *
      * @return $this
      */
-    protected function addWhereEqual(array $filters, string $column, string $property = '')
+    protected function addWhereEqual(array $filters, string $column, string $property = ''): self
     {
         if (!$property) {
             $property = $column;

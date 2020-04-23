@@ -1,11 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Core\Report\Where;
 
 /**
  * Trait WhereLike
- * @package App\Core\Report\Where
  *
+ * @package App\Core\Report\Where
  * @property array $where
  */
 trait WhereLike
@@ -14,9 +16,10 @@ trait WhereLike
      * @param array $filters
      * @param string $column
      * @param string $property
+     *
      * @return $this
      */
-    protected function addWhereLike(array &$filters, string $column, string $property = '')
+    protected function addWhereLike(array &$filters, string $column, string $property = ''): self
     {
         if (!$property) {
             $property = $column;

@@ -85,6 +85,6 @@ export default {
     'md-refresh': actions.refresh,
     'md-sort-clear': actions['sort-clear'],
     'md-search': actions.search,
-    'md-search-clear': actions['search-clear']
+    'md-search-clear': actions.searchClear
   }
 }

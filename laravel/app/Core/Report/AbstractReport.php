@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Core\Report;
 
 use App\Core\Report\Fragments\Getter;
@@ -13,6 +15,7 @@ use Throwable;
 
 /**
  * Class AbstractReport
+ *
  * @package Report
  */
 abstract class AbstractReport
@@ -39,6 +42,7 @@ abstract class AbstractReport
 
     /**
      * AbstractReport constructor.
+     *
      * @param string $user
      * @param bool $printing
      */
@@ -55,6 +59,7 @@ abstract class AbstractReport
 
     /**
      * @param array $filters
+     *
      * @return string
      */
     abstract protected function instruction(array &$filters): string;
@@ -67,11 +72,12 @@ abstract class AbstractReport
      */
     public static function build(string $user, bool $printing = false)
     {
-        return new static($user,  $printing);
+        return new static($user, $printing);
     }
 
     /**
      * @param array $filters
+     *
      * @return string
      * @throws Exception
      */
@@ -82,6 +88,7 @@ abstract class AbstractReport
 
     /**
      * @param array $filters
+     *
      * @return string
      */
     private function run(array $filters): string
@@ -115,16 +122,18 @@ abstract class AbstractReport
 
     /**
      * @param array $filters
+     *
      * @return array
      */
     protected function fetch(array $filters): array
     {
-        return DB::select(DB::raw($this->instruction($filters)), $filters);
+        return DB::select((string)DB::raw($this->instruction($filters)), $filters);
     }
 
     /**
      * @param string $template
      * @param array $parameters
+     *
      * @return false|Factory|View|string
      */
     final protected function render(string $template, array $parameters = [])

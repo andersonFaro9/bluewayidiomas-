@@ -30,12 +30,6 @@ export default class GradeSchema extends Schema {
       .fieldTableShow()
       .fieldTableWhere()
       .fieldFormAutofocus()
-      .validationRequired()
-
-    this.addField('shift')
-      .fieldTableShow()
-      .fieldTableWhere()
-      .fieldIsSelect()
       .fieldFormWidth(50)
       .validationRequired()
 
@@ -44,5 +38,25 @@ export default class GradeSchema extends Schema {
       .fieldTableWhere()
       .fieldIsSelectRemote(UserSchema.build().provideRemote())
       .fieldFormWidth(50)
+
+    this.addField('level')
+      .fieldTableShow()
+      .fieldTableWhere()
+      .fieldIsSelect()
+      .fieldFormWidth(50)
+      .validationRequired()
+
+    this.addField('class')
+      .fieldTableShow()
+      .fieldTableWhere()
+      .fieldIsSelect()
+      .fieldFormWidth(50)
+      .validationRequired()
+
+    this.addField('shift')
+      .fieldTableShow()
+      .fieldTableWhere()
+      .fieldIsInputPlan()
+      .validationRequired()
   }
 }

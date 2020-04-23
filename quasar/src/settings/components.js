@@ -118,7 +118,7 @@ export default {
   },
   select: {
     is: 'q-select',
-    attrs: { popupContentClass: 'uppercase', ...attrs, uppercase: true },
+    attrs: { popupContentClass: 'uppercase', ...attrs, 'use-input': true, uppercase: true },
     parseOutput: undefined
   },
   toggle: {

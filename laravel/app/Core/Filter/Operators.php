@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Core\Filter;
 
 /**
@@ -12,7 +14,7 @@ final class Operators
     /**
      * @var string
      */
-    public const SEPARATOR = '~';
+    public const SEPARATION_OPERATOR = '.~.';
 
     /**
      * @var string
@@ -25,17 +27,28 @@ final class Operators
     public const LIKE = 'like';
 
     /**
+     * @var string
+     */
+    public const CURRENCY = 'currency';
+
+    /**
      * Operators constructor.
      */
     private function __construct()
     {
     }
 
-    public static function sign(string $operator)
+    /**
+     * @param string $operator
+     *
+     * @return string|null
+     */
+    public static function sign(string $operator): ?string
     {
         $signs = [
             static::EQUAL => '=',
             static::LIKE => 'like',
+            static::CURRENCY => 'currency',
         ];
         return $signs[$operator] ?? null;
     }

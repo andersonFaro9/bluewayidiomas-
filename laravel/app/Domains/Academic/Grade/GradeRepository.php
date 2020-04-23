@@ -17,4 +17,11 @@ class GradeRepository extends AbstractRepository
      */
     protected string $prototype = Grade::class;
 
+    /**
+     * @return array
+     */
+    public function getFilterable(): array
+    {
+        return ['name', 'level', 'class', 'shift'];
+    }
 }

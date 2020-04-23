@@ -1,13 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Api\Auth;
 
 use App\Domains\Admin\User;
 use App\Domains\Admin\User\UserRepository;
 use App\Exceptions\ErrorResourceIsGone;
 use App\Exceptions\ErrorValidation;
-use App\Http\Controllers\Api\AbstractAnswerController;
-use App\Http\Status;
+use App\Http\Controllers\Api\AbstractController;
 use Exception;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 use Illuminate\Http\JsonResponse;
@@ -15,15 +16,17 @@ use Illuminate\Http\Request;
 
 /**
  * Class Confirm
+ *
  * @package App\Http\Controllers\Api\Auth
  */
-class Confirm extends AbstractAnswerController
+class Confirm extends AbstractController
 {
     /**
      * Confirm password reset request
      *
      * @param Request $request
      * @param UserRepository $userRepository
+     *
      * @return JsonResponse
      * @throws ErrorResourceIsGone
      * @throws ErrorValidation
@@ -70,6 +73,7 @@ class Confirm extends AbstractAnswerController
      * @param Eloquent $user
      * @param string $password
      * @param array $details
+     *
      * @return JsonResponse
      * @throws ErrorResourceIsGone
      */
@@ -98,6 +102,7 @@ class Confirm extends AbstractAnswerController
     /**
      * @param string $password
      * @param string $confirm
+     *
      * @throws ErrorValidation
      */
     private function validatePassword($password, $confirm)

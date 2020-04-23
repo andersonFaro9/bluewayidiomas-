@@ -1,36 +1,37 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Api\Auth;
 
-use App\Http\Controllers\Api\AbstractAnswerController;
+use App\Http\Controllers\Api\AbstractController;
 use Illuminate\Http\JsonResponse;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
 /**
  * Class Refresh
+ *
  * @package App\Http\Controllers\Api\Auth
  */
-class Refresh extends AbstractAnswerController
+class Refresh extends AbstractController
 {
     /**
      * Refresh a token.
      *
      * @return JsonResponse
+     * @noinspection PhpPossiblePolymorphicInvocationInspection
      */
     public function __invoke()
     {
         $auth = auth();
 
-        /** @noinspection PhpUndefinedMethodInspection */
         $token = $auth->refresh();
 
-        /** @noinspection PhpUndefinedMethodInspection */
         $payload = $auth->payload();
 
         /** @noinspection PhpUndefinedMethodInspection */
         $token_expires_at = JWTAuth::setToken($token)->getPayload()->get('exp');
 
-        /** @noinspection PhpUndefinedMethodInspection */
         return $this->answerSuccess([
             'token' => $token,
             'token_type' => 'bearer',
