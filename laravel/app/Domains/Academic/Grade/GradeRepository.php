@@ -22,6 +22,11 @@ class GradeRepository extends AbstractRepository
      */
     public function getFilterable(): array
     {
-        return ['name', 'level', 'class', 'shift'];
+        return [
+            'name',
+            'level',
+            'class',
+            'shift',
+        ];
     }
 }

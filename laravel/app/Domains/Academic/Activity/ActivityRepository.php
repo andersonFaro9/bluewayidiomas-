@@ -18,4 +18,20 @@ class ActivityRepository extends AbstractRepository
      * @var string
      */
     protected string $prototype = Activity::class;
+
+    /**
+     * @return array
+     */
+    public function getFilterable(): array
+    {
+        return [
+            'type',
+            'documentType',
+            'linkType',
+            'name',
+            'description',
+            'document',
+            'link',
+        ];
+    }
 }

@@ -39,3 +39,8 @@ export default (
     // configure: (button, context) => button
   }
 }
+
+/**
+ * @type {string[]}
+ */
+export const ignored = []
