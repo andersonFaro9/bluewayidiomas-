@@ -190,7 +190,7 @@ export default {
 
   .q-drawer__content {
     i {
-      color: #616161 !important;
+      color: #767676 !important;
     }
 
     .q-list--bordered, .q-list--separator > .q-item-type + .q-item-type, .q-list--separator > .q-virtual-scroll__content > .q-item-type + .q-item-type {
