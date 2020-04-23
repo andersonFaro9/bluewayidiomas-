@@ -1,20 +1,17 @@
 <template>
-  <q-page
-    class="DashboardIndex"
-    padding
-  >
+  <div class="DashboardIndex">
     <div class="flex row bg-primary text-white shadow-2 rounded-borders q-pa-md">
-        <div class="col-6-sm q-pa-sm">
-          <small class="text-weight-medium mono-font text-subtitle1">
-            {{ greetings }}, {{saudar}}, <strong>{{ name }}</strong>
-          </small>
-        </div>
-        <q-space />
-        <div class="col-6-sm q-pa-sm text-right">
-          <small class="text-weight-thin mono-font">Versão da aplicação: {{ version }}</small>
-        </div>
+      <div class="col-6-sm q-pa-sm">
+        <small class="text-weight-medium mono-font text-subtitle1">
+          {{ greetings }}, {{saudar}}, <strong>{{ name }}</strong>
+        </small>
       </div>
-  </q-page>
+      <q-space />
+      <div class="col-6-sm q-pa-sm text-right">
+        <small class="text-weight-thin mono-font">Versão da aplicação: {{ version }}</small>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script type="text/javascript">
@@ -118,6 +115,8 @@ export default {
 
 <style lang="stylus">
 .DashboardIndex
+  min-height calc(100vh - 130px)
+
   .DashboardIndex__card
     cursor pointer
     min-height 100%

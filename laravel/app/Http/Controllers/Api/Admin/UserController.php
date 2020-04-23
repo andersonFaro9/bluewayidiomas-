@@ -1,10 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Api\Admin;
 
 use App\Domains\Admin\User\UserRepository;
 use App\Http\Controllers\Api\AbstractRestController;
-use Illuminate\Http\Request;
 
 /**
  * Class UserController
@@ -15,10 +16,9 @@ class UserController extends AbstractRestController
     /**
      * User constructor.
      * @param UserRepository $repository
-     * @param Request $request
      */
-    public function __construct(UserRepository $repository, Request $request)
+    public function __construct(UserRepository $repository)
     {
-        parent::__construct($repository, $request);
+        parent::__construct($repository);
     }
 }

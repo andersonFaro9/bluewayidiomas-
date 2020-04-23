@@ -38,6 +38,8 @@ class Grade extends AbstractModel
     protected $fillable = [
         'userId',
         'name',
+        'level',
+        'class',
         'shift',
     ];
 
@@ -46,7 +48,8 @@ class Grade extends AbstractModel
      */
     protected $rules = [
         'name' => 'required',
-        'shift' => ['required'],
+        'level' => 'required',
+        'class' => 'required',
     ];
 
     /**

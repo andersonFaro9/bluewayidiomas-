@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Api;
 
-use App\Http\Status;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
@@ -11,7 +12,7 @@ use Illuminate\Support\Facades\Cache;
  * Class State
  * @package App\Http\Controllers\Api\Genetic
  */
-class State extends AbstractAnswerController
+class State extends AbstractController
 {
     /**
      * The __invoke method is called when a script tries to call an object as a function.

@@ -1,5 +1,6 @@
-<?php
-/** @noinspection PhpUnused */
+<?php  /** @noinspection PhpUnused */
+
+declare(strict_types=1);
 
 namespace App\Core\Model;
 
@@ -12,12 +13,12 @@ trait Replaceable
     /**
      * @var array
      */
-    protected $encoded = [];
+    protected array $encoded = [];
 
     /**
      * @return array
      */
-    public function getEncoded()
+    public function getEncoded(): array
     {
         return $this->encoded;
     }
@@ -42,6 +43,14 @@ trait Replaceable
      * @return array
      */
     public function manyToMany(): array
+    {
+        return [];
+    }
+
+    /**
+     * @return array
+     */
+    public function currencies(): array
     {
         return [];
     }

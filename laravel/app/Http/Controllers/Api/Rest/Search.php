@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Api\Rest;
 
 use App\Core\Filter\Connectors;
@@ -9,6 +11,9 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Php\JSON;
 use Ramsey\Uuid\Uuid;
+
+use function count;
+use function is_array;
 
 /**
  * Trait Search
@@ -78,11 +83,15 @@ trait Search
             return [];
         }
         $filters = [];
-        foreach ($fields as $field) {
+        foreach ($fields as $field => $operator) {
+            if (is_numeric($field)) {
+                $field = $operator;
+                $operator = Operators::LIKE;
+            }
             $filters[$field] = [
                 'connector' => Connectors::OR_CONNECTOR,
                 'value' => $filter,
-                'operator' => Operators::LIKE
+                'operator' => $operator,
             ];
         }
         return $filters;
@@ -102,7 +111,7 @@ trait Search
         $filters = [];
         foreach ($where as $field => $properties) {
             $operator = Operators::EQUAL;
-            $pieces = explode(Operators::SEPARATOR, $properties);
+            $pieces = explode(Operators::SEPARATION_OPERATOR, $properties);
             $value = $pieces[0];
             if (count($pieces) > 1) {
                 [$operator, $value] = $pieces;

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Core\Repository;
 
 use App\Core\AbstractModel;
@@ -10,6 +12,7 @@ use Ramsey\Uuid\Uuid;
  * Trait Create
  *
  * @package App\Core\Repository
+ * @property AbstractModel model
  */
 trait Create
 {
@@ -21,12 +24,14 @@ trait Create
      */
     public function create(array $data): ?string
     {
-        /** @var AbstractModel $model */
-        $model = $this->model;
-        if (!isset($data['id'])) {
-            $data['id'] = Uuid::uuid1()->toString();
+        $model = clone $this->model;
+
+        $primaryKey = $model->exposedKey();
+        if (!isset($data[$primaryKey])) {
+            $data[$primaryKey] = Uuid::uuid1()->toString();
         }
-        $model->fill($data)->save();
-        return $model->getValue('id');
+        $model->fill($data);
+        $model->save();
+        return $model->getPrimaryKeyValue();
     }
 }

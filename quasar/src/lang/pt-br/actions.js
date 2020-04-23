@@ -78,7 +78,7 @@ export default {
     label: 'Atualizar',
     tooltip: 'Atualiza os registros carregados na tela'
   },
-  'sort-clear': {
+  sortClear: {
     noSort: 'A ordenação não está ativa para ser reiniciada',
     tooltip: 'Remove a ordenação aplicada à tela'
   },
@@ -86,7 +86,7 @@ export default {
     label: 'Pesquisar',
     tooltip: 'Pesquisa pelos valores informados no formulário'
   },
-  'search-clear': {
+  searchClear: {
     label: 'Limpar',
     tooltip: 'Limpa todos os filtros aplicados'
   }

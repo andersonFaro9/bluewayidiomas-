@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Core;
 
 use App\Core\Model\Fill;
@@ -9,6 +11,7 @@ use App\Core\Model\Replaceable;
 use App\Core\Model\Validation;
 use App\Core\Model\Value;
 use Dyrynda\Database\Support\GeneratesUuid as HasBinaryUuid;
+use Exception;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -19,16 +22,20 @@ use OwenIt\Auditing\Exceptions\AuditingException;
 use Ramsey\Uuid\Uuid;
 
 use function App\Helper\is_binary;
+use function in_array;
 
 /**
  * Class AbstractModel
  *
  * @property string id
+ * @property float|mixed|string counter
  * @package App\Core
  * @method AbstractModel create(array $attributes = [])
  * @method AbstractModel where(mixed $reference, mixed $operator = null, mixed $value = null)
  * @method AbstractModel whereIn(string $column, mixed $values)
  * @method AbstractModel orWhere(string $column, mixed $operator, mixed $value = null)
+ * @method AbstractModel whereNotNull(string $column)
+ * @method AbstractModel whereNull(string $column)
  * @method AbstractModel first()
  * @method static Collection withUuid(string $id)
  * @method Collection get($columns = ['*'])
@@ -167,7 +174,6 @@ abstract class AbstractModel extends Eloquent implements ModelInterface, Auditin
 
     /**
      * Boot the trait, adding a creating observer.
-     *
      * When persisting a new model instance, we resolve the UUID field, then set
      * a fresh UUID, taking into account if we need to cast to binary or not.
      *
@@ -186,7 +192,8 @@ abstract class AbstractModel extends Eloquent implements ModelInterface, Auditin
                     $uuid = $uuid::fromString(strtolower($model->attributes[$uuidColumn]));
                 }
 
-                if ($id = $model->getFilled($model->exposedKey())) {
+                $id = $model->getFilled($model->exposedKey());
+                if ($id && $id !== __UNDEFINED__) {
                     $uuid = $uuid::fromString($id);
                 }
 
@@ -199,6 +206,7 @@ abstract class AbstractModel extends Eloquent implements ModelInterface, Auditin
     /**
      * {@inheritdoc}
      * @throws AuditingException
+     * @noinspection DuplicatedCode
      */
     public function toAudit(): array
     {
@@ -264,6 +272,20 @@ abstract class AbstractModel extends Eloquent implements ModelInterface, Auditin
             $data['user_id'] = static::encodeUuid($data['user_id']);
         }
         return $this->safeAttributes($data, ['user_id']);
+    }
+
+    /**
+     * @return $this
+     */
+    public function counter(): self
+    {
+        try {
+            $random = random_int(1, 99);
+        } catch (Exception $e) {
+            $random = 99;
+        }
+        $this->counter = str_pad(((microtime(true) * 1000) . $random), 18, '0');
+        return $this;
     }
 
     /**

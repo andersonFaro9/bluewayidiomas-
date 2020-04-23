@@ -1,5 +1,6 @@
-<?php
-/** @noinspection PhpUnused */
+<?php /** @noinspection PhpUnused */
+
+declare(strict_types=1);
 
 namespace App\Core\Model;
 
@@ -7,8 +8,12 @@ use App\Core\AbstractModel;
 use App\Exceptions\ErrorInvalidArgument;
 use Ramsey\Uuid\Uuid;
 
+use function App\Helper\numberToCurrency;
+use function is_array;
+
 /**
  * Trait Configure
+ *
  * @package App\Core\Model
  */
 trait Hook
@@ -22,12 +27,17 @@ trait Hook
 
         static::configure();
 
-        static::saving(static function (AbstractModel $model) {
-            // parse many to one relationship
-            $model->parseManyToOne();
-            // validate the values
-            $model->validate();
-        });
+        static::saving(
+            static function (AbstractModel $model) {
+                // $model->counter();
+                // parse many to one relationship
+                $model->parseManyToOne();
+                // parse currencies
+                $model->parseCurrencies();
+                // validate the values
+                $model->validate();
+            }
+        );
     }
 
     /**
@@ -54,8 +64,20 @@ trait Hook
     }
 
     /**
+     * @return void
+     */
+    protected function parseCurrencies(): void
+    {
+        $currencies = $this->currencies();
+        foreach ($currencies as $field) {
+            $this->setValue($field, numberToCurrency($this->getValue($field)));
+        }
+    }
+
+    /**
      * @param string $column
      * @param array $filled
+     *
      * @return void
      * @throws ErrorInvalidArgument
      */

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Api\Rest;
 
 use App\Core\RepositoryInterface;
@@ -9,6 +11,7 @@ use Illuminate\Http\Request;
 
 /**
  * Trait Read
+ *
  * @package App\Http\Controllers\Api\Rest
  * @method RepositoryInterface repository()
  */
@@ -17,6 +20,7 @@ trait Read
     /**
      * @param Request $request
      * @param string $id
+     *
      * @return JsonResponse
      * @throws ErrorResourceIsGone
      */

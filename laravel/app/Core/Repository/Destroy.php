@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Core\Repository;
 
 use App\Core\AbstractModel;
@@ -14,18 +16,23 @@ trait Destroy
 {
     /**
      * @param string $id
+     * @param bool $erase
      *
      * @return string
      * @throws Exception
      */
-    public function destroy(string $id): ?string
+    public function destroy(string $id, $erase = false): ?string
     {
         /** @var AbstractModel $instance */
         $instance = $this->pull($id);
         if ($instance === null) {
             return null;
         }
+        if ($erase) {
+            $instance->forceDelete();
+            return $id;
+        }
         $instance->delete();
-        return $instance->getValue('id');
+        return $id;
     }
 }

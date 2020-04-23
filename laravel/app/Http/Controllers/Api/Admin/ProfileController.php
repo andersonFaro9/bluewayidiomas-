@@ -1,10 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Api\Admin;
 
 use App\Domains\Admin\Profile\ProfileRepository;
 use App\Http\Controllers\Api\AbstractRestController;
-use Illuminate\Http\Request;
 
 /**
  * Class ProfileController
@@ -15,10 +16,9 @@ class ProfileController extends AbstractRestController
     /**
      * ProfileController constructor.
      * @param ProfileRepository $repository
-     * @param Request $request
      */
-    public function __construct(ProfileRepository $repository, Request $request)
+    public function __construct(ProfileRepository $repository)
     {
-        parent::__construct($repository, $request);
+        parent::__construct($repository);
     }
 }

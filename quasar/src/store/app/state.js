@@ -9,6 +9,6 @@ export default {
   clipboard: {},
   query: {},
   print: undefined,
-  debuggers: false,
+  debuggers: !!read('appDebuggers', true),
   device: undefined
 }

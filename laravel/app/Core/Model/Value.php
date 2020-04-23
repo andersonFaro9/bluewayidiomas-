@@ -1,7 +1,14 @@
-<?php
-/** @noinspection PhpUnused */
+<?php /** @noinspection PhpUnused */
+
+declare(strict_types=1);
 
 namespace App\Core\Model;
+
+use function App\Helper\currencyToNumber;
+use function count;
+use function in_array;
+use function is_array;
+use function is_callable;
 
 /**
  * Trait Value
@@ -41,7 +48,7 @@ trait Value
         $values = [];
         foreach ($names as $name) {
             $value = $this->getValue($name);
-            if (in_array($name, $this->encoded, true)) {
+            if (in_array($name, $this->getEncoded(), true)) {
                 $value = static::decodeUuid($value);
             }
             $values[$name] = $value;
@@ -153,15 +160,31 @@ trait Value
      */
     private function safeAttributes(array $attributes, array $except = []): array
     {
-        foreach ($attributes as $index => &$value) {
-            if (in_array($index, $except, true)) {
+        $currencies = $this->currencies();
+        foreach ($attributes as $field => &$value) {
+            if (in_array($field, $currencies, true)) {
+                $value = currencyToNumber($this->getValue($field));
                 continue;
             }
-            if (!$this->isEncoded($index)) {
+
+            if (in_array($field, $except, true)) {
                 continue;
             }
+
+            if (!$this->isEncoded($field)) {
+                continue;
+            }
+
             $value = static::decodeUuid($value);
         }
         return $attributes;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPrimaryKeyValue()
+    {
+        return $this->getValue($this->exposedKey());
     }
 }

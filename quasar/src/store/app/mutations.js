@@ -63,6 +63,7 @@ export const mutatePrint = (state, print) => {
  */
 export const mutateDebuggers = (state, debuggers) => {
   state.debuggers = debuggers
+  write('appDebuggers', debuggers, true)
 }
 
 /**

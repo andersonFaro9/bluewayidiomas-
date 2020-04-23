@@ -1,10 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Core\Repository;
 
 use App\Core\AbstractModel;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+
+use function is_array;
 
 /**
  * Trait Search
@@ -31,7 +35,7 @@ trait Search
             $sorter = $this->model->sorter();
         }
 
-        return $this->filter($filters, $sorter, $offset, $limit, $trash)->toArray();
+        return $this->find($filters, $sorter, $offset, $limit, $trash)->toArray();
     }
 
     /**
@@ -43,7 +47,7 @@ trait Search
      *
      * @return AbstractModel[]|Builder[]|Collection
      */
-    public function filter(array $filters, $sorter = [], $offset = 0, $limit = 25, $trash = false)
+    public function find(array $filters, $sorter = [], $offset = 0, $limit = 25, $trash = false)
     {
         /** @var AbstractModel $query */
         $query = $this->where($filters, $trash);

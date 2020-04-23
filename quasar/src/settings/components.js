@@ -101,7 +101,14 @@ export default {
   },
   checkbox: {
     is: 'q-checkbox',
-    attrs: { ...attrs, useReadonly: false, 'indeterminate-value': 'maybe' },
+    attrs: {
+      ...attrs,
+      useReadonly: false,
+      'toggle-indeterminate': false,
+      'true-value': 1,
+      'false-value': 0,
+      value: 0
+    },
     parseOutput: undefined
   },
   radio: {
@@ -111,12 +118,19 @@ export default {
   },
   select: {
     is: 'q-select',
-    attrs: { popupContentClass: 'uppercase', ...attrs, uppercase: true },
+    attrs: { popupContentClass: 'uppercase', ...attrs, 'use-input': true, uppercase: true },
     parseOutput: undefined
   },
   toggle: {
     is: 'q-toggle',
-    attrs: { ...attrs, useReadonly: false },
+    attrs: {
+      ...attrs,
+      useReadonly: false,
+      'toggle-indeterminate': false,
+      'true-value': true,
+      'false-value': false,
+      value: false
+    },
     parseOutput: undefined
   },
   remote: {

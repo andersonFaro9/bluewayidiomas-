@@ -1,11 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Api\Auth;
 
 use App\Domains\Admin\Action\ActionRepository;
 use App\Domains\Auth\Login;
 use App\Exceptions\ErrorValidation;
-use App\Http\Controllers\Api\AbstractAnswerController;
+use App\Http\Controllers\Api\AbstractController;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -14,7 +16,7 @@ use Illuminate\Http\Request;
  *
  * @package App\Http\Controllers\Api\Auth
  */
-class Me extends AbstractAnswerController
+class Me extends AbstractController
 {
     /**
      * @param Request $request

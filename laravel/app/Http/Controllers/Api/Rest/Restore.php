@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Api\Rest;
 
 use App\Core\RepositoryInterface;
@@ -31,12 +33,12 @@ trait Restore
         }
 
         $executed = [];
-        foreach ($ids as $detail) {
-            $restored = $this->repository()->restore($detail);
+        foreach ($ids as $identifier) {
+            $restored = $this->repository()->restore($identifier);
             if ($restored === null) {
                 continue;
             }
-            $executed[] = $detail;
+            $executed[] = $identifier;
         }
 
         if (count($ids) !== count($executed)) {

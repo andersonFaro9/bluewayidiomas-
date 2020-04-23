@@ -1,12 +1,14 @@
 <?php
-/**
- *
- */
+
+declare(strict_types=1);
+
 namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
 use Sentry\State\Scope;
+
+use function is_array;
 use function PhpBrasil\Collection\pack;
 use function Sentry\configureScope;
 
@@ -27,19 +29,20 @@ class SentryContext
     public function handle($request, Closure $next)
     {
         if (auth()->check() && app()->bound('sentry')) {
-            configureScope(function (Scope $scope): void {
+            configureScope(static function (Scope $scope): void {
                 $scope->setUser([
                     'id' => auth()->user()->id,
                     'email' => auth()->user()->email,
                 ]);
             });
         }
-        configureScope(function (Scope $scope): void {
+        configureScope(static function (Scope $scope): void {
+            /** @noinspection JsonEncodingApiUsageInspection */
             $payload = json_decode(file_get_contents('php://input'), true);
             if (!is_array($payload)) {
                 $payload = [];
             }
-            $reduce = function ($accumulator, $value, $key) {
+            $reduce = static function ($accumulator, $value, $key) {
                 $accumulator[] = [$key => $value];
                 return $accumulator;
             };

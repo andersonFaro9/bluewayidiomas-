@@ -1,9 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\File;
 
 use App\Exceptions\ErrorValidation;
-use App\Http\Controllers\Api\AbstractAnswerController;
+use App\Http\Controllers\Api\AbstractController;
+use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -13,15 +16,18 @@ use function App\Helper\uuid;
 
 /**
  * Class Upload
+ *
  * @package App\Http\Controllers\File
  */
-class Upload extends AbstractAnswerController
+class Upload extends AbstractController
 {
     /**
      * @param Request $request
      * @param string $any
+     *
      * @return JsonResponse
      * @throws ErrorValidation
+     * @throws Exception
      */
     public function __invoke(Request $request, string $any)
     {
@@ -34,14 +40,15 @@ class Upload extends AbstractAnswerController
         $reference = uuid();
         if ($request->get('reference')) {
             preg_match_all('/.*\/(.*)\..*/', $request->get('reference'), $matches, PREG_SET_ORDER, 0);
-            if (isset($matches[0][1])) {
+            if (isset($matches[0], $matches[0][1])) {
                 $reference = $matches[0][1];
             }
         }
-        $path = "{$any}/{$reference}.{$extension}";
+        $resource = "{$any}/{$reference}.{$extension}";
+        $path = "statics/{$resource}";
 
         if (Storage::disk('minio')->put($path, File::get($document->getRealPath()))) {
-            return $this->answerSuccess(['resource' => $path]);
+            return $this->answerSuccess(['resource' => $resource]);
         }
         return $this->answerError("Can't save the path: '{$path}'");
     }

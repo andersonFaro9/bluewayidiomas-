@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Api\Academic;
 
 use App\Domains\Academic\Activity\ActivityRepository;

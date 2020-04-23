@@ -1,10 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Api\Academic;
 
 use App\Domains\Academic\Grade\GradeRepository;
 use App\Http\Controllers\Api\AbstractRestController;
-use Illuminate\Http\Request;
 
 /**
  * Class GradeController
@@ -17,10 +18,9 @@ class GradeController extends AbstractRestController
      * GradeController constructor.
      *
      * @param GradeRepository $repository
-     * @param Request $request
      */
-    public function __construct(GradeRepository $repository, Request $request)
+    public function __construct(GradeRepository $repository)
     {
-        parent::__construct($repository, $request);
+        parent::__construct($repository);
     }
 }

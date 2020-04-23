@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Core\Repository;
 
 use App\Core\AbstractModel;
@@ -7,6 +9,10 @@ use App\Core\Filter\Connectors;
 use App\Core\Filter\Operators;
 use App\Exceptions\ErrorInvalidArgument;
 use Illuminate\Database\Eloquent\Builder;
+
+use function App\Helper\numberToCurrency;
+use function in_array;
+use function is_array;
 
 /**
  * Trait Basic
@@ -96,6 +102,12 @@ trait Basic
         $sign = Operators::sign($operator);
         if (!$sign) {
             return $model;
+        }
+
+        switch ($sign) {
+            case Operators::CURRENCY:
+                $sign = '=';
+                $filter = numberToCurrency($filter);
         }
 
         if ($connector === Connectors::OR_CONNECTOR) {

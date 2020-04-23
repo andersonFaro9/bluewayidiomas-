@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Core\Model;
 
 use App\Exceptions\ErrorValidation;

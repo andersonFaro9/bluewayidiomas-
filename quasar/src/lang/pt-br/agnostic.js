@@ -38,6 +38,7 @@ export default {
       button: 'Selecione uma imagem'
     },
     password: {
+      copied: 'Uma nova senha foi gerada e copiada para a área de trabalho',
       generator: {
         tooltip: 'Cria uma nova senha com {length} caracteres'
       },
@@ -84,6 +85,6 @@ export default {
     'md-refresh': actions.refresh,
     'md-sort-clear': actions['sort-clear'],
     'md-search': actions.search,
-    'md-search-clear': actions['search-clear']
+    'md-search-clear': actions.searchClear
   }
 }
