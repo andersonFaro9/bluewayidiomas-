@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -11,8 +13,8 @@
 |
 */
 
-use App\Http\Response\Answer;
-use App\Http\Routing\Router;
+use DeviTools\Http\Response\Answer;
+use DeviTools\Http\Routing\Router;
 
 Router::prefix('v1')->group(static function () {
     Router::group([], __DIR__ . '/api/auth.php');

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Domains\Admin;
 
-use App\Core\AbstractModel;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use DeviTools\Persistence\AbstractModel;
 
 /**
  * Class Action

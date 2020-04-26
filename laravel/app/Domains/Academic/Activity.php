@@ -2,14 +2,14 @@
 
 namespace App\Domains\Academic;
 
-use App\Core\AbstractModel;
 use App\Domains\Academic\Shared\TeacherGrade;
 use App\Domains\Admin\Profile;
-use App\Exceptions\ErrorUserForbidden;
+use DeviTools\Exceptions\ErrorUserForbidden;
 use App\Units\Common\UserSession;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Ramsey\Uuid\Uuid;
+use DeviTools\Persistence\AbstractModel;
 
 /**
  * Class Activity

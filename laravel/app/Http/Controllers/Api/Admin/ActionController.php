@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Api\Admin;
 
 use App\Domains\Admin\Action\ActionRepository;
-use App\Http\Controllers\Api\AbstractRestController;
+use DeviTools\Http\AbstractRestController;
 
 /**
  * Class ActionController

@@ -3,8 +3,8 @@
 namespace App\Domains\Admin;
 
 use App\Domains\Admin\PasswordReset\PasswordResetCreated;
-use App\Core\AbstractModel;
 use App\Domains\Util\Instance;
+use DeviTools\Persistence\AbstractModel;
 
 /**
  * Class PasswordReset

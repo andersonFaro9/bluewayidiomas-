@@ -3,14 +3,14 @@
 namespace App\Domains\Auth;
 
 use App\Domains\Util\Instance;
-use App\Exceptions\ErrorUserInative;
-use App\Exceptions\ErrorUserUnauthorized;
+use DeviTools\Exceptions\ErrorUserInative;
+use DeviTools\Exceptions\ErrorUserUnauthorized;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Hash;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
-use function App\Helper\uuid;
+use function DeviTools\Helper\uuid;
 
 /**
  * Class Session

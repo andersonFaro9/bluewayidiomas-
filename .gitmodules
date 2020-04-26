@@ -1,3 +1,6 @@
 [submodule "quasar/src/app"]
 	path = quasar/src/app
 	url = https://github.com/quasarframeworkbrasil/agnos.git
+[submodule "laravel/core"]
+	path = laravel/core
+	url = https://github.com/devitools/laravel.git

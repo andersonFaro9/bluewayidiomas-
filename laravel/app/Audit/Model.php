@@ -2,13 +2,12 @@
 
 namespace App\Audit;
 
-use App\Core\AbstractModel as Common;
 use Illuminate\Database\Eloquent\JsonEncodingException;
 use OwenIt\Auditing\Models\Audit;
-
+use DeviTools\Persistence\AbstractModel as Common;
 use Throwable;
 
-use function App\Helper\is_binary;
+use function DeviTools\Helper\is_binary;
 
 /**
  * Class Model

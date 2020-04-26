@@ -2,8 +2,8 @@
 
 namespace App\Domains\Academic\Grade;
 
-use App\Core\AbstractRepository;
 use App\Domains\Academic\Grade;
+use DeviTools\Persistence\AbstractRepository;
 
 /**
  * Class GradeRepository

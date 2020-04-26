@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Units\Common;
 
 use App\Domains\Auth\Login;
-use App\Exceptions\ErrorUserForbidden;
+use DeviTools\Exceptions\ErrorUserForbidden;
 
 /**
  * Trait UserSession

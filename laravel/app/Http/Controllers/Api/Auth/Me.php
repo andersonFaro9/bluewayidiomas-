@@ -6,8 +6,8 @@ namespace App\Http\Controllers\Api\Auth;
 
 use App\Domains\Admin\Action\ActionRepository;
 use App\Domains\Auth\Login;
-use App\Exceptions\ErrorValidation;
-use App\Http\Controllers\Api\AbstractController;
+use DeviTools\Exceptions\ErrorValidation;
+use DeviTools\Http\AbstractController;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 

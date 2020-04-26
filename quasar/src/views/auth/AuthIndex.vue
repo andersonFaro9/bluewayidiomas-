@@ -137,7 +137,9 @@ export default {
     /**
      */
     attemptFetchUser () {
-      me().then(this.attemptSetUser)
+      me()
+        .then(this.attemptSetUser)
+        .catch(() => this.$q.loading.hide())
     },
     /**
      * @param {Object} user

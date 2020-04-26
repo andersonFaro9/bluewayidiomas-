@@ -6,9 +6,9 @@ namespace App\Http\Controllers\Api\Auth;
 
 use App\Domains\Admin\User;
 use App\Domains\Admin\User\UserRepository;
-use App\Exceptions\ErrorResourceIsGone;
-use App\Exceptions\ErrorValidation;
-use App\Http\Controllers\Api\AbstractController;
+use DeviTools\Exceptions\ErrorResourceIsGone;
+use DeviTools\Exceptions\ErrorValidation;
+use DeviTools\Http\AbstractController;
 use Exception;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 use Illuminate\Http\JsonResponse;

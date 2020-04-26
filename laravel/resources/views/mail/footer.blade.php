@@ -1,5 +1,5 @@
 <table class="wrapper footer" align="center"
-       style="background: #38b8c5 url('{{ App\Helper\url('/mail/img/bgFooter.png') }}');border-collapse: collapse; border-spacing: 0; padding: 0; text-align: left; vertical-align: top; width: 100%;">
+       style="background: #38b8c5 url('{{ DeviTools\Helper\url('/mail/img/bgFooter.png') }}');border-collapse: collapse; border-spacing: 0; padding: 0; text-align: left; vertical-align: top; width: 100%;">
     <tbody>
     <tr style="padding: 0; text-align: left; vertical-align: top;">
         <td class="wrapper-inner"

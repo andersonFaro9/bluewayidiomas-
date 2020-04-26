@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Domains\Admin;
 
-use App\Core\AbstractModel;
 use App\Domains\Admin\User\UserCreated;
 use App\Domains\Admin\User\UserCreating;
 use App\Domains\Admin\User\UserUpdating;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use DeviTools\Persistence\AbstractModel;
 
 /**
  * Class User
@@ -88,7 +88,7 @@ class User extends AbstractModel
     /**
      * @var array
      */
-    protected $uniques = [
+    protected array $uniques = [
         'email',
     ];
 

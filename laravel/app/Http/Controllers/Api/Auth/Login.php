@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Api\Auth;
 
 use App\Domains\Auth\Session;
-use App\Exceptions\ErrorUserInative;
-use App\Exceptions\ErrorUserLocked;
-use App\Exceptions\ErrorUserUnauthorized;
-use App\Http\Controllers\Api\AbstractController;
+use DeviTools\Exceptions\ErrorUserInative;
+use DeviTools\Exceptions\ErrorUserLocked;
+use DeviTools\Exceptions\ErrorUserUnauthorized;
+use DeviTools\Http\AbstractController;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;

@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Domains\Admin\User;
 
-use App\Core\AbstractRepository;
 use App\Domains\Admin\Profile;
 use App\Domains\Admin\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+use DeviTools\Persistence\AbstractRepository;
 
 /**
  * Class UserRepository

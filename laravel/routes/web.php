@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,7 +13,7 @@
 |
 */
 
-use App\Http\Routing\Router;
+use DeviTools\Http\Routing\Router;
 
 Router::get('/', static function () {
     return file_get_contents(__DIR__ . '/../public/index.html');

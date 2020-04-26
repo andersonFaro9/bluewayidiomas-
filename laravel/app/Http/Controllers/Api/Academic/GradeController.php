@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Api\Academic;
 
 use App\Domains\Academic\Grade\GradeRepository;
-use App\Http\Controllers\Api\AbstractRestController;
+use DeviTools\Http\AbstractRestController;
 
 /**
  * Class GradeController

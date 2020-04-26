@@ -5,7 +5,7 @@
 
 namespace App\Domains\Util;
 
-use App\Exceptions\ErrorExternalIntegration;
+use DeviTools\Exceptions\ErrorExternalIntegration;
 
 /**
  * Trait ProcessFile
