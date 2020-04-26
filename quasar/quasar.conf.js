@@ -158,7 +158,7 @@ module.exports = function (ctx) {
         }
 
         const path = `./.env${environment}`
-        cfg.plugins.push(new DotEnv({ path }))
+        cfg.plugins.push(new DotEnv({ path, defaults: true }))
       }
     },
 
