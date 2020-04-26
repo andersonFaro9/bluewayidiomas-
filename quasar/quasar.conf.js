@@ -1,8 +1,8 @@
 // Configuration for your app
 // https://quasar.dev/quasar-cli/quasar-conf-js
 const DotEnv = require('dotenv-webpack')
-const VersionFile = require('webpack-version-file-plugin')
 const Path = require('path')
+const VersionFile = require('webpack-version-file-plugin')
 
 const unique = require('./src/app/unique')
 
@@ -16,6 +16,7 @@ module.exports = function (ctx) {
       'browse',
       'database',
       'development',
+      'i18n',
       'lang',
       'message',
       'polyfill',

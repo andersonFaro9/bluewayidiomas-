@@ -1,4 +1,4 @@
-import { getLocale } from 'src/lang'
+import { getLocale } from 'src/app/Lang'
 import { downloadFile } from 'src/settings/storage'
 
 /**
