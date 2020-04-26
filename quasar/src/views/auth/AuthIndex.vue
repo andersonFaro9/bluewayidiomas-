@@ -96,7 +96,7 @@ export default {
     started: false,
     isPassword: true,
     record: {
-      login: process.env.VUE_APP_DEFAULT_LOGIN,
+      login: process.env.VUE_APP_DEFAULT_USERNAME,
       password: process.env.VUE_APP_DEFAULT_PASSWORD
     }
   }),
