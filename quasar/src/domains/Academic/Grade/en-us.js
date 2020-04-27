@@ -5,39 +5,39 @@ import { SCOPES } from 'src/app/Agnostic/enum'
 export default {
   routes: {
     group: {
-      crumb: 'Acadêmico / Turmas'
+      crumb: 'Academic / Class'
     },
     [SCOPES.SCOPE_INDEX]: {
-      title: 'Turmas'
+      title: 'Class'
     },
     [SCOPES.SCOPE_TRASH]: {
-      title: 'Lixeira das Turmas',
-      crumb: 'Lixeira'
+      title: 'Class Trash',
+      crumb: 'Trash'
     },
     [SCOPES.SCOPE_ADD]: {
-      title: 'Criar Turma',
-      crumb: 'Criar'
+      title: 'Create Class',
+      crumb: 'Create'
     },
     [SCOPES.SCOPE_VIEW]: {
-      title: 'Visualizar Turma',
-      crumb: 'Visualizar'
+      title: 'See Class',
+      crumb: 'To see'
     },
     [SCOPES.SCOPE_EDIT]: {
-      title: 'Editar Turma',
-      crumb: 'Editar'
+      title: 'Edit Class',
+      crumb: 'Edit'
     }
   },
   print: {
-    title: 'Impressão de Turma'
+    title: 'Printed activity'
   },
   fields: {
     name: {
-      label: 'Nome',
+      label: 'Module',
       placeholder: 'Ex.: BWP1'
     },
     level: {
-      label: 'Módulo',
-      placeholder: 'Selecione o Módulo',
+      label: 'Level',
+      placeholder: 'Select the level',
       options: [
         { value: 'kids01', label: 'Kids 01' },
         { value: 'kids02', label: 'Kids 02' },
@@ -52,12 +52,12 @@ export default {
     },
 
     teacher: {
-      label: 'Professor',
-      placeholder: 'Selecione o Professor'
+      label: 'Teacher',
+      placeholder: 'Select The Teacher'
     },
     shift: {
-      label: 'Horário / Dia',
-      placeholder: 'Ex.: segunda e terça às 8h'
+      label: 'Time / Day',
+      placeholder: 'Ex.: Monday, at 8am'
     }
   }
 }

@@ -10,7 +10,7 @@ export default {
     title: 'Entrar | Blue Way Idiomas'
   },
   '/dashboard': {
-    crumb: 'Home'
+    crumb: 'Início'
   },
   '/dashboard/home': {
     title: 'Bem vindo à Blue Way Idiomas'

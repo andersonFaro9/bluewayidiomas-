@@ -6,7 +6,7 @@
   >
 
     <q-card class="AuthIndex__card">
-      <q-card-section class="text-center bg-primary">
+      <q-card-section class="text-center">
         <div>
             <img
             alt="logo"
@@ -61,13 +61,13 @@
           <div class="q-pa-sm" >
             <q-btn
               class="AuthIndex__button full-width"
-              color="primary"
+
               :label="$lang('auth.login.signIn')"
               type="submit"
               :loading="loading"
             />
 
-             <a class= "link_home" href="#">Voltar para home  </a>
+             <a class= "link_home" href="#"> Go home  </a>
           </div>
         </form>
       </q-card-section>
@@ -193,7 +193,7 @@ export default {
   transition opacity 3s
   &.started
     opacity 1
-    background-color #35459E
+    background-color #013e7b
 
   .AuthIndex__card
     max-width 100%
@@ -210,12 +210,15 @@ export default {
     flex-direction: row-reverse;
     padding-top: 8px;
     text-decoration: none;
-    color: #35459E;
+    color: #0000d9
+    font-weight 500
     text-transform: uppercase;
     font-family: Arial, Helvetica, sans-serif;
 
   .AuthIndex__button
     min-height 42px
+    color white
+    background-color #0000d9
 
 .q-field__label
   color #c5d2d1

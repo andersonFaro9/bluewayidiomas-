@@ -46,12 +46,12 @@ export default class GradeSchema extends Schema {
       .fieldFormWidth(50)
       .validationRequired()
 
-    this.addField('class')
-      .fieldTableShow()
-      .fieldTableWhere()
-      .fieldIsSelect()
-      .fieldFormWidth(50)
-      .validationRequired()
+    // this.addField('class')
+    //   .fieldTableShow()
+    //   .fieldTableWhere()
+    //   .fieldIsSelect()
+    //   .fieldFormWidth(50)
+    //   .validationRequired()
 
     this.addField('shift')
       .fieldIsInputPlan()
