@@ -6,7 +6,7 @@
   >
 
     <q-card class="AuthIndex__card">
-      <q-card-section class="text-center bg-primary">
+      <q-card-section class="text-center">
         <div>
             <img
             alt="logo"
@@ -24,7 +24,7 @@
             <div  class="col-12 q-pa-sm" >
 
               <q-input
-                :label="$lang('auth.login.login')"
+                :label="$lang('auth.signIn.username')"
                 type="email"
                 outlined
                 v-model="record.login">
@@ -38,7 +38,7 @@
 
             <div class="col-12 q-pa-sm q-pb-md">
               <q-input
-                :label="$lang('auth.login.password')"
+                :label="$lang('auth.signIn.password')"
                 :type=" isPassword ? 'password' : 'text'"
                 outlined
 
@@ -61,13 +61,13 @@
           <div class="q-pa-sm" >
             <q-btn
               class="AuthIndex__button full-width"
-              color="primary"
-              :label="$lang('auth.login.signIn')"
+
+              :label="$lang('auth.signIn.button')"
               type="submit"
               :loading="loading"
             />
 
-             <a class= "link_home" href="#">Voltar para home  </a>
+             <a class= "link_home" href="#">{{ $t('pages./.home') }}</a>
           </div>
         </form>
       </q-card-section>
@@ -96,7 +96,7 @@ export default {
     started: false,
     isPassword: true,
     record: {
-      login: process.env.VUE_APP_DEFAULT_LOGIN,
+      login: process.env.VUE_APP_DEFAULT_USERNAME,
       password: process.env.VUE_APP_DEFAULT_PASSWORD
     }
   }),
@@ -137,7 +137,9 @@ export default {
     /**
      */
     attemptFetchUser () {
-      me().then(this.attemptSetUser)
+      me()
+        .then(this.attemptSetUser)
+        .catch(() => this.$q.loading.hide())
     },
     /**
      * @param {Object} user
@@ -191,7 +193,7 @@ export default {
   transition opacity 3s
   &.started
     opacity 1
-    background-color #35459E
+    background-color #013e7b
 
   .AuthIndex__card
     max-width 100%
@@ -208,12 +210,15 @@ export default {
     flex-direction: row-reverse;
     padding-top: 8px;
     text-decoration: none;
-    color: #35459E;
+    color: #0000d9
+    font-weight 500
     text-transform: uppercase;
     font-family: Arial, Helvetica, sans-serif;
 
   .AuthIndex__button
     min-height 42px
+    color white
+    background-color #0000d9
 
 .q-field__label
   color #c5d2d1

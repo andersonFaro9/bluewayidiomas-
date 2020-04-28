@@ -219,4 +219,7 @@ return [
         'Sentry' => Sentry\Laravel\Facade::class,
     ],
 
+    'restricted' => ['jwt.auth', 'jwt.refresh'],
+
+    'counter' => false,
 ];

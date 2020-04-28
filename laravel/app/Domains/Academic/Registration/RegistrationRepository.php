@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Domains\Academic\Registration;
 
-use App\Core\AbstractRepository as Repository;
 use App\Domains\Academic\Registration;
+use DeviTools\Persistence\AbstractRepository as Repository;
 
 /**
  * Class RegistrationRepository

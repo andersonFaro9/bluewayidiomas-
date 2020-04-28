@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Api\Academic;
 
 use App\Domains\Academic\Registration\RegistrationRepository;
-use App\Http\Controllers\Api\AbstractRestController;
+use DeviTools\Http\AbstractRestController;
 
 /**
  * Class RegistrationController

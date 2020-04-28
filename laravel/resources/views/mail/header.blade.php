@@ -1,5 +1,5 @@
 <table class="wrapper header" align="center"
-       style="background: #8a8a8a url('{{ App\Helper\url($image) }}');border-collapse: collapse; border-spacing: 0; height: 380px; padding: 0; text-align: left; vertical-align: top; width: 100%;">
+       style="background: #8a8a8a url('{{ DeviTools\Helper\url($image) }}');border-collapse: collapse; border-spacing: 0; height: 380px; padding: 0; text-align: left; vertical-align: top; width: 100%;">
     <tbody>
     <tr style="padding: 0; text-align: left; vertical-align: top;">
         <td class="wrapper-inner"
@@ -27,7 +27,7 @@
                                         </tbody>
                                     </table>
                                     <img class="logo"
-                                         src="{{ App\Helper\url('/mail/img/logoFutura.png') }}"
+                                         src="{{ DeviTools\Helper\url('/mail/img/logoFutura.png') }}"
                                          style="-ms-interpolation-mode: bicubic; clear: both; display: block; max-width: 100%; outline: none; padding: 10px 0 0 0; text-decoration: none; width: auto;">
                                 </th>
 

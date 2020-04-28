@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Api\Academic;
 
 use App\Domains\Academic\Activity\ActivityRepository;
-use App\Http\Controllers\Api\AbstractRestController;
 use Illuminate\Http\Request;
+use DeviTools\Http\AbstractRestController;
 
 /**
  * Class GradeController
@@ -19,10 +19,9 @@ class ActivityController extends AbstractRestController
      * ActivityController constructor.
      *
      * @param ActivityRepository $repository
-     * @param Request $request
      */
-    public function __construct(ActivityRepository $repository, Request $request)
+    public function __construct(ActivityRepository $repository)
     {
-        parent::__construct($repository, $request);
+        parent::__construct($repository);
     }
 }

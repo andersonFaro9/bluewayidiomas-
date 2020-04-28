@@ -2,8 +2,9 @@
 
 namespace App\Exceptions;
 
-use App\Http\Response\AnswerTrait;
-use App\Http\Status;
+use DeviTools\Exceptions\ErrorGeneral;
+use DeviTools\Http\Response\AnswerTrait;
+use DeviTools\Http\Status;
 use Exception;
 use ForceUTF8\Encoding;
 use Illuminate\Database\QueryException;

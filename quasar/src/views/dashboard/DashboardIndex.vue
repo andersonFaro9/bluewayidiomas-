@@ -3,12 +3,12 @@
     <div class="flex row bg-primary text-white shadow-2 rounded-borders q-pa-md">
       <div class="col-6-sm q-pa-sm">
         <small class="text-weight-medium mono-font text-subtitle1">
-          {{ greetings }}, {{saudar}}, <strong>{{ name }}</strong>
+          {{ greetings }}, <strong>{{ name }}!!</strong>
         </small>
       </div>
       <q-space />
       <div class="col-6-sm q-pa-sm text-right">
-        <small class="text-weight-thin mono-font">Versão da aplicação: {{ version }}</small>
+        <small class="text-weight-thin mono-font">{{ $t('app.version.label') }}: {{ version }}</small>
       </div>
     </div>
   </div>
@@ -54,12 +54,6 @@ export default {
       return this.$util.get(this.$store.getters['auth/getUser'], 'name')
     },
 
-    /**
-     * @returns {string}
-     */
-    saudar () {
-      return this.$lang('Seja bem-vindo')
-    },
     /**
      * @returns {string}
      */

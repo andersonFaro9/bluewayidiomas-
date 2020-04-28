@@ -39,23 +39,18 @@ export default {
       label: 'Módulo',
       placeholder: 'Selecione o Módulo',
       options: [
-        { value: 'basic', label: 'BÁSICO' },
-        { value: 'intermediate', label: 'INTERMEDIÁRIO' },
-        { value: 'advanced', label: 'AVANÇADO' }
+        { value: 'kids01', label: 'Kids 01' },
+        { value: 'kids02', label: 'Kids 02' },
+        { value: 'kids03', label: 'Kids 03' },
+        { value: 'kids04', label: 'Kids 04' },
+        { value: 'kids05', label: 'Kids 05' },
+        { value: 'teeans01', label: 'Teens 01' },
+        { value: 'teeans02', label: 'Teens 02' },
+        { value: 'teeans03', label: 'Teens 03' },
+        { value: 'specialclass', label: 'Special Class' }
       ]
     },
-    class: {
-      label: 'Turma',
-      placeholder: 'Selecione a Turma',
-      options: [
-        { value: 'a', label: 'A' },
-        { value: 'b', label: 'B' },
-        { value: 'c', label: 'C' },
-        { value: 'd', label: 'D' },
-        { value: 'e', label: 'E' },
-        { value: 'f', label: 'F' }
-      ]
-    },
+
     teacher: {
       label: 'Professor',
       placeholder: 'Selecione o Professor'

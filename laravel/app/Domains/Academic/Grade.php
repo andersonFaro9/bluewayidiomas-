@@ -2,14 +2,14 @@
 
 namespace App\Domains\Academic;
 
-use App\Core\AbstractModel;
 use App\Domains\Admin\Profile;
 use App\Domains\Admin\User;
-use App\Exceptions\ErrorUserForbidden;
+use DeviTools\Exceptions\ErrorUserForbidden;
 use App\Units\Common\UserSession;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Ramsey\Uuid\Uuid;
+use DeviTools\Persistence\AbstractModel;
 
 /**
  * Class Grade
@@ -49,7 +49,6 @@ class Grade extends AbstractModel
     protected $rules = [
         'name' => 'required',
         'level' => 'required',
-        'class' => 'required',
     ];
 
     /**
@@ -66,6 +65,14 @@ class Grade extends AbstractModel
     public function manyToOne(): array
     {
         return ['teacher' => 'userId'];
+    }
+
+    /**
+     * @return array|string[]
+     */
+    public function getDefaults(): array
+    {
+        return ['class' => ''];
     }
 
     /**

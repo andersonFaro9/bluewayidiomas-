@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Domains\Admin\Action;
 
-use App\Core\AbstractRepository;
 use App\Domains\Admin\Action;
 use App\Domains\Admin\ProfileAction;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Query\Builder;
+use DeviTools\Persistence\AbstractRepository;
 
 use function PhpBrasil\Collection\pack as pack;
 

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Domains\Admin\Profile;
 
-use App\Core\AbstractRepository as Repository;
 use App\Domains\Admin\Profile;
+use DeviTools\Persistence\AbstractRepository as Repository;
 
 /**
  * Class ProfileRepository

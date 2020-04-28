@@ -2,8 +2,8 @@
 
 namespace App\Domains\Academic\Activity;
 
-use App\Core\AbstractRepository;
 use App\Domains\Academic\Activity;
+use DeviTools\Persistence\AbstractRepository;
 
 /**
  * Class ActivityRepository

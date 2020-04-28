@@ -2,13 +2,13 @@
 
 namespace App\Units\Mail;
 
-use App\Core\AbstractModel;
 use App\Domains\Util\Instance;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Mail;
+use DeviTools\Persistence\AbstractModel;
 
 /**
  * Class Sender

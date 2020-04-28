@@ -13,7 +13,7 @@ return [
     */
 
     'supportsCredentials' => true,
-    'allowedOrigins' => ['*'],
+    'allowedOrigins' => ['http://localhost:8080', 'https://blueway.devi.tools', 'https://bluewaycursos.com.br'],
     'allowedMethods' => ['*'],
     'allowedHeaders' => ['Authorization', 'PrivateToken', 'Bearer', 'Context', 'Device', 'Content-Type'],
     'exposedHeaders' => ['Authorization', 'PrivateToken', 'Bearer', 'Context', 'Device', 'Content-Type'],

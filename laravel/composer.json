@@ -42,10 +42,11 @@
             "database/factories"
         ],
         "psr-4": {
-            "App\\": "app/"
+            "App\\": "app/",
+            "DeviTools\\": "core/"
         },
         "files": [
-            "helper/index.php"
+            "core/Helper/index.php"
         ]
     },
     "autoload-dev": {

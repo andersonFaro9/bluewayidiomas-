@@ -1,9 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 use App\Http\Controllers\Api\Academic\GradeController;
 use App\Http\Controllers\Api\Academic\ActivityController;
 use App\Http\Controllers\Api\Academic\RegistrationController;
-use App\Http\Routing\Router;
+use DeviTools\Http\Routing\Router;
 
 Router::restricted()->group(static function () {
     Router::api('/academic/grade', GradeController::class);

@@ -1,4 +1,4 @@
-import $lang from 'src/lang'
+import $lang from 'src/app/Lang'
 import { $store } from 'src/store'
 
 /*

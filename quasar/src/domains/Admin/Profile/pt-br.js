@@ -44,7 +44,6 @@ export default {
         { value: REFERENCE.REFERENCE_STUDENT, label: 'ALUNO' }
       ]
     },
-    price: 'Valor da Mensalidade',
     actions: 'Ações'
   }
 }

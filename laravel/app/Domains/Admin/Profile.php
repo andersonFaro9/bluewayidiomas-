@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Domains\Admin;
 
-use App\Core\AbstractModel as Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use DeviTools\Persistence\AbstractModel as Model;
 
 use function is_array;
 use function PhpBrasil\Collection\pack;

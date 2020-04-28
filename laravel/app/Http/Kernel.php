@@ -25,6 +25,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Tymon\JWTAuth\Http\Middleware\Authenticate as JWTAuthenticate;
 use Tymon\JWTAuth\Http\Middleware\RefreshToken as JWTRefreshToken;
+
 use function PhpBrasil\Collection\Helper\prop;
 
 /**

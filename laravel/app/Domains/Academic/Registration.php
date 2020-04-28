@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace App\Domains\Academic;
 
-use App\Core\AbstractModel as Model;
 use App\Domains\Academic\Shared\TeacherGrade;
 use App\Domains\Admin\Profile;
 use App\Domains\Admin\User;
-use App\Exceptions\ErrorUserForbidden;
+use DeviTools\Exceptions\ErrorUserForbidden;
 use App\Units\Common\UserSession;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Ramsey\Uuid\Uuid;
+use DeviTools\Persistence\AbstractModel as Model;
 
 /**
  * Class Registration
