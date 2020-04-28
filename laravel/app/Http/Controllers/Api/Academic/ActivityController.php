@@ -19,10 +19,9 @@ class ActivityController extends AbstractRestController
      * ActivityController constructor.
      *
      * @param ActivityRepository $repository
-     * @param Request $request
      */
-    public function __construct(ActivityRepository $repository, Request $request)
+    public function __construct(ActivityRepository $repository)
     {
-        parent::__construct($repository, $request);
+        parent::__construct($repository);
     }
 }

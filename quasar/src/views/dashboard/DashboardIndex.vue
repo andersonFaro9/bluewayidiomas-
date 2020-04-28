@@ -8,7 +8,7 @@
       </div>
       <q-space />
       <div class="col-6-sm q-pa-sm text-right">
-        <small class="text-weight-thin mono-font">Versão da aplicação: {{ version }}</small>
+        <small class="text-weight-thin mono-font">{{ $t('app.version.label') }}: {{ version }}</small>
       </div>
     </div>
   </div>

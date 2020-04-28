@@ -5,40 +5,38 @@ import { SCOPES } from 'src/app/Agnostic/enum'
 export default {
   routes: {
     group: {
-      crumb: 'Academic / Enrollment'
+      crumb: 'Admin / Actions'
     },
     [SCOPES.SCOPE_INDEX]: {
-      title: 'Enrollment'
+      title: 'Actions'
     },
     [SCOPES.SCOPE_TRASH]: {
-      title: 'Trash Enrollment',
-      crumb: 'Trash'
+      title: 'Actions Trash',
+      crumb: 'Lixeira'
     },
     [SCOPES.SCOPE_ADD]: {
-      title: 'Create Enrollment',
+      title: 'Create Action',
       crumb: 'Create'
     },
     [SCOPES.SCOPE_VIEW]: {
-      title: 'View Enrollment',
+      title: 'View Action',
       crumb: 'View'
     },
     [SCOPES.SCOPE_EDIT]: {
-      title: 'Edit Enrollment',
+      title: 'Edit Action',
       crumb: 'Edit'
     }
   },
   print: {
-    title: 'Print Enrollment'
+    title: 'Print Action'
   },
   fields: {
-    grade: {
-      label: 'Module'
-    },
-    student: {
-      label: 'Name'
-    },
-    date: {
-      label: 'Date'
-    }
+    parent: 'Parent',
+    name: 'Name',
+    namespace: 'Scope',
+    icon: 'Icon',
+    path: 'URL',
+    assortment: 'Assortment',
+    separated: 'Separator'
   }
 }

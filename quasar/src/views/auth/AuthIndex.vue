@@ -24,7 +24,7 @@
             <div  class="col-12 q-pa-sm" >
 
               <q-input
-                :label="$lang('auth.login.login')"
+                :label="$lang('auth.signIn.username')"
                 type="email"
                 outlined
                 v-model="record.login">
@@ -38,7 +38,7 @@
 
             <div class="col-12 q-pa-sm q-pb-md">
               <q-input
-                :label="$lang('auth.login.password')"
+                :label="$lang('auth.signIn.password')"
                 :type=" isPassword ? 'password' : 'text'"
                 outlined
 
@@ -62,12 +62,12 @@
             <q-btn
               class="AuthIndex__button full-width"
 
-              :label="$lang('auth.login.signIn')"
+              :label="$lang('auth.signIn.button')"
               type="submit"
               :loading="loading"
             />
 
-             <a class= "link_home" href="#"> Go home  </a>
+             <a class= "link_home" href="#">{{ $t('pages./.home') }}</a>
           </div>
         </form>
       </q-card-section>

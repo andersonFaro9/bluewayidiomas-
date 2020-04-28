@@ -49,7 +49,6 @@ class Grade extends AbstractModel
     protected $rules = [
         'name' => 'required',
         'level' => 'required',
-        'class' => 'required',
     ];
 
     /**
@@ -66,6 +65,14 @@ class Grade extends AbstractModel
     public function manyToOne(): array
     {
         return ['teacher' => 'userId'];
+    }
+
+    /**
+     * @return array|string[]
+     */
+    public function getDefaults(): array
+    {
+        return ['class' => ''];
     }
 
     /**

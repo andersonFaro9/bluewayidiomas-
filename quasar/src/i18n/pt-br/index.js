@@ -1,6 +1,5 @@
-import { agnostic, app, geo, validation, worker } from 'src/app/Lang/en-us'
+import { agnostic, app, auth, geo, validation, worker } from 'src/app/Lang/en-us'
 
-import auth from './auth'
 import domains from './domains'
 import pages from './pages'
 

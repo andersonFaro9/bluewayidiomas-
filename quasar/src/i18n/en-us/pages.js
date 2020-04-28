@@ -7,7 +7,8 @@
  */
 export default {
   '/': {
-    title: 'Entrar | Blue Way Idiomas'
+    title: 'Entrar | Blue Way Idiomas',
+    home: 'Go home'
   },
   '/dashboard': {
     crumb: 'Início'

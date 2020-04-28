@@ -5,13 +5,13 @@ import { SCOPES } from 'src/app/Agnostic/enum'
 export default {
   routes: {
     group: {
-      crumb: 'Academic / Class'
+      crumb: 'Academic / Classes'
     },
     [SCOPES.SCOPE_INDEX]: {
-      title: 'Class'
+      title: 'Classes'
     },
     [SCOPES.SCOPE_TRASH]: {
-      title: 'Class Trash',
+      title: 'Classes Trash',
       crumb: 'Trash'
     },
     [SCOPES.SCOPE_ADD]: {
@@ -19,8 +19,8 @@ export default {
       crumb: 'Create'
     },
     [SCOPES.SCOPE_VIEW]: {
-      title: 'See Class',
-      crumb: 'To see'
+      title: 'View Class',
+      crumb: 'View'
     },
     [SCOPES.SCOPE_EDIT]: {
       title: 'Edit Class',
@@ -28,7 +28,7 @@ export default {
     }
   },
   print: {
-    title: 'Printed activity'
+    title: 'Printed Class'
   },
   fields: {
     name: {
@@ -50,7 +50,6 @@ export default {
         { value: 'specialclass', label: 'Special Class' }
       ]
     },
-
     teacher: {
       label: 'Teacher',
       placeholder: 'Select The Teacher'

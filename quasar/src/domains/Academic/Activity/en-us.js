@@ -15,20 +15,20 @@ export default {
       crumb: 'Trash'
     },
     [SCOPES.SCOPE_ADD]: {
-      title: 'Create Activities',
+      title: 'Create Activity',
       crumb: 'Create'
     },
     [SCOPES.SCOPE_VIEW]: {
-      title: 'See activities',
-      crumb: 'To see'
+      title: 'View Activity',
+      crumb: 'View'
     },
     [SCOPES.SCOPE_EDIT]: {
-      title: 'Edit activities',
+      title: 'Edit Activity',
       crumb: 'Edit'
     }
   },
   print: {
-    title: 'Printed activity'
+    title: 'Print Activity'
   },
   fields: {
     grade: 'Module',
