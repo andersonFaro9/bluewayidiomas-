@@ -18,10 +18,10 @@ export default class AccountSchema extends UserSchema {
     // fields
 
     this.getField('name')
-      .fieldFormWidth(50)
+      .fieldFormDisabled()
 
     this.getField('email')
-      .fieldFormWidth(50)
+      .fieldFormDisabled()
 
     this.getField('profile')
       .fieldFormHidden()
