@@ -20,6 +20,7 @@
         <img
           class="DashboardLayout__header_logo hide-in-1024"
           src="statics/dashboard/header-logo.png"
+          alt=""
         />
         <q-space />
         <DashboardMenu />
@@ -34,7 +35,20 @@
     >
       <q-scroll-area class="fit">
         <div class="DashboardLayout__drawer_header">
-          <img src="statics/dashboard/header-logo.png" />
+          <img
+            src="statics/dashboard/header-logo.png"
+            alt=""
+          />
+        </div>
+        <div
+          v-if="info"
+          class="DashboardLayout__drawer_info q-pa-md"
+        >
+          <div class="q-ma-xs">
+            {{ info.grade }} - {{ gradeLevelFormat(info.level) }}
+            <br>
+            <small>({{ info.time }})</small>
+          </div>
         </div>
         <DashboardActions :actions="actions" />
       </q-scroll-area>
@@ -62,6 +76,7 @@ import Transition from 'src/modules/General/Mixins/Transition'
 import DashboardActions from 'src/modules/Dashboard/components/DashboardActions'
 import DashboardMenu from 'src/modules/Dashboard/components/DashboardMenu'
 import AppBreadcrumb from 'src/app/Components/Breadcrumb/AppBreadcrumb'
+import { gradeLevelFormat } from 'src/domains/Academic/Registration/helpers'
 
 /**
  */
@@ -104,7 +119,18 @@ export default {
      */
     title () {
       return this.$store.getters['dashboard/getTitle']
+    },
+    /**
+     * @returns {Object|undefined}
+     */
+    info () {
+      return this.$util.get(this.$store.getters['auth/getUser'], 'info', undefined)
     }
+  },
+  methods: {
+    /**
+     */
+    gradeLevelFormat
   },
   /**
    */
@@ -155,7 +181,7 @@ export default {
   .DashboardLayout__header {
     small {
       text-shadow: 1px 1px 1px rgba(119, 119, 119, 0.45);
-      text-transform: lowercase;
+      text-transform: none;
       color: white;
     }
 
@@ -164,6 +190,11 @@ export default {
       width: 80px;
       margin: 0 15px;
     }
+  }
+
+  .DashboardLayout__drawer_info {
+    background-color: $primary;
+    color: white;
   }
 
   .DashboardLayout__drawer_header {

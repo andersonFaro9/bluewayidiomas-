@@ -32,7 +32,13 @@ export default {
   },
   fields: {
     grade: {
-      label: 'Module'
+      label: 'Group',
+      level: {
+        label: 'Level'
+      },
+      shift: {
+        label: 'Time'
+      }
     },
     student: {
       label: 'Name'
