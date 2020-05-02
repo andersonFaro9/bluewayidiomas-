@@ -34,6 +34,7 @@ export default class ActivitySchema extends Schema {
     this.addField('grade')
       .fieldTableShow()
       .fieldTableWhere()
+      .fieldTableOrder(2)
       .fieldIsSelectRemote(GradeSchema.build().provideRemote())
       .fieldFormWidth(50)
       .validationRequired()
@@ -41,8 +42,19 @@ export default class ActivitySchema extends Schema {
     this.addField('name')
       .fieldTableShow()
       .fieldTableWhere()
+      .fieldTableOrder(1)
       .fieldFormWidth(50)
       .validationRequired()
+
+    this.addField('publishDate')
+      .fieldTableShow()
+      .fieldTableWhere()
+      .fieldIsDate()
+      .fieldFormWidth(50)
+
+    this.addField('deliveryDate')
+      .fieldIsDate()
+      .fieldFormWidth(50)
 
     this.addField('description')
       // .fieldIsWysiwyg()

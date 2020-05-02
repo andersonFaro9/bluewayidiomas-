@@ -4,16 +4,16 @@ use DeviTools\Database\Migration\TableAlter;
 use DeviTools\Database\Table;
 
 /**
- * Class GradesAddLevelClass
+ * Class ActivitiesAddDates
  */
-class GradesAddLevelClass extends TableAlter
+class ActivitiesAddDates extends TableAlter
 {
     /**
      * @return string
      */
     protected function table(): string
     {
-        return 'registrations';
+        return 'activities';
     }
 
     /**

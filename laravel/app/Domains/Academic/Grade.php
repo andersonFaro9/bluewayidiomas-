@@ -14,6 +14,9 @@ use DeviTools\Persistence\AbstractModel;
 /**
  * Class Grade
  *
+ * @property string name
+ * @property string level
+ * @property string shift
  * @package App\Domains\Academic
  */
 class Grade extends AbstractModel
