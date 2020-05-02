@@ -30,7 +30,7 @@ export const DOCUMENT_TYPE = Object.freeze({
  */
 export const DOCUMENT_ACCEPT = Object.freeze({
   [DOCUMENT_TYPE.DOCUMENT_TYPE_PDF]: 'application/pdf',
-  [DOCUMENT_TYPE.DOCUMENT_TYPE_OFFICE]: 'application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,text/plain',
+  [DOCUMENT_TYPE.DOCUMENT_TYPE_OFFICE]: '.xlsx,.xls,.doc,.docx,.ppt,.pptx,.txt',
   [DOCUMENT_TYPE.DOCUMENT_TYPE_IMAGE]: 'image/*',
   [DOCUMENT_TYPE.DOCUMENT_TYPE_VIDEO]: 'video/*',
   [DOCUMENT_TYPE.DOCUMENT_TYPE_AUDIO]: 'audio/*'
