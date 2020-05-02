@@ -5,25 +5,25 @@ import { SCOPES } from 'src/app/Agnostic/enum'
 export default {
   routes: {
     group: {
-      crumb: 'Academic / Classes'
+      crumb: 'Academic / Groups'
     },
     [SCOPES.SCOPE_INDEX]: {
-      title: 'Classes'
+      title: 'Groups'
     },
     [SCOPES.SCOPE_TRASH]: {
-      title: 'Classes Trash',
+      title: 'Groups Trash',
       crumb: 'Trash'
     },
     [SCOPES.SCOPE_ADD]: {
-      title: 'Create Class',
+      title: 'Create Group',
       crumb: 'Create'
     },
     [SCOPES.SCOPE_VIEW]: {
-      title: 'View Class',
+      title: 'View Group',
       crumb: 'View'
     },
     [SCOPES.SCOPE_EDIT]: {
-      title: 'Edit Class',
+      title: 'Edit Group',
       crumb: 'Edit'
     }
   },
