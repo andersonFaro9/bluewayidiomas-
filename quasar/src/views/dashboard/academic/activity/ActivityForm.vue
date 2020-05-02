@@ -73,7 +73,7 @@ export default {
   border-style solid
   border-color #ddd
   padding 15px 30px
-  height calc(100vh - 165px)
+  height calc(100vh - 195px)
   overflow auto
 
   h5, h6

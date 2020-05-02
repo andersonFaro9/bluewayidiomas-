@@ -45,6 +45,8 @@ class Activity extends AbstractModel
         'description',
         'document',
         'link',
+        'publishDate',
+        'deliveryDate',
     ];
 
     /**

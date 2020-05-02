@@ -32,13 +32,14 @@ export default {
   },
   fields: {
     name: {
-      label: 'Module',
+      label: 'Group Name',
       placeholder: 'Ex.: BWP1'
     },
     level: {
       label: 'Level',
       placeholder: 'Select the level',
       options: [
+        { value: 'basic', label: 'Deprecated' },
         { value: 'kids01', label: 'Kids 01' },
         { value: 'kids02', label: 'Kids 02' },
         { value: 'kids03', label: 'Kids 03' },
@@ -55,7 +56,7 @@ export default {
       placeholder: 'Select The Teacher'
     },
     shift: {
-      label: 'Time / Day',
+      label: 'Time',
       placeholder: 'Ex.: Monday, at 8am'
     }
   }

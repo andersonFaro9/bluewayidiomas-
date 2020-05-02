@@ -31,6 +31,7 @@ export default class UserSchema extends Schema {
     this.addField('name')
       .fieldTableShow()
       .fieldTableWhere()
+      .fieldIsInputPlan()
       .fieldFormAutofocus()
       .fieldFormWidth(50)
       .validationRequired()

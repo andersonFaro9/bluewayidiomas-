@@ -1,7 +1,7 @@
 <?php
 
-use App\Database\Migration\TableCreate as TableCreate;
-use App\Database\Table;
+use DeviTools\Database\Migration\TableCreate as TableCreate;
+use DeviTools\Database\Table;
 
 /**
  * Class PermissionsCreate

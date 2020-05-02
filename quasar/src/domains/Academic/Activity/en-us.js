@@ -31,8 +31,10 @@ export default {
     title: 'Print Activity'
   },
   fields: {
-    grade: 'Module',
+    grade: 'Group',
     name: 'Activity Name',
+    publishDate: 'Date',
+    deliveryDate: 'Delivery Date',
     description: 'Description',
     type: {
       label: 'Type',
@@ -65,5 +67,10 @@ export default {
     },
     document: 'File',
     link: 'Link'
+  },
+  validations: {
+    document: {
+      requiredIf: 'Field is required when type is File'
+    }
   }
 }
