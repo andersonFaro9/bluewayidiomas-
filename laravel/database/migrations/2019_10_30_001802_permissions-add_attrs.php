@@ -1,7 +1,7 @@
 <?php
 
-use App\Database\Migration\TableAlter;
-use App\Database\Table;
+use DeviTools\Database\Migration\TableAlter;
+use DeviTools\Database\Table;
 
 /**
  * Class PermissionsAddAttrs
