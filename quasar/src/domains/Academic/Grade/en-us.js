@@ -39,7 +39,9 @@ export default {
       label: 'Level',
       placeholder: 'Select the level',
       options: [
-        { value: 'basic', label: 'Deprecated' },
+        { value: 'basic', label: '-' },
+        { value: 'intermediate', label: '-' },
+        { value: 'advanced', label: '-' },
         { value: 'kids01', label: 'Kids 01' },
         { value: 'kids02', label: 'Kids 02' },
         { value: 'kids03', label: 'Kids 03' },
