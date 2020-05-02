@@ -17,6 +17,7 @@ use DeviTools\Persistence\AbstractModel as Model;
 /**
  * Class Registration
  *
+ * @property Grade grade
  * @package App\Domains\Academic
  */
 class Registration extends Model
@@ -107,6 +108,10 @@ class Registration extends Model
 
         if ($user->profile->reference === Profile::REFERENCE_TEACHER) {
             return $this->queryTeacherGrade($query, $userId);
+        }
+
+        if ($user->profile->reference === Profile::REFERENCE_STUDENT) {
+            return $query->where('userId', $userId);
         }
 
         throw new ErrorUserForbidden(['user' => 'unknown']);
