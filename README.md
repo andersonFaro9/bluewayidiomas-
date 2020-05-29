@@ -9,7 +9,7 @@
 </h4>
 
 <h5 align="center">
-  🚀  Necessidade do app: Por causa do caos em que estamos vivendo com o covid, a escola de idiomas, Blue Way Idiomas localizada na Bahia, cidade de Pojuca nos contatou para o desenvolvimento de um web aplicativo que atenda a necessidade de ensino</a>
+  🚀  Necessidade do app: Por causa do caos em que estamos vivendo com o covid, a escola de idiomas, Blue Way Idiomas localizada na Bahia, cidade de Pojuca nos contatou para o desenvolvimento de um web aplicativo que atenda a necessidade de ensino à distância</a>
 </h5>
 
 <br/>
@@ -28,18 +28,21 @@
    <a href="#"> 
     <img alt="technologies" src= "https://img.shields.io/badge/Back--end-Laravel-yellow" >
   </a>
+  <a href="#"> 
+    <img alt="technologies" src= "https://img.shields.io/badge/Front--end-Stylus-green">
+  </a>
 </p>
 
 ## :rocket: Technologies
 
-## CSS
-## Vue Js
-## Quasar Framework
-## PHP Laravel
-## Stylus-css
+### CSS
+### Vue Js
+### Quasar Framework
+### PHP Laravel
+### Stylus-css
 
-#### :page_facing_up: License
-This project is under the MIT license, made with love and care :hearts: by Eduardo Tucci, for details, see the [LICENSE](LICENSE.md) 👋
+#### :page_facing_up: Licença
+Todos os direitos reservados a escola de idiomas: blue Way Idiomas👋
 
 
 
