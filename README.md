@@ -41,8 +41,14 @@
 ### PHP Laravel
 ### Stylus-css
 
+## Meu agradecimento especial:
+
+Quero agradecer ao amigo William Correa por me dar a oportunidade de participar desse aplicativo; O aprendizado foi de suma importância nesses últimos dias, o teu apoio à diversas comunidades de programação no Brasil é de suma importância para nossas vidas. E aqui eu quero destacar o seu cuidado e apoio a comunidade de Vue Js, valeu mesmo!!!!!
+
+### Seu contato pode ser encontrado aqui: https://www.linkedin.com/in/wilcorrea/ 
+
 #### :page_facing_up: Licença
-Todos os direitos reservados a escola de idiomas: blue Way Idiomas👋
+Todos os direitos reservados a escola de idiomas: Blue Way Idiomas👋
 
 
 
