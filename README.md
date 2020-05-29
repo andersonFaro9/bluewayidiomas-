@@ -4,7 +4,8 @@
 
   🚀 Um Web App EAD(ensino à distância) com aulas em inglês para alunos de diversas idades, com atividades em videos, pdf e doc.
 
-  ![blueway](https://user-images.githubusercontent.com/3237047/83269986-3d165580-a19e-11ea-864b-1da0533166c7.png)
+  ![blueway](https://user-images.githubusercontent.com/3237047/83279127-01ce5380-a1ab-11ea-9c83-129b2516a2c7.png)
+
 
 </h4>
 
