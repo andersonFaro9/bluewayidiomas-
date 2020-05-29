@@ -15,10 +15,21 @@
 <br/>
 <p align="center">
 
-   <a href="#rocket-technologies">
+   <a href="#">
    <img alt="technologies" src= "https://img.shields.io/badge/Tecnologies-Front--end-blue">
-   </a>
-  
+   </a> 
+   <a href="#">
+   <img alt="technologies" src= "https://img.shields.io/badge/Front--end-Vue%20Js-green">    
+  </a>
+  <a href="#">
+    <img alt="technologies" src= "https://img.shields.io/badge/Front--end-Quasar%20Framework-blue">
+  </a>
+  <a href="#"> 
+    <img alt="technologies" src= " https://img.shields.io/badge/Front--end-Stylus--css-orange">
+  </a>
+   <a href="#"> 
+    <img alt="technologies" src= "https://img.shields.io/badge/Back--end-Laravel-yellow" >
+  </a>
 </p>
 
 ## :rocket: Technologies
