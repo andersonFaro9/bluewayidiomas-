@@ -8,9 +8,9 @@
 
 </h4>
 
-<h5 align="center">
+<h6 align="center">
   🚀  Necessidade do app: Por causa do caos em que estamos vivendo com o covid, a escola de idiomas, Blue Way Idiomas localizada na Bahia, cidade de Pojuca nos contatou para o desenvolvimento de um web aplicativo que atenda a necessidade de ensino à distância</a>
-</h5>
+</h6>
 
 <br/>
 <p align="center">
