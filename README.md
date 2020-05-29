@@ -23,15 +23,11 @@
 
 ## :rocket: Technologies
 
-![vue](https://user-images.githubusercontent.com/3237047/82362961-8d91f400-99e3-11ea-8b60-694eb62c1ac4.png) Vue Js
-<br/>
-[css](https://user-images.githubusercontent.com/3237047/82362957-8bc83080-99e3-11ea-8ed0-f998118a4600.png) Css
-<br/>
-![php](https://user-images.githubusercontent.com/3237047/83273432-dfd0d300-a1a2-11ea-9f38-6bb4c0a734a0.png)
-
-<br/>![laravel](https://user-images.githubusercontent.com/3237047/83273718-3a6a2f00-a1a3-11ea-86a2-1983c1f4fbff.png)
-
-<br/>![quasar](https://user-images.githubusercontent.com/3237047/83273907-6d142780-a1a3-11ea-8cf9-3e4e67b419ac.png)
+## CSS
+## Vue Js
+## Quasar Framework
+## PHP Laravel
+## Stylus-css
 
 #### :page_facing_up: License
 This project is under the MIT license, made with love and care :hearts: by Eduardo Tucci, for details, see the [LICENSE](LICENSE.md) 👋
