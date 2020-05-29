@@ -41,14 +41,14 @@
 ### PHP Laravel
 ### Stylus-css
 
-## Meu agradecimento especial:
+## :nerd_face: Meu agradecimento especial:
 
 Quero agradecer ao amigo William Correa por me dar a oportunidade de participar desse aplicativo; O aprendizado foi de suma importância nesses últimos dias, o teu apoio à diversas comunidades de programação no Brasil é de suma importância para nossas vidas. E aqui eu quero destacar o seu cuidado e apoio a comunidade de Vue Js, valeu mesmo!!!!!
 
-##### Seu contato pode ser encontrado aqui: https://www.linkedin.com/in/wilcorrea/ 
+##### :construction_worker: Seu contato pode ser encontrado aqui: https://www.linkedin.com/in/wilcorrea/ 
 
 
-##### Link para acesso ao site: http://bluewaycursos.com.br/
+##### :construction_worker: Link para acesso ao site: http://bluewaycursos.com.br/
 
 #### :page_facing_up: Licença
 Todos os direitos reservados a escola de idiomas: Blue Way Idiomas👋
